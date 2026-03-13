@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!-- TELA PRINCIPAL 'HERO' -->
+<section class="home" id="inicio">
+  <div class="hero-left">
+    <h1>Um lugar para explorar, ler<br /><em>e se conectar.</em></h1>
+    <p>
+      Descubra novos mundos nas nossas prateleiras, desfrute de um café
+      artesanal e faça parte de uma comunidade que valoriza o conhecimento.
+    </p>
+    <div class="hero-btns">
+      <button class="btn-acervo">EXPLORAR ACERVO</button>
+      <button class="btn-cafeteria">VER CAFETERIA</button>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-img">
+      <img
+        src="{% static 'assets/img-hero.png' %}"
+        alt="Imagem Café com Croissant"
+      />
+    </div>
+    <div class="hero-cards-bar">
+      <div class="hero-card">
+        <span class="hero-card-num">1.2K</span>
+        <span class="hero-card-label">Títulos</span>
+      </div>
+      <div class="hero-card">
+        <span class="hero-card-num">120</span>
+        <span class="hero-card-label">Empréstimos</span>
+      </div>
+      <div class="hero-card">
+        <span class="hero-card-num">10</span>
+        <span class="hero-card-label">Itens no Café</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
