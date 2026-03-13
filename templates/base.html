@@ -1,0 +1,25 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Biblioteca & Café</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+
+  <body>
+    <header>
+      <nav id="main-bar">
+        <div class="nav-logo">Biblioteca & Café</div>
+
+        <ul class="nav-links">
+          <li><a href="{% url 'index' %}">Inicio</a></li>
+          <li><a href="{% url 'sobre' %}">Sobre</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>{% block content %} {% endblock %}</main>
+  </body>
+</html>
