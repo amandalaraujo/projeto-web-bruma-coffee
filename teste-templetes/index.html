@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca & Café</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <!--NAVBAR-->
+      <nav id="main-bar">
+        <div class="nav-logo">Biblioteca & Café</div>
+        <ul class="nav-links">
+          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="#livros">Livros</a></li>
+          <li><a href="#cafeteria">Cafeteria</a></li>
+          <li><a href="#sobre-nos">Sobre Nós</a></li>
+        </ul>
+        <div class="btn-ajuda">
+          <button>Ajuda</button>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="home-page">
+        <!-- TELA HERO -->
+        <section class="home" id="inicio">
+          <div class="hero-left">
+            <h1>Um lugar para explorar, ler<br /><em>e se conectar.</em></h1>
+            <p>
+              Descubra novos mundos nas nossas prateleiras, desfrute de um café
+              artesanal e faça parte de uma comunidade que valoriza o
+              conhecimento.
+            </p>
+            <div class="hero-btns">
+              <button class="btn-acervo">EXPLORAR ACERVO</button>
+              <button class="btn-cafeteria">VER CAFETERIA</button>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-img">
+              <img
+                src="./assets/img-hero.png"
+                alt="Imagem Café com Croissant"
+              />
+            </div>
+            <div class="hero-cards-bar">
+              <div class="hero-card">
+                <span class="hero-card-num">1.2K</span>
+                <span class="hero-card-label">Títulos</span>
+              </div>
+              <div class="hero-card">
+                <span class="hero-card-num">120</span>
+                <span class="hero-card-label">Empréstimos</span>
+              </div>
+              <div class="hero-card">
+                <span class="hero-card-num">10</span>
+                <span class="hero-card-label">Itens no Café</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TELA FEATURES -->
+        <section class="features" id="features">
+          <div class="section-header">
+            <span class="section-tag">POR QUE ESCOLHER A GENTE</span>
+            <h2>Tudo que você precisa,<br /><em>num só lugar</em></h2>
+          </div>
+          <div class="features-grid">
+            <div class="features-card" data-num="01">
+              <h3>Acervo Digital e Físico</h3>
+              <p>
+                Mais de 1.000 livros disponíveis para empréstimo, com renovação
+                online e notificação por e-mail quando seu livro preferido
+                estiver disponível.
+              </p>
+            </div>
+            <div class="features-card" data-num="02">
+              <h3>Cafeteria Artesanal</h3>
+              <p>
+                Cafés especiais, sucos naturais e uma seleção de lanches
+                preparados diariamente para acompanhar suas horas de leitura e
+                estudo.
+              </p>
+            </div>
+            <div class="features-card" data-num="03">
+              <h3>Comunidade Ativa</h3>
+              <p>
+                Clube do livro mensal, eventos literários, workshops e um espaço
+                de estudo colaborativo para você fazer conexões que importam.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- TELA BOOKS -->
+        <section class="book" id="livros">
+          <div class="section-header">
+            <span class="section-tag">ACERVO EM DESTAQUE</span>
+            <h2>Leituras em <em>alta</em> esta semana</h2>
+          </div>
+
+          <div class="book-grid-wrapper">
+            <div class="book-grid">
+              <div class="book-card">
+                <div class="book-img">
+                  <img
+                    src="./assets/img-livro-senhor-aneis.png"
+                    alt="Livro - Senhor dos Anéis"
+                  />
+                </div>
+                <div class="book-info">
+                  <div class="book-status disponivel">DISPONÍVEL</div>
+                  <div class="book-title">O Senhor dos Anéis</div>
+                  <div class="book-author">J.R.R. Tolkien</div>
+                  <a class="book-reserve">RESERVAR →</a>
+                </div>
+              </div>
+
+              <div class="book-card">
+                <div class="book-img">
+                  <img
+                    src="./assets/img-livro-sapiens.png"
+                    alt="Livro - Sapiens"
+                  />
+                </div>
+                <div class="book-info">
+                  <div class="book-status indisponivel">INDISPONÍVEL</div>
+                  <div class="book-title">
+                    Sapiens - Uma breve história da humanidade
+                  </div>
+                  <div class="book-author">Yuval Noah Harari</div>
+                  <a class="book-reserve emprestado">EMPRESTADO</a>
+                </div>
+              </div>
+
+              <div class="book-card">
+                <div class="book-img">
+                  <img
+                    src="./assets/img-livro-peq-principe.png"
+                    alt="Livro - O Pequeno Príncipe"
+                  />
+                </div>
+                <div class="book-info">
+                  <div class="book-status disponivel">DISPONÍVEL</div>
+                  <div class="book-title">O Pequeno Príncipe</div>
+                  <div class="book-author">Antoine de Saint-Exupéry</div>
+                  <a class="book-reserve">RESERVAR →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-btn">
+            <button class="btn-acervo">EXPLORAR ACERVO</button>
+          </div>
+        </section>
+
+        <!-- TELA CAFETERIA -->
+        <section class="cafeteria" id="cafeteria">
+          <div class="cafe-layout">
+            <div class="cafe-left">
+              <div class="section-tag">NOSSA CAFETERIA</div>
+              <h2 class="cafe-title">
+                O café perfeito para<br /><em>sua próxima página</em>
+              </h2>
+              <p class="cafe-desc">
+                Grãos selecionados, baristas apaixonados e um ambiente que
+                convida você a ficar mais um capítulo.
+              </p>
+            </div>
+
+            <div class="cafe-right">
+              <div class="cafe-menu-grid">
+                <div class="menu-item">
+                  <div class="menu-item-name">Espresso Duplo</div>
+                  <div class="menu-item-desc">Grão arábica, torra média</div>
+                  <div class="menu-item-price">R$ 8,00</div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-item-name">Cappuccino</div>
+                  <div class="menu-item-desc">Leite vaporizado artesanal</div>
+                  <div class="menu-item-price">R$ 14,00</div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-item-name">Suco de Laranja</div>
+                  <div class="menu-item-desc">
+                    Natural, sem adição de açúcar
+                  </div>
+                  <div class="menu-item-price">R$ 10,00</div>
+                </div>
+                <div class="menu-item">
+                  <div class="menu-item-name">Brownie Belga</div>
+                  <div class="menu-item-desc">Chocolate 70% cacau</div>
+                  <div class="menu-item-price">R$ 12,00</div>
+                </div>
+              </div>
+              <div class="cafe-btn-wrapper">
+                <button class="btn-cardapio">VER CARDÁPIO COMPLETO</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">Biblioteca & Café</div>
+        <p class="footer-text">
+          © 2025 Biblioteca & Café. Todos os direitos reservados.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
