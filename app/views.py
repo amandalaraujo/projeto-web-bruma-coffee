@@ -6,3 +6,6 @@ def index(request):
 
 def sobre(request):
     return render(request, 'sobre.html')
+
+def cafeteria(request):
+    return render(request, 'cafeteria.html')
