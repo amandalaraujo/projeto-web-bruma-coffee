@@ -4,25 +4,23 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Biblioteca & Café</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %}Biblioteca & Café{% endblock %}</title>
 
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  {% block extra_css %}{% endblock %}
 </head>
 
 <body>
-  <header>
-    <nav id="main-bar">
-      <div class="nav-logo">Biblioteca & Café</div>
+  {% include 'components/header.html' %}
 
-      <ul class="nav-links">
-        <li><a href="{% url 'index' %}">Inicio</a></li>
-        <li><a href="{% url 'cafeteria' %}">Cafeteria</a></li>
-        <li><a href="{% url 'sobre' %}">Sobre</a></li>
-      </ul>
-    </nav>
-  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
 
-  <main>{% block content %} {% endblock %}</main>
+  {% include 'components/footer.html' %}
+
+  {% block extra_js %}{% endblock %}
 </body>
 
 </html>

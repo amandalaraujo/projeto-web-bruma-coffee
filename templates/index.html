@@ -1,4 +1,9 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Início — Biblioteca & Café{% endblock %}
+
+{% block content %}
 
 <!-- TELA PRINCIPAL 'HERO' -->
 <section class="home" id="inicio">
@@ -9,8 +14,8 @@
       artesanal e faça parte de uma comunidade que valoriza o conhecimento.
     </p>
     <div class="hero-btns">
-      <button class="btn-acervo">EXPLORAR ACERVO</button>
-      <button class="btn-cafeteria">VER CAFETERIA</button>
+      <a href="{% url 'livraria' %}"><button class="btn-acervo">EXPLORAR ACERVO</button></a>
+      <a href="{% url 'cafeteria' %}"><button class="btn-cafeteria">VER CAFETERIA</button></a>
     </div>
   </div>
 
@@ -35,6 +40,58 @@
         <span class="hero-card-label">Itens no Café</span>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- SEÇÃO LIVROS EM DESTAQUE -->
+<section class="book">
+  <div class="section-header">
+    <span class="section-tag">DESTAQUES DO ACERVO</span>
+    <h2>Livros que estão<br /><em>em alta agora</em></h2>
+  </div>
+
+  <div class="book-grid-wrapper">
+    <div class="book-grid">
+      <div class="book-card">
+        <div class="book-img">
+          <img src="{% static 'assets/img-livro-peq-principe.png' %}" alt="O Pequeno Príncipe" />
+        </div>
+        <div class="book-info">
+          <span class="book-status disponivel">● DISPONÍVEL</span>
+          <p class="book-title">O Pequeno Príncipe</p>
+          <p class="book-author">Antoine de Saint-Exupéry</p>
+          <a href="{% url 'livraria' %}" class="book-reserve">RESERVAR →</a>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-img">
+          <img src="{% static 'assets/img-livro-sapiens.png' %}" alt="Sapiens" />
+        </div>
+        <div class="book-info">
+          <span class="book-status disponivel">● DISPONÍVEL</span>
+          <p class="book-title">Sapiens</p>
+          <p class="book-author">Yuval Noah Harari</p>
+          <a href="{% url 'livraria' %}" class="book-reserve">RESERVAR →</a>
+        </div>
+      </div>
+
+      <div class="book-card">
+        <div class="book-img">
+          <img src="{% static 'assets/img-livro-senhor-aneis.png' %}" alt="O Senhor dos Anéis" />
+        </div>
+        <div class="book-info">
+          <span class="book-status indisponivel">● EMPRESTADO</span>
+          <p class="book-title">O Senhor dos Anéis</p>
+          <p class="book-author">J.R.R. Tolkien</p>
+          <span class="book-reserve emprestado">INDISPONÍVEL</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-btn">
+    <a href="{% url 'livraria' %}"><button class="btn-acervo">VER ACERVO COMPLETO</button></a>
   </div>
 </section>
 

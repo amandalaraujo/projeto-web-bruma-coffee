@@ -9,3 +9,6 @@ def sobre(request):
 
 def cafeteria(request):
     return render(request, 'cafeteria.html')
+
+def livraria(request):
+    return render(request, 'livraria.html')
