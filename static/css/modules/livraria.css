@@ -1,0 +1,361 @@
+/* ================= LIVRARIA HERO ================= */
+.livraria-hero {
+  background-color: #48372f;
+  padding: 80px 80px 60px;
+}
+
+.livraria-hero-content {
+  max-width: 680px;
+}
+
+.livraria-hero-content h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 3.5vw, 52px);
+  color: #f4f3ee;
+  line-height: 1.2;
+  margin-top: 12px;
+  margin-bottom: 16px;
+}
+
+.livraria-hero-content em {
+  color: #c8a1b1;
+  font-style: italic;
+}
+
+.livraria-hero-content p {
+  color: rgba(244, 243, 238, 0.8);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 28px;
+}
+
+.livraria-search {
+  display: flex;
+  gap: 12px;
+  max-width: 520px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 12px 18px;
+  border-radius: 6px;
+  border: 1px solid rgba(200, 161, 177, 0.4);
+  background-color: rgba(244, 243, 238, 0.1);
+  color: #f4f3ee;
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  outline: none;
+}
+
+.search-input::placeholder {
+  color: rgba(244, 243, 238, 0.5);
+}
+
+.search-input:focus {
+  border-color: #c8a1b1;
+}
+
+.btn-buscar {
+  font-family: "DM Sans", sans-serif;
+  font-weight: bold;
+  background-color: #c8a1b1;
+  padding: 12px 22px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  color: #2c1a0e;
+  white-space: nowrap;
+}
+
+/* ================= LIVRARIA CATEGORIAS ================= */
+.livraria-categorias {
+  background-color: #2c1a0e;
+  padding: 20px 80px;
+}
+
+.categorias-wrapper {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.categoria-btn {
+  font-family: "DM Sans", sans-serif;
+  background-color: transparent;
+  border: 1px solid rgba(200, 161, 177, 0.4);
+  color: rgba(244, 243, 238, 0.7);
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
+
+.categoria-btn:hover,
+.categoria-btn.active {
+  background-color: #c8a1b1;
+  border-color: #c8a1b1;
+  color: #2c1a0e;
+  font-weight: 600;
+}
+
+/* ================= LIVRARIA DESTAQUES ================= */
+.livraria-destaques {
+  padding: 80px 80px 60px;
+  background-color: #f4f3ee;
+}
+
+.livraria-section-header {
+  margin-bottom: 48px;
+}
+
+.livraria-section-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(26px, 2.8vw, 38px);
+  line-height: 1.25;
+  margin-top: 8px;
+}
+
+.livraria-section-header em {
+  color: #c8a1b1;
+  font-style: italic;
+}
+
+.book-grid-full {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.book-card-full {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.book-card-full:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+}
+
+.book-cover {
+  position: relative;
+  height: 220px;
+  background-color: #48372f;
+  overflow: hidden;
+}
+
+.book-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.book-cover-placeholder {
+  background-color: #6d6943;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.book-cover-text {
+  font-family: "Playfair Display", serif;
+  color: rgba(244, 243, 238, 0.9);
+  font-size: 18px;
+  text-align: center;
+  padding: 20px;
+  font-style: italic;
+}
+
+.book-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.book-badge.disponivel {
+  background-color: #2c7a4e;
+  color: white;
+}
+
+.book-badge.emprestado {
+  background-color: #7a2c2c;
+  color: white;
+}
+
+.book-details {
+  padding: 20px 22px 22px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.book-genre {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: #c8a1b1;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.book-title-full {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  color: #070d0d;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.book-author-full {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.book-desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555;
+  flex: 1;
+  margin-bottom: 16px;
+}
+
+.book-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.btn-reservar {
+  font-family: "DM Sans", sans-serif;
+  font-weight: bold;
+  background-color: #c8a1b1;
+  padding: 9px 18px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  color: #2c1a0e;
+}
+
+.btn-reservar.emprestado {
+  background-color: #ddd;
+  color: #999;
+  cursor: not-allowed;
+}
+
+.book-copies {
+  font-size: 12px;
+  color: #888;
+}
+
+.livraria-load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 48px;
+}
+
+.btn-ver-mais {
+  font-family: "DM Sans", sans-serif;
+  font-weight: bold;
+  background-color: transparent;
+  border: 2px solid #48372f;
+  color: #48372f;
+  padding: 12px 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
+
+.btn-ver-mais:hover {
+  background-color: #48372f;
+  color: #f4f3ee;
+}
+
+/* ================= LIVRARIA STATS ================= */
+.livraria-stats {
+  background-color: #48372f;
+  padding: 60px 80px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  text-align: center;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px;
+  border-right: 1px solid rgba(244, 243, 238, 0.15);
+}
+
+.stat-item:last-child {
+  border-right: none;
+}
+
+.stat-num {
+  font-family: "Playfair Display", serif;
+  font-size: 40px;
+  font-weight: 700;
+  color: #c8a1b1;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: rgba(244, 243, 238, 0.7);
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 1024px) {
+  .livraria-hero { padding: 60px 40px; }
+  .livraria-categorias { padding: 20px 40px; }
+  .livraria-destaques { padding: 60px 40px; }
+  .livraria-stats { padding: 60px 40px; }
+  .book-grid-full { grid-template-columns: repeat(2, 1fr); }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .stat-item:nth-child(2) { border-right: none; }
+  .stat-item:nth-child(3) { border-right: 1px solid rgba(244,243,238,0.15); }
+  .stat-item:nth-child(4) { border-right: none; }
+  .stat-item:nth-child(3), .stat-item:nth-child(4) { border-top: 1px solid rgba(244,243,238,0.15); }
+}
+
+@media (max-width: 768px) {
+  .livraria-hero { padding: 50px 24px; }
+  .livraria-categorias { padding: 16px 24px; }
+  .livraria-destaques { padding: 50px 24px; }
+  .livraria-stats { padding: 50px 24px; }
+  .book-grid-full { grid-template-columns: 1fr; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .livraria-search { flex-direction: column; }
+}
+
+@media (max-width: 480px) {
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(244,243,238,0.15); }
+  .stat-item:last-child { border-bottom: none; }
+}

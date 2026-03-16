@@ -28,6 +28,7 @@
     <button class="categoria-btn">Ciência</button>
     <button class="categoria-btn">História</button>
     <button class="categoria-btn">Filosofia</button>
+    <button class="categoria-btn">Dark Side</button>
   </div>
 </section>
 
@@ -42,7 +43,7 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/img-livro-peq-principe.png' %}" alt="O Pequeno Príncipe" />
+        <img src="{% static 'assets/livros/img-livro-peq-principe.png' %}" alt="O Pequeno Príncipe" />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
@@ -59,7 +60,7 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/img-livro-sapiens.png' %}" alt="Sapiens" />
+        <img src="{% static 'assets/livros/img-livro-sapiens.png' %}" alt="Sapiens" />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
@@ -76,7 +77,7 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/img-livro-senhor-aneis.png' %}" alt="O Senhor dos Anéis" />
+        <img src="{% static 'assets/livros/img-livro-senhor-aneis.png' %}" alt="O Senhor dos Anéis" />
         <span class="book-badge emprestado">EMPRESTADO</span>
       </div>
       <div class="book-details">
@@ -91,30 +92,12 @@
       </div>
     </div>
 
-    <div class="book-card-full">
-      <div class="book-cover book-cover-placeholder">
-        <div class="book-cover-text">Dom Casmurro</div>
-        <span class="book-badge disponivel">DISPONÍVEL</span>
-      </div>
-      <div class="book-details">
-        <p class="book-genre">Clássico · Literatura Brasileira</p>
-        <h3 class="book-title-full">Dom Casmurro</h3>
-        <p class="book-author-full">Machado de Assis</p>
-        <p class="book-desc">O clássico da literatura brasileira que narra a história de Bentinho e Capitu.</p>
-        <div class="book-actions">
-          <button class="btn-reservar">RESERVAR</button>
-          <span class="book-copies">5 cópias</span>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- TODO -->
-    <!-- adicionar tudo é rio da carla bandeira -->
-     <!-- acotar Corte de Espinhos e Rosas -->
-      <!-- suicidas raphael montes  -->
+     <!-- TODO -->
+    <!-- adicionar tudo é rio da carla bandeira ok  -->
+     <!-- acotar Corte de Espinhos e Rosas ok  -->
+      <!-- suicidas raphael montes ok   -->
       <!-- jantar secreto raphael montes  -->
-      <!-- uma mulher no escuro raphael montes  -->
+      <!-- uma mulher no escuro raphael montes ok  -->
        <!-- os sete maridos de elevyn hugo 
        teto para dois 
        a metarmofose franz kafka
@@ -133,42 +116,126 @@
        manual de assassinato para boas garotas 
        o homem e seus simbolos carl jung 
        O masssacre da familia hope  -->
-
-
+       
     <div class="book-card-full">
-      <div class="book-cover book-cover-placeholder" style="background-color: #3a3a5c;">
-        <div class="book-cover-text">Cem Anos de Solidão</div>
+      <div class="book-cover">
+        <img src="{% static 'assets/livros/img-livro-tudo-e-rio.png' %}" alt="Tudo é Rio" />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
-        <p class="book-genre">Ficção · Realismo Mágico</p>
-        <h3 class="book-title-full">Cem Anos de Solidão</h3>
-        <p class="book-author-full">Gabriel García Márquez</p>
-        <p class="book-desc">A saga da família Buendía em Macondo, obra máxima do realismo mágico latino-americano.</p>
+        <p class="book-genre">Ficção · Literatura Brasileira</p>
+        <h3 class="book-title-full">Tudo é Rio</h3>
+        <p class="book-author-full">Carla Madeira</p>
+        <p class="book-desc">Uma narrativa arrebatadora sobre o amor, a dor e a redenção.</p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
-          <span class="book-copies">1 cópia</span>
+          <span class="book-copies">4 cópias</span>
         </div>
       </div>
     </div>
 
     <div class="book-card-full">
-      <div class="book-cover book-cover-placeholder" style="background-color: #2c4a3e;">
-        <div class="book-cover-text">1984</div>
-        <span class="book-badge emprestado">EMPRESTADO</span>
+      <div class="book-cover">
+        <img src="{% static 'assets/livros/img-acotar-corte-de-Espinhos-e-Rosas' %}" alt="Corte de Espinhos e Rosas" />
+        <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
-        <p class="book-genre">Ficção · Distopia</p>
-        <h3 class="book-title-full">1984</h3>
-        <p class="book-author-full">George Orwell</p>
-        <p class="book-desc">Uma visão sombria e profética de um futuro totalitário onde o Grande Irmão observa tudo.</p>
+        <p class="book-genre">Fantasia · Romance</p>
+        <h3 class="book-title-full">Corte de Espinhos e Rosas</h3>
+        <p class="book-author-full">Sarah J. Maas</p>
+        <p class="book-desc">Feyre é levada para o reino das fadas após matar um lobo na floresta.</p>
         <div class="book-actions">
-          <button class="btn-reservar emprestado" disabled>INDISPONÍVEL</button>
-          <span class="book-copies">Lista de espera: 7</span>
+          <button class="btn-reservar">RESERVAR</button>
+          <span class="book-copies">6 cópias</span>
         </div>
       </div>
     </div>
 
+    <div class="book-card-full">
+      <div class="book-cover">
+        <img src="{% static 'assets/livros/img-suicidas-raphael-montes' %}" alt="Suicidas" />
+        <span class="book-badge disponivel">DISPONÍVEL</span>
+      </div>
+      <div class="book-details">
+        <p class="book-genre">Suspense · Thriller</p>
+        <h3 class="book-title-full">Suicidas</h3>
+        <p class="book-author-full">Raphael Montes</p>
+        <p class="book-desc">Nove jovens decidem participar de uma roleta-russa em um porão.</p>
+        <div class="book-actions">
+          <button class="btn-reservar">RESERVAR</button>
+          <span class="book-copies">2 cópias</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card-full">
+      <div class="book-cover">
+        <img src="{% static 'assets/livros/img-jantar-secreto-raphael-montes.png' %}" alt="Jantar Secreto" />
+        <span class="book-badge emprestado">EMPRESTADO</span>
+      </div>
+      <div class="book-details">
+        <p class="book-genre">Suspense · Terror</p>
+        <h3 class="book-title-full">Jantar Secreto</h3>
+        <p class="book-author-full">Raphael Montes</p>
+        <p class="book-desc">Um grupo de amigos organiza jantares clandestinos com carnes proibidas.</p>
+        <div class="book-actions">
+          <button class="btn-reservar emprestado" disabled>INDISPONÍVEL</button>
+          <span class="book-copies">Lista de espera: 3</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card-full">
+      <div class="book-cover">
+        <img src="{% static 'assets/livros/img-uma-mulher-no-escuro-raphael-montes.jpg' %}" alt="Uma Mulher no Escuro" />
+        <span class="book-badge disponivel">DISPONÍVEL</span>
+      </div>
+      <div class="book-details">
+        <p class="book-genre">Suspense · Policial</p>
+        <h3 class="book-title-full">Uma Mulher no Escuro</h3>
+        <p class="book-author-full">Raphael Montes</p>
+        <p class="book-desc">Victoria Bravo sobreviveu a um massacre na infância, mas o passado volta.</p>
+        <div class="book-actions">
+          <button class="btn-reservar">RESERVAR</button>
+          <span class="book-copies">5 cópias</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card-full">
+      <div class="book-cover book-cover-placeholder" style="background-color: #5c3a3a;">
+        <div class="book-cover-text">BTK: A Máscara da Maldade</div>
+        <span class="book-badge disponivel">DISPONÍVEL</span>
+      </div>
+      <div class="book-details">
+        <p class="book-genre">Dark Side · True Crime</p>
+        <h3 class="book-title-full">BTK: A Máscara da Maldade</h3>
+        <p class="book-author-full">Roy Wenzl</p>
+        <p class="book-desc">A história real do serial killer que aterrorizou Wichita por décadas.</p>
+        <div class="book-actions">
+          <button class="btn-reservar">RESERVAR</button>
+          <span class="book-copies">2 cópias</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="book-card-full">
+      <div class="book-cover book-cover-placeholder" style="background-color: #3a5c5c;">
+        <div class="book-cover-text">Crime e Castigo</div>
+        <span class="book-badge disponivel">DISPONÍVEL</span>
+      </div>
+      <div class="book-details">
+        <p class="book-genre">Filosofia · Clássico</p>
+        <h3 class="book-title-full">Crime e Castigo</h3>
+        <p class="book-author-full">Fiódor Dostoiévski</p>
+        <p class="book-desc">O dilema moral de Raskólnikov após cometer um assassinato em São Petersburgo.</p>
+        <div class="book-actions">
+          <button class="btn-reservar">RESERVAR</button>
+          <span class="book-copies">3 cópias</span>
+        </div>
+      </div>
+    </div>
+    
   </div>
 
   <div class="livraria-load-more">
