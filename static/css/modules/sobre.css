@@ -1,0 +1,563 @@
+/* ================= HERO — PÁGINA SOBRE ================= */
+em {
+  color: #c8a1b1;
+  font-style: italic;
+}
+
+.container-sobre {
+  background-color: #48372f;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  /* Mantém as linhas auto-ajustáveis */
+  column-gap: 60px;
+  /* Mantém o espaço entre as colunas */
+}
+
+/* ---- Texto esquerdo (Adicionado padding aqui) ---- */
+.header-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* Centraliza o texto verticalmente na sua coluna */
+  padding: 80px 0 80px 80px;
+  /* Adicionado padding interno: top 80, right 0, bottom 80, left 80 */
+}
+
+.header-left h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: #c8a1b1;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.header-left h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(45px, 5vw, 50px);
+  color: #f4f3ee;
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+.header-left p {
+  font-size: 20px;
+  color: rgba(244, 243, 238, 0.75);
+  line-height: 1.65;
+  max-width: 420px;
+}
+
+/* ---- Imagem direita (Ajustado para preencher) ---- */
+.header-right {
+  grid-column: 2;
+  /* Garante que está na segunda coluna */
+  grid-row: 1;
+  /* Garante que está na primeira linha */
+  align-self: stretch;
+  /* Importante: faz o contêiner da imagem esticar em altura */
+  display: flex;
+  /* Ajuda a alinhar a img dentro */
+}
+
+.header-right img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: brightness(0.8);
+}
+
+/* ---- Seção de Cards (Ajustado margin para compensar o padding do container removido) ---- */
+.cards-sobre {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  background-color: #2c1a0e;
+  margin: 0;
+  /* Reseta margem negativa lateral para desktop */
+}
+
+.card-sobre {
+  padding: 28px 32px;
+  text-align: center;
+  border-right: 1px solid rgba(244, 243, 238, 0.1);
+}
+
+.card-sobre:last-child {
+  border-right: none;
+}
+
+.card-sobre h4 {
+  font-family: "Playfair Display", serif;
+  font-size: 26px;
+  color: #c8a1b1;
+  margin-bottom: 6px;
+}
+
+.card-sobre p {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #f4f3ee;
+}
+
+/* ================= HISTÓRIA ================= */
+
+.container-historia {
+  background-color: #f4f3ee;
+  padding: 100px 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  /* espaço vertical entre: bloco história e bloco missão */
+}
+
+.historia-left {
+  flex: 1;
+  max-width: 460px;
+}
+
+.historia-right {
+  flex: 1;
+  padding-top: 8px;
+}
+
+.historia-left h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: #c8a1b1;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+/* Bloco história: texto + timeline lado a lado */
+.historia-wrapper {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+
+  /* Centralização */
+  max-width: 1000px;
+  /* Define uma largura máxima para o bloco não espalhar muito */
+  margin: 0 auto;
+  /* Centraliza o bloco inteiro na página */
+  width: 100%;
+  /* Garante que use o espaço disponível até o limite do max-width */
+}
+
+.historia-left h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 3vw, 42px);
+  line-height: 1.25;
+  margin-bottom: 20px;
+}
+
+.historia-left p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* ---- Timeline ---- */
+.timeline {
+  list-style: none;
+  position: relative;
+  padding-left: 28px;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background-color: rgba(200, 161, 177, 0.4);
+}
+
+.timeline-item {
+  position: relative;
+  padding-bottom: 32px;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Bolinha da timeline */
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -24px;
+  top: 5px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #c8a1b1;
+}
+
+.timeline-item h5 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  color: #c8a1b1;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.timeline-item p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ================= MISSÃO / VISÃO / VALORES ================= */
+.cards-missao {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  align-items: stretch;
+  /* garante mesma altura */
+}
+
+/* E o card-missao: */
+.card-missao {
+  background-color: #6d6943;
+  padding: 32px 28px;
+  border-radius: 8px;
+  color: #f4f3ee;
+  height: 100%;
+  /* ocupa toda a altura da linha */
+  box-sizing: border-box;
+}
+
+.card-missao h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  color: #f4f3ee;
+  margin-bottom: 14px;
+}
+
+.card-missao p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(244, 243, 238, 0.85);
+}
+
+/* Lista de valores */
+.card-missao ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.card-missao ul li {
+  font-size: 14px;
+  color: rgba(244, 243, 238, 0.85);
+  padding-left: 16px;
+  position: relative;
+}
+
+.card-missao ul li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #c8a1b1;
+  font-size: 12px;
+}
+
+/* ================= EQUIPE ================= */
+.container-equipe {
+  background-color: #48372f;
+  padding: 100px 80px;
+  text-align: center;
+}
+
+.container-equipe h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: #c8a1b1;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.equipe-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card-integrante {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-integrante img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #c8a1b1;
+  filter: grayscale(20%);
+}
+
+.card-integrante h5 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: #f4f3ee;
+}
+
+.card-integrante p {
+  font-size: 13px;
+  color: rgba(244, 243, 238, 0.6);
+  line-height: 1.4;
+}
+
+/* ================= LOCALIZAÇÃO ================= */
+.container-location {
+  background-color: #f4f3ee;
+  padding: 100px 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.container-location h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: #c8a1b1;
+  text-transform: uppercase;
+}
+
+.container-location .endereco {
+  font-family: "Playfair Display", serif;
+  font-family: clamp(16px, 2vw, 22px);
+  line-height: 1.4;
+  max-width: 560px;
+}
+
+/* Horários em linha */
+.horarios {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.horarios span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+  background-color: #e8e6df;
+  padding: 6px 18px;
+  border-radius: 20px;
+}
+
+.container-location img {
+  width: 100%;
+  max-width: 800px;
+  height: 320px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 12px;
+  filter: brightness(0.9);
+}
+
+/* ================= FOOTER ================= */
+.sobre-footer {
+  background-color: #2c1a0e;
+  padding: 100px 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.sobre-footer h3 {
+  font-family: "DM Sans", sans-serif;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: #c8a1b1;
+  text-transform: uppercase;
+}
+
+.sobre-footer h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 3vw, 42px);
+  color: #f4f3ee;
+  line-height: 1.25;
+}
+
+.sobre-footer p {
+  font-size: 16px;
+  color: rgba(244, 243, 238, 0.7);
+  max-width: 440px;
+  line-height: 1.65;
+}
+
+/* Botões lado a lado */
+.sobre-footer-btns {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.sobre-footer-btns button:first-child {
+  font-family: "DM Sans", sans-serif;
+  background-color: #c8a1b1;
+  color: #2c1a0e;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.sobre-footer-btns button {
+  font-family: "DM Sans", sans-serif;
+  background-color: transparent;
+  border: 2px solid #c8a1b1;
+  color: #c8a1b1;
+  padding: 10px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+/* ================= RESPONSIVIDADE ================= */
+
+/* Tablet grande (max 1024px) */
+@media (max-width: 1024px) {
+  .container-sobre {
+    padding: 60px 40px 0 40px;
+  }
+
+  .container-historia,
+  .container-equipe,
+  .container-location,
+  .sobre-footer {
+    padding: 80px 40px;
+  }
+
+  .cards-missao {
+    gap: 16px;
+  }
+}
+
+/* Tablet (max 768px) */
+@media (max-width: 768px) {
+  /* Hero vira coluna única */
+  .container-sobre {
+    grid-template-columns: 1fr;
+    padding: 60px 40px 0 40px;
+  }
+
+  .header-right {
+    display: none;
+    /* esconde a imagem no tablet — os cards ficam logo abaixo */
+  }
+
+  .cards-sobre {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 -40px;
+  }
+
+  /* História: empilha texto e timeline */
+  .historia-left,
+  .historia-right {
+    max-width: 100%;
+    flex: unset;
+    width: 100%;
+  }
+
+  .container-historia {
+    padding: 60px 40px;
+    gap: 48px;
+  }
+
+  /* Simula o historia-wrapper empilhado */
+  .historia-left + .historia-right {
+    margin-top: -40px;
+  }
+
+  /* Missão: 1 coluna */
+  .cards-missao {
+    grid-template-columns: 1fr;
+  }
+
+  /* Equipe: 1 coluna */
+  .equipe-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .container-equipe,
+  .container-location,
+  .sobre-footer {
+    padding: 60px 30px;
+  }
+}
+
+/* Mobile (max 480px) */
+@media (max-width: 480px) {
+  .container-sobre {
+    padding: 50px 24px 0 24px;
+  }
+
+  .cards-sobre {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 -24px;
+  }
+
+  .container-historia {
+    padding: 60px 24px;
+  }
+
+  .container-equipe,
+  .container-location,
+  .sobre-footer {
+    padding: 60px 20px;
+  }
+
+  .horarios {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sobre-footer-btns {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .sobre-footer-btns button:first-child,
+  .sobre-footer-btns button:last-child {
+    width: 100%;
+    text-align: center;
+  }
+}
