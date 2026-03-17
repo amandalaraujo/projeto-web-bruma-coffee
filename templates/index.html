@@ -1,9 +1,5 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}Início — Biblioteca & Café{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block title %}Início — Biblioteca
+& Café{% endblock %} {% block content %}
 
 <!-- TELA PRINCIPAL 'HERO' -->
 <section class="home" id="inicio">
@@ -14,8 +10,12 @@
       artesanal e faça parte de uma comunidade que valoriza o conhecimento.
     </p>
     <div class="hero-btns">
-      <a href="{% url 'livraria' %}"><button class="btn-acervo">EXPLORAR ACERVO</button></a>
-      <a href="{% url 'cafeteria' %}"><button class="btn-cafeteria">VER CAFETERIA</button></a>
+      <a href="{% url 'livraria' %}"
+        ><button class="btn-acervo">EXPLORAR ACERVO</button></a
+      >
+      <a href="{% url 'cafeteria' %}"
+        ><button class="btn-cafeteria">VER CAFETERIA</button></a
+      >
     </div>
   </div>
 
@@ -43,6 +43,37 @@
   </div>
 </section>
 
+<!-- TELA FEATURES 'SOBRE NÓS' | Amanda Araújo -->
+<section class="features" id="features">
+  <div class="section-header">
+    <span class="section-tag">POR QUE ESCOLHER A GENTE</span>
+    <h2>Tudo que você precisa,<br /><em>num só lugar</em></h2>
+  </div>
+  <div class="features-grid">
+    <div class="features-card" data-num="01">
+      <h3>Acervo Digital e Físico</h3>
+      <p>
+        Mais de 1.000 livros disponíveis para empréstimo, com renovação online e
+        notificação por e-mail quando seu livro preferido estiver disponível.
+      </p>
+    </div>
+    <div class="features-card" data-num="02">
+      <h3>Cafeteria Artesanal</h3>
+      <p>
+        Cafés especiais, sucos naturais e uma seleção de lanches preparados
+        diariamente para acompanhar suas horas de leitura e estudo.
+      </p>
+    </div>
+    <div class="features-card" data-num="03">
+      <h3>Comunidade Ativa</h3>
+      <p>
+        Clube do livro mensal, eventos literários, workshops e um espaço de
+        estudo colaborativo para você fazer conexões que importam.
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- SEÇÃO LIVROS EM DESTAQUE -->
 <section class="book">
   <div class="section-header">
@@ -54,7 +85,10 @@
     <div class="book-grid">
       <div class="book-card">
         <div class="book-img">
-          <img src="{% static 'assets/livros/img-livro-peq-principe.png' %}" alt="O Pequeno Príncipe" />
+          <img
+            src="{% static 'assets/livros/img-livro-peq-principe.png' %}"
+            alt="O Pequeno Príncipe"
+          />
         </div>
         <div class="book-info">
           <span class="book-status disponivel">● DISPONÍVEL</span>
@@ -66,7 +100,10 @@
 
       <div class="book-card">
         <div class="book-img">
-          <img src="{% static 'assets/livros/img-livro-sapiens.png' %}" alt="Sapiens" />
+          <img
+            src="{% static 'assets/livros/img-livro-sapiens.png' %}"
+            alt="Sapiens"
+          />
         </div>
         <div class="book-info">
           <span class="book-status disponivel">● DISPONÍVEL</span>
@@ -78,7 +115,10 @@
 
       <div class="book-card">
         <div class="book-img">
-          <img src="{% static 'assets/livros/img-livro-senhor-aneis.png' %}" alt="O Senhor dos Anéis" />
+          <img
+            src="{% static 'assets/livros/img-livro-senhor-aneis.png' %}"
+            alt="O Senhor dos Anéis"
+          />
         </div>
         <div class="book-info">
           <span class="book-status indisponivel">● EMPRESTADO</span>
@@ -91,7 +131,9 @@
   </div>
 
   <div class="section-btn">
-    <a href="{% url 'livraria' %}"><button class="btn-acervo">VER ACERVO COMPLETO</button></a>
+    <a href="{% url 'livraria' %}"
+      ><button class="btn-acervo">VER ACERVO COMPLETO</button></a
+    >
   </div>
 </section>
 
