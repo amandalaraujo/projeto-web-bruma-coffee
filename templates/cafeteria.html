@@ -1,12 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Cafeteria — Biblioteca & Café{% endblock %}
 
-{% block content %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+{% block content %}
 <!-- TELA FEATURES 'CAFETERIA' | Guilherme Esteves -->
 <section class="cafeteria" id="cafeteria">
   <div class="cafe-layout">
+
     <div class="cafe-left">
       <div class="section-tag">NOSSA CAFETERIA</div>
       <h2 class="cafe-title">
@@ -19,37 +22,121 @@
     </div>
 
     <div class="cafe-right">
-      <div class="cafe-menu-grid">
-        <div class="menu-item">
-          <div class="menu-item-name">Espresso Duplo</div>
-          <div class="menu-item-desc">Grão arábica, torra média</div>
-          <div class="menu-item-price">R$ 8,00</div>
+      <div class="cafe-menu">
+
+        <!-- CAFÉS -->
+        <div class="menu-category">
+          <h3 class="menu-category-title">☕ Cafés</h3>
+
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-name">Espresso</div>
+              <div class="menu-item-desc">Café intenso e encorpado</div>
+              <div class="menu-item-price">R$ 6,00</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="menu-item-name">Espresso Duplo</div>
+              <div class="menu-item-desc">Dose dupla de café arábica</div>
+              <div class="menu-item-price">R$ 8,00</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="menu-item-name">Cappuccino</div>
+              <div class="menu-item-desc">Leite vaporizado com café e espuma</div>
+              <div class="menu-item-price">R$ 14,00</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="menu-item-name">Latte</div>
+              <div class="menu-item-desc">Café suave com bastante leite</div>
+              <div class="menu-item-price">R$ 15,00</div>
+            </div>
+          </div>
         </div>
 
-        <div class="menu-item">
-          <div class="menu-item-name">Cappuccino</div>
-          <div class="menu-item-desc">Leite vaporizado artesanal</div>
-          <div class="menu-item-price">R$ 14,00</div>
+        <!-- BEBIDAS GELADAS -->
+        <div class="menu-category">
+          <h3 class="menu-category-title">🧊 Bebidas Geladas</h3>
+
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-name">Café Gelado</div>
+              <div class="menu-item-desc">Café com gelo e toque de açúcar mascavo</div>
+              <div class="menu-item-price">R$ 12,00</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="menu-item-name">Frappuccino</div>
+              <div class="menu-item-desc">Bebida cremosa com café e gelo</div>
+              <div class="menu-item-price">R$ 18,00</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="menu-item-name">Suco Natural</div>
+              <div class="menu-item-desc">Laranja, limão ou maracujá</div>
+              <div class="menu-item-price">R$ 10,00</div>
+            </div>
+          </div>
         </div>
 
-        <div class="menu-item">
-          <div class="menu-item-name">Suco de Laranja</div>
-          <div class="menu-item-desc">Natural, sem adição de açúcar</div>
-          <div class="menu-item-price">R$ 10,00</div>
+        <!-- COMIDAS -->
+        <div class="menu-category">
+          <h3 class="menu-category-title">🥐 Comidas</h3>
+
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-name">Pão de Queijo</div>
+              <div class="menu-item-desc">Quentinho e crocante</div>
+              <div class="menu-item-price">R$ 7,00</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="menu-item-name">Croissant</div>
+              <div class="menu-item-desc">Massa folhada amanteigada</div>
+              <div class="menu-item-price">R$ 12,00</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="menu-item-name">Sanduíche Natural</div>
+              <div class="menu-item-desc">Frango ou vegetariano</div>
+              <div class="menu-item-price">R$ 16,00</div>
+            </div>
+          </div>
         </div>
 
-        <div class="menu-item">
-          <div class="menu-item-name">Brownie Belga</div>
-          <div class="menu-item-desc">Chocolate 70% cacau</div>
-          <div class="menu-item-price">R$ 12,00</div>
+        <!-- SOBREMESAS -->
+        <div class="menu-category">
+          <h3 class="menu-category-title">🍰 Sobremesas</h3>
+
+          <div class="menu-items">
+            <div class="menu-item">
+              <div class="menu-item-name">Brownie</div>
+              <div class="menu-item-desc">Chocolate meio amargo</div>
+              <div class="menu-item-price">R$ 12,00</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="menu-item-name">Cheesecake</div>
+              <div class="menu-item-desc">Com calda de frutas vermelhas</div>
+              <div class="menu-item-price">R$ 18,00</div>
+            </div>
+
+            <div class="menu-item">
+              <div class="menu-item-name">Bolo do Dia</div>
+              <div class="menu-item-desc">Consulte sabores disponíveis</div>
+              <div class="menu-item-price">R$ 10,00</div>
+            </div>
+          </div>
         </div>
+
       </div>
 
       <div class="cafe-btn-wrapper">
         <button class="btn-cardapio">VER CARDÁPIO COMPLETO</button>
       </div>
     </div>
+
   </div>
 </section>
-
 {% endblock %}
