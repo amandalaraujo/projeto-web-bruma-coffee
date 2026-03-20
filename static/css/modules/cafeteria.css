@@ -7,6 +7,13 @@
 }
 
 /* ===== LADO ESQUERDO ===== */
+<<<<<<< HEAD
+=======
+.cafe-left {
+  max-width: 500px;
+}
+
+>>>>>>> bf81197c08a4c270971ce70cf138e240a1da0b83
 .section-tag {
   font-size: 110px;
   letter-spacing: 4px;
