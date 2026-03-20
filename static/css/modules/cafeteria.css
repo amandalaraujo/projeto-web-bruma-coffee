@@ -2,74 +2,78 @@
 .cafe-layout {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 50px;
+  gap: 300px;
   align-items: start;
 }
 
 /* ===== LADO ESQUERDO ===== */
-.cafe-left {
-  max-width: 5000px;
-}
-
 .section-tag {
-  font-size: 120px;
-  letter-spacing: 2px;
+  font-size: 110px;
+  letter-spacing: 4px;
   color: #c7a1b2;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  opacity: 0.25;
 }
 
 .cafe-title {
-  font-size: 42px;
+  font-size: 46px;
   line-height: 1.2;
+  font-weight: 600;
 }
 
 .cafe-title em {
   color: #c7a1b2;
   font-style: italic;
+  display: block;
 }
 
 .cafe-desc {
-  margin-top: 15px;
-  font-size: 14px;
-  max-width: 400px;
+  font-size: 15px;
+  max-width: 380px;
+  line-height: 1;
+  opacity: 0.7;
 }
 
 /* ===== LADO DIREITO ===== */
 .cafe-menu {
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 35px;
+}
+
+/* ===== LADO ESQUERDO ===== */
+.cafe-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* ===== CATEGORIAS ===== */
-.menu-category {
-  display: flex;
-  flex-direction: column;
-}
-
 .menu-category-title {
   font-size: 20px;
   margin-bottom: 15px;
   color: #333;
 }
 
-/* GRID DOS ITENS */
+/* GRID */
 .menu-items {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 18px;
 }
 
 /* ===== CARDS ===== */
 .menu-item {
-  background-color: #6b6a45;
-  padding: 15px;
-  border-radius: 12px;
-  transition: 0.3s;
+  background: linear-gradient(145deg, #6b6a45, #5c5b3c);
+  padding: 16px;
+  border-radius: 14px;
+  transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .menu-item:hover {
-  transform: scale(1.03);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.25);
 }
 
 /* TEXTO */
@@ -85,30 +89,33 @@
 }
 
 .menu-item-price {
-  margin-top: 8px;
+  margin-top: 10px;
   color: #e7c3d1;
   font-weight: bold;
+  font-size: 14px;
 }
 
 /* ===== BOTÃO ===== */
 .cafe-btn-wrapper {
-  margin-top: 20px;
+  margin-top: 25px;
 }
 
 .btn-cardapio {
   background-color: #c7a1b2;
   border: none;
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+  transition: 0.3s;
 }
 
 .btn-cardapio:hover {
-  opacity: 0.9;
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
 }
 
-/* ===== RESPONSIVO (CELULAR) ===== */
+/* ===== RESPONSIVO ===== */
 @media (max-width: 768px) {
   .cafe-layout {
     grid-template-columns: 1fr;
@@ -116,6 +123,10 @@
 
   .menu-items {
     grid-template-columns: 1fr;
+  }
+
+  .section-tag {
+    font-size: 60px;
   }
 
   .cafe-title {
