@@ -1,24 +1,22 @@
-/* ===== LAYOUT PRINCIPAL ===== */
-.cafe-layout {
+/* ===== ESTILOS EXCLUSIVOS DA PÁGINA INTERNA DE CAFETERIA ===== */
+
+/* Garante que o fundo e o layout só mudem quando estiver na página interna */
+.pagina-interna-cafeteria.cafeteria {
+  background: linear-gradient(to right, #48372f 45%, #f9f8f6 45%);
+  padding: 80px 0;
+  font-family: "Poppins", "Inter", sans-serif;
+}
+
+.pagina-interna-cafeteria .cafe-layout {
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 80px; /* reduzido para mais equilíbrio */
+  gap: 80px;
   align-items: start;
   padding: 0 60px;
 }
 
-.cafeteria {
-  background: linear-gradient(
-    to right,
-    #48372f 45%,
-    /* marrom (lado esquerdo) */ #f9f8f6 45% /* claro (lado direito) */
-  );
-  padding: 80px 0;
-  font-family: "Poppins", "Inter", sans-serif; /* tipografia moderna */
-}
-
-/* ===== LADO ESQUERDO ===== */
-.cafe-left {
+/* LADO ESQUERDO */
+.pagina-interna-cafeteria .cafe-left {
   max-width: 500px;
   color: #fff;
   display: flex;
@@ -26,64 +24,55 @@
   gap: 20px;
 }
 
-.cafe-right {
-  margin-left: 100px;
-}
-
-.section-tag {
+.pagina-interna-cafeteria .section-tag {
   font-size: 60px;
   letter-spacing: 3px;
   color: #c7a1b2;
   margin-bottom: 20px;
   opacity: 0.3;
+  text-align: left;
 }
 
-.cafe-title {
+.pagina-interna-cafeteria .cafe-title {
   font-size: 46px;
   line-height: 1.2;
   font-weight: 600;
   color: #f4f3ee;
 }
 
-.cafe-title em {
+.pagina-interna-cafeteria .cafe-title em {
   color: #c7a1b2;
   font-style: italic;
   display: block;
 }
 
-.cafe-desc {
-  font-size: 16px;
-  max-width: 380px;
-  line-height: 1.4;
-  opacity: 0.8;
-  color: rgba(244, 243, 238, 0.9);
+/* LADO DIREITO (CARDÁPIO) */
+.pagina-interna-cafeteria .cafe-right {
+  margin-left: 60px;
 }
 
-/* ===== LADO DIREITO ===== */
-.cafe-menu {
+.pagina-interna-cafeteria .cafe-menu {
   display: flex;
   flex-direction: column;
   gap: 40px;
 }
 
-/* ===== CATEGORIAS ===== */
-.menu-category-title {
+.pagina-interna-cafeteria .menu-category-title {
   font-size: 22px;
   margin-bottom: 15px;
   color: #333;
   font-weight: 600;
 }
 
-/* GRID */
-.menu-items {
+.pagina-interna-cafeteria .menu-items {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 20px;
 }
 
-/* ===== CARDS ===== */
-.menu-item {
-  background: #fff;
+/* CARDS BRANCOS (Onde estava o erro de sobreposição) */
+.pagina-interna-cafeteria .menu-item {
+  background: #ffffff;
   border: 1px solid #ddd;
   padding: 18px;
   border-radius: 12px;
@@ -91,41 +80,37 @@
     transform 0.3s ease,
     box-shadow 0.3s ease;
   cursor: pointer;
+  color: #333;
 }
 
-.menu-item:hover {
+.pagina-interna-cafeteria .menu-item:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* TEXTO */
-.menu-item-name {
+.pagina-interna-cafeteria .menu-item-name {
   font-weight: bold;
   font-size: 16px;
   color: #2c2c2c;
 }
 
-.menu-item-desc {
+.pagina-interna-cafeteria .menu-item-desc {
   font-size: 14px;
   margin-top: 5px;
   opacity: 0.85;
   color: #555;
 }
 
-.menu-item-price {
+.pagina-interna-cafeteria .menu-item-price {
   margin-top: 10px;
   color: #a67c8d;
   font-weight: bold;
   font-size: 15px;
-  text-align: right; /* preço destacado à direita */
+  text-align: right;
 }
 
-/* ===== BOTÃO ===== */
-.cafe-btn-wrapper {
-  margin-top: 25px;
-}
-
-.btn-cardapio {
+/* BOTÃO */
+.pagina-interna-cafeteria .btn-cardapio {
   background: linear-gradient(135deg, #c7a1b2, #a67c8d);
   border: none;
   padding: 14px 26px;
@@ -134,38 +119,19 @@
   font-weight: bold;
   font-size: 15px;
   color: #fff;
-  transition:
-    background 0.3s ease,
-    transform 0.3s ease;
 }
 
-.btn-cardapio:hover {
-  background: linear-gradient(135deg, #a67c8d, #c7a1b2);
-  transform: scale(1.05);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.2);
-}
-
-/* ===== RESPONSIVO ===== */
+/* RESPONSIVO */
 @media (max-width: 768px) {
-  .cafe-layout {
+  .pagina-interna-cafeteria .cafe-layout {
     grid-template-columns: 1fr;
     gap: 40px;
     padding: 0 30px;
   }
-
-  .menu-items {
-    grid-template-columns: 1fr;
+  .pagina-interna-cafeteria.cafeteria {
+    background: #f9f8f6; /* No mobile remove o gradiente para ler melhor */
   }
-
-  .section-tag {
-    font-size: 40px;
-  }
-
-  .cafe-title {
-    font-size: 28px;
-  }
-
-  .btn-cardapio {
-    width: 100%; /* botão ocupa toda largura no mobile */
+  .pagina-interna-cafeteria .cafe-right {
+    margin-left: 0;
   }
 }
