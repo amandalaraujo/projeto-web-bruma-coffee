@@ -1,7 +1,12 @@
 {% load static %}
 <header>
   <nav id="main-bar">
-    <div class="nav-logo">Bruma & Coffe</div>
+    <div class="login-logo-container">
+       
+    </div>
+    <div class="nav-logo">
+       <span>Bruma & Coffee</span>
+    </div>
 
     <ul class="nav-links">
       <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}nav-active{% endif %}">Início</a></li>
@@ -11,7 +16,9 @@
     </ul>
 
     <div class="btn-ajuda">
-      <button>Ajuda</button>
+      <a href="{% url 'login' %}">
+        <button>Login</button>
+      </a>
     </div>
   </nav>
 </header>

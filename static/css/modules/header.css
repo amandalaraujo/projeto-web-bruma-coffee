@@ -9,10 +9,19 @@
 }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   font-family: "Aclonica", sans-serif;
   font-size: 20px;
   color: #c8a1b1;
   white-space: nowrap;
+}
+
+.nav-logo img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav-links {
