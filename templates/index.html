@@ -10,14 +10,21 @@
       artesanal e faça parte de uma comunidade que valoriza o conhecimento.
     </p>
     <div class="hero-btns">
-      <a href="{% url 'livraria' %}"><button class="btn-acervo">EXPLORAR ACERVO</button></a>
-      <a href="{% url 'cafeteria' %}"><button class="btn-cafeteria">VER CAFETERIA</button></a>
+      <a href="{% url 'livraria' %}"
+        ><button class="btn-acervo">EXPLORAR ACERVO</button></a
+      >
+      <a href="{% url 'cafeteria' %}"
+        ><button class="btn-cafeteria">VER CAFETERIA</button></a
+      >
     </div>
   </div>
 
   <div class="hero-right">
     <div class="hero-img">
-      <img src="{% static 'assets/principal/img-hero.png' %}" alt="Imagem Café com Croissant" />
+      <img
+        src="{% static 'assets/principal/img-hero.png' %}"
+        alt="Imagem Café com Croissant"
+      />
     </div>
     <div class="hero-cards-bar">
       <div class="hero-card">
@@ -78,7 +85,10 @@
     <div class="book-grid">
       <div class="book-card">
         <div class="book-img">
-          <img src="{% static 'assets/livros/img-jantar-secreto-raphael-montes.png' %}" alt="Jantar Secreto" />
+          <img
+            src="{% static 'assets/livros/img-jantar-secreto-raphael-montes.png' %}"
+            alt="Jantar Secreto"
+          />
         </div>
         <div class="book-info">
           <span class="book-status disponivel">● DISPONÍVEL</span>
@@ -90,7 +100,10 @@
 
       <div class="book-card">
         <div class="book-img">
-          <img src="{% static 'assets/livros/img-o-principe-cruel.jpg' %}" alt="O Principe Cruel" />
+          <img
+            src="{% static 'assets/livros/img-o-principe-cruel.jpg' %}"
+            alt="O Principe Cruel"
+          />
         </div>
         <div class="book-info">
           <span class="book-status disponivel">● DISPONÍVEL</span>
@@ -102,7 +115,10 @@
 
       <div class="book-card">
         <div class="book-img">
-          <img src="{% static 'assets/livros/img-daisy-jones-and-the-six.png' %}" alt="Daisy Jones and the Six" />
+          <img
+            src="{% static 'assets/livros/img-daisy-jones-and-the-six.png' %}"
+            alt="Daisy Jones and the Six"
+          />
         </div>
         <div class="book-info">
           <span class="book-status indisponivel">● EMPRESTADO</span>
@@ -115,7 +131,9 @@
   </div>
 
   <div class="section-btn">
-    <a href="{% url 'livraria' %}"><button class="btn-acervo">VER ACERVO COMPLETO</button></a>
+    <a href="{% url 'livraria' %}"
+      ><button class="btn-acervo">VER ACERVO COMPLETO</button></a
+    >
   </div>
 </section>
 
@@ -157,7 +175,9 @@
         </div>
       </div>
       <div class="cafe-btn-wrapper">
-        <button class="btn-cardapio">VER CARDÁPIO COMPLETO</button>
+        <a href="{% url 'cafeteria' %}"
+          ><button class="btn-cardapio">VER CARDÁPIO COMPLETO</button></a
+        >
       </div>
     </div>
   </div>
