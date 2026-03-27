@@ -1,6 +1,7 @@
 /* ================= CENTRAL STYLE FILE ================= */
 /* Importação dos módulos CSS individuais */
 
+@import url("modules/login.css");
 @import url("modules/base.css");
 @import url("modules/header.css");
 @import url("modules/footer.css");

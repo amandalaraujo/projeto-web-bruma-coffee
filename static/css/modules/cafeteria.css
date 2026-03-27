@@ -10,7 +10,7 @@
 /* ===== HERO SECTION (TOPO DIVIDIDO) ===== */
 .pagina-interna-cafeteria .cafe-hero {
   display: flex;
-  min-height: 80vh; /* Altura da dobra do site */
+  min-height: 80vh; 
   background-color: #48372f;
   overflow: hidden;
 }

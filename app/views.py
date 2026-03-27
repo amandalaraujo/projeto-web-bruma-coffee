@@ -12,3 +12,7 @@ def cafeteria(request):
 
 def livraria(request):
     return render(request, 'livraria.html')
+
+def login(request):
+    return render(request, 'login.html')
+
