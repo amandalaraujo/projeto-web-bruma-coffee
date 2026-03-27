@@ -4,10 +4,34 @@
     <div class="nav-logo">Bruma & Coffe</div>
 
     <ul class="nav-links">
-      <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}nav-active{% endif %}">Início</a></li>
-      <li><a href="{% url 'livraria' %}" class="{% if request.resolver_match.url_name == 'livraria' %}nav-active{% endif %}">Livraria</a></li>
-      <li><a href="{% url 'cafeteria' %}" class="{% if request.resolver_match.url_name == 'cafeteria' %}nav-active{% endif %}">Cafeteria</a></li>
-      <li><a href="{% url 'sobre' %}" class="{% if request.resolver_match.url_name == 'sobre' %}nav-active{% endif %}">Sobre</a></li>
+      <li>
+        <a
+          href="{% url 'index' %}"
+          class="{% if request.resolver_match.url_name == 'index' %}nav-active{% endif %}"
+          >Início</a
+        >
+      </li>
+      <li>
+        <a
+          href="{% url 'livraria' %}"
+          class="{% if request.resolver_match.url_name == 'livraria' %}nav-active{% endif %}"
+          >Livraria</a
+        >
+      </li>
+      <li>
+        <a
+          href="{% url 'cafeteria' %}"
+          class="{% if request.resolver_match.url_name == 'cafeteria' %}nav-active{% endif %}"
+          >Cafeteria</a
+        >
+      </li>
+      <li>
+        <a
+          href="{% url 'sobre' %}"
+          class="{% if request.resolver_match.url_name == 'sobre' %}nav-active{% endif %}"
+          >Sobre</a
+        >
+      </li>
     </ul>
 
     <div class="btn-ajuda">

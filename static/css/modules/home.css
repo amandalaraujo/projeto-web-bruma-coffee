@@ -5,7 +5,14 @@
   align-items: stretch;
   background-color: #48372f;
   min-height: 520px;
-  overflow: hidden;
+  /* SEM overflow: hidden aqui — aplicado só no desktop abaixo */
+}
+
+/* overflow: hidden só no desktop, onde os cards são position: absolute */
+@media (min-width: 769px) {
+  .home {
+    overflow: hidden;
+  }
 }
 
 .hero-left {
@@ -383,9 +390,9 @@
   letter-spacing: 0.5px;
 }
 
-/* ================= MEDIA QUERIES (RESPONSIVIDADE) ================= */
+/* ================= MEDIA QUERIES ================= */
 
-/* Tablets e Celulares Grandes */
+/* Tablet */
 @media (max-width: 1024px) {
   .home,
   .features,
@@ -399,53 +406,112 @@
   }
 
   .features-grid {
-    grid-template-columns: repeat(2, 1fr); /* 2 colunas no tablet */
-  }
-}
-
-/* Celulares (Smartphones) */
-@media (max-width: 768px) {
-  /* Ajuste Hero */
-  .home {
-    flex-direction: column; /* Empilha o texto em cima da imagem */
-    text-align: center;
-  }
-
-  .hero-left,
-  .hero-right {
-    max-width: 100%;
-    padding: 40px 20px;
-  }
-
-  .hero-left p {
-    margin: 20px auto 0; /* Centraliza o parágrafo */
-  }
-
-  .hero-btns {
-    justify-content: center;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .hero-cards-bar {
-    position: static; /* Tira os cards de cima da imagem */
-    transform: none;
-    flex-direction: row; /* Cards lado a lado no celular */
-    justify-content: center;
-    margin-top: -30px;
-    z-index: 5;
-    padding: 20px;
+    left: 10px;
+    gap: 10px;
   }
 
   .hero-card {
     width: 100px;
-    padding: 12px;
+    padding: 14px 10px;
+  }
+}
+
+/* Mobile — bloco único e consolidado */
+@media (max-width: 768px) {
+  /* --- HERO --- */
+  .home {
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+    padding: 40px 20px;
   }
 
-  /* Ajuste Features */
+  .hero-left {
+    max-width: 100%;
+    padding: 0 0 30px 0;
+    align-items: center;
+  }
+
+  .hero-left h1 {
+    font-size: 32px;
+  }
+
+  .hero-left p {
+    margin: 20px auto 0;
+    max-width: 100%;
+  }
+
+  .hero-btns {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* hero-right: remove position relative e overflow hidden */
+  .hero-right {
+    position: static;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  /* contém a imagem com overflow interno */
+  .hero-img {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* cards: saem do absolute, ficam abaixo da imagem em linha */
+  .hero-cards-bar {
+    position: static;
+    transform: none;
+    left: auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 0 0 0;
+    margin-top: 0;
+  }
+
+  .hero-card {
+    flex: 1;
+    min-width: 0;
+    max-width: 110px;
+    width: auto;
+    padding: 12px 8px;
+  }
+
+  .hero-card-num {
+    font-size: 18px;
+  }
+
+  .hero-card-label {
+    font-size: 10px;
+  }
+
+  /* --- FEATURES --- */
   .features-grid {
-    grid-template-columns: 1fr; /* 1 coluna no celular */
+    grid-template-columns: 1fr;
   }
 
-  /* Ajuste Seção de Livros */
+  /* --- BOOKS --- */
   .book-grid {
     flex-direction: column;
     align-items: center;
@@ -463,7 +529,11 @@
     border-bottom: none;
   }
 
-  /* Ajuste Cafeteria */
+  /* --- CAFETERIA --- */
+  .cafeteria {
+    padding: 60px 20px;
+  }
+
   .cafe-layout {
     flex-direction: column;
     gap: 40px;
@@ -480,17 +550,32 @@
   }
 
   .cafe-menu-grid {
-    grid-template-columns: 1fr; /* Menu em uma coluna */
+    grid-template-columns: 1fr;
+  }
+
+  .menu-item {
+    align-items: center;
+    text-align: center;
   }
 }
 
-/* Telas muito pequenas (iPhone SE, etc) */
-@media (max-width: 480px) {
-  .hero-cards-bar {
-    flex-wrap: wrap; /* Quebra os cards se não couberem na linha */
+/* Cafeteria centralizada no mobile — adicionado */
+@media (max-width: 768px) {
+  .cafe-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 
-  .hero-left h1 {
-    font-size: 28px;
+  .cafe-menu-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .cafe-btn-wrapper {
+    width: 100%;
+    max-width: 320px;
   }
 }
