@@ -1,0 +1,119 @@
+.reservas-section {
+  padding: 80px;
+  min-height: 60vh;
+  max-width: 1200px;
+  margin: 0 auto; /* centraliza a seção */
+}
+
+.reservas-grid {
+  display: grid;
+  /* Mudamos de 1fr para auto, assim o card não estica infinitamente */
+  grid-template-columns: repeat(auto-fill, 220px);
+  gap: 40px;
+  margin-top: 40px;
+  /* Centraliza o grid caso tenha poucos itens */
+  justify-content: center;
+}
+.reserva-card {
+  background: #f4f3ee;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* centraliza conteúdo no card */
+  gap: 12px;
+  text-align: center; /* texto centralizado */
+}
+
+.reserva-capa {
+  width: 130px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reserva-capa img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 4px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.reserva-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+}
+
+.reserva-info h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.reserva-autor {
+  font-size: 13px;
+  color: #666;
+  margin: 0;
+}
+
+.reserva-data {
+  font-size: 12px;
+  color: #999;
+  margin: 0;
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.badge.reservado {
+  color: #c8a1b1;
+}
+.badge.cancelado {
+  color: #999;
+}
+
+.btn-cancelar {
+  margin-top: 8px;
+  background: none;
+  border: 1px solid #c8a1b1;
+  color: #c8a1b1;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.btn-cancelar:hover {
+  background: #c8a1b1;
+  color: white;
+}
+
+.sem-reservas {
+  text-align: center;
+  color: #999;
+  margin-top: 60px;
+  font-size: 16px;
+}
+
+/* responsividade */
+@media (max-width: 768px) {
+  .reservas-section {
+    padding: 40px 20px;
+  }
+
+  .reservas-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}

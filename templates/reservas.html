@@ -1,0 +1,48 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Minhas Reservas —
+Bruma & Coffee{% endblock %} {% block content %}
+<section class="reservas-section">
+  <div class="section-header">
+    <span class="section-tag">MINHA CONTA</span>
+    <h2>Minhas <em>Reservas</em></h2>
+  </div>
+
+  {% if reservas %}
+  <div class="reservas-grid">
+    {% for reserva in reservas %}
+    <div class="reserva-card">
+      <div class="reserva-capa">
+        {% if reserva.capa_url %}
+        <img src="{{ reserva.capa_url }}" alt="{{ reserva.titulo }}" />
+        {% else %}
+        <img
+          src="{% static 'assets/livros/img-livro-placeholder.png' %}"
+          alt="{{ reserva.titulo }}"
+        />
+        {% endif %}
+      </div>
+      <div class="reserva-info">
+        <h3>{{ reserva.titulo }}</h3>
+        <p class="reserva-autor">{{ reserva.autor }}</p>
+        <p class="reserva-data">
+          Reservado em {{ reserva.data_reserva|date:"d/m/Y" }}
+        </p>
+
+        {% if reserva.status == 'reservado' %}
+        <span class="badge reservado">● Reservado</span>
+        <form method="POST" action="{% url 'cancelar_reserva' reserva.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn-cancelar">Cancelar reserva</button>
+        </form>
+        {% else %}
+        <span class="badge cancelado">● Cancelado</span>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {% else %}
+  <p class="sem-reservas">Você ainda não tem nenhuma reserva.</p>
+  {% endif %}
+</section>
+{% endblock %}
