@@ -40,8 +40,6 @@ def index(request):
 
 def livraria(request):
     return render(request, 'livraria.html')
-<<<<<<< Updated upstream
-=======
 
 
 def sobre(request):
@@ -156,4 +154,9 @@ def cancelar_reserva(request, reserva_id):
             pass
 
     return redirect('reservas')
->>>>>>> Stashed changes
+
+def livraria(request):
+    return render(request, 'livraria.html')
+
+def login(request):
+    return render(request, 'login.html')

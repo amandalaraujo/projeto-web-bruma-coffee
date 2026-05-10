@@ -5,7 +5,14 @@
   align-items: stretch;
   background-color: #48372f;
   min-height: 520px;
-  overflow: hidden;
+  /* SEM overflow: hidden aqui — aplicado só no desktop abaixo */
+}
+
+/* overflow: hidden só no desktop, onde os cards são position: absolute */
+@media (min-width: 769px) {
+  .home {
+    overflow: hidden;
+  }
 }
 
 .hero-left {
@@ -282,7 +289,7 @@
   cursor: default;
 }
 
-/* ================= CAFETERIA (PREVIEW) ================= */
+/* ================= CAFETERIA ================= */
 .cafeteria {
   padding: 100px 80px;
   background-color: #f4f3ee;
@@ -380,50 +387,194 @@
   cursor: pointer;
   font-size: 13px;
   letter-spacing: 0.5px;
-  color: #2c1a0e;
-  text-decoration: none;
 }
 
+/* ================= MEDIA QUERIES ================= */
+
+/* Tablet */
 @media (max-width: 1024px) {
-  .hero-left { padding: 60px 40px; }
-  .features { padding: 80px 40px; }
-  .book { padding: 80px 40px; }
-  .cafeteria { padding: 80px 40px; }
-  .cafe-layout { gap: 40px; }
-  .book-card { width: 180px; padding: 0 20px; }
+  .home,
+  .features,
+  .book,
+  .cafeteria {
+    padding: 60px 40px;
+  }
+
+  .hero-left {
+    padding: 40px 20px 40px 0;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-cards-bar {
+    left: 10px;
+    gap: 10px;
+  }
+
+  .hero-card {
+    width: 100px;
+    padding: 14px 10px;
+  }
 }
 
+/* Mobile — bloco único e consolidado */
 @media (max-width: 768px) {
-  .home { flex-direction: column; min-height: auto; }
-  .hero-left { max-width: 100%; padding: 60px 40px 40px; }
-  .hero-right { max-width: 100%; width: 100%; height: 320px; }
-  .hero-cards-bar { flex-direction: row; top: auto; left: 50%; transform: translateX(-50%); bottom: 20px; gap: 12px; }
-  .hero-card { width: 100px; padding: 14px 10px; }
-  .features { padding: 60px 30px; }
-  .features-grid { grid-template-columns: 1fr; gap: 16px; }
-  .book { padding: 60px 24px; }
-  .book-grid { flex-direction: column; align-items: center; padding: 24px 30px; gap: 24px; }
-  .book-card { border-right: none; border-bottom: 1px solid rgba(0, 0, 0, 0.1); padding: 0 0 24px; width: 100%; max-width: 260px; flex-direction: row; align-items: center; gap: 20px; text-align: left; }
-  .book-card:last-child { border-bottom: none; padding-bottom: 0; }
-  .book-info { text-align: left; }
-  .book-img { margin-bottom: 0; flex-shrink: 0; }
-  .cafeteria { padding: 60px 30px; }
-  .cafe-layout { flex-direction: column; gap: 40px; }
-  .cafe-left { max-width: 100%; }
-  .cafe-right { max-width: 100%; width: 100%; }
+  /* --- HERO --- */
+  .home {
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+    padding: 40px 20px;
+  }
+
+  .hero-left {
+    max-width: 100%;
+    padding: 0 0 30px 0;
+    align-items: center;
+  }
+
+  .hero-left h1 {
+    font-size: 32px;
+  }
+
+  .hero-left p {
+    margin: 20px auto 0;
+    max-width: 100%;
+  }
+
+  .hero-btns {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* hero-right: remove position relative e overflow hidden */
+  .hero-right {
+    position: static;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  /* contém a imagem com overflow interno */
+  .hero-img {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* cards: saem do absolute, ficam abaixo da imagem em linha */
+  .hero-cards-bar {
+    position: static;
+    transform: none;
+    left: auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 0 0 0;
+    margin-top: 0;
+  }
+
+  .hero-card {
+    flex: 1;
+    min-width: 0;
+    max-width: 110px;
+    width: auto;
+    padding: 12px 8px;
+  }
+
+  .hero-card-num {
+    font-size: 18px;
+  }
+
+  .hero-card-label {
+    font-size: 10px;
+  }
+
+  /* --- FEATURES --- */
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- BOOKS --- */
+  .book-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .book-card {
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 30px;
+    width: 100%;
+  }
+
+  .book-card:last-child {
+    border-bottom: none;
+  }
+
+  /* --- CAFETERIA --- */
+  .cafeteria {
+    padding: 60px 20px;
+  }
+
+  .cafe-layout {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .cafe-left,
+  .cafe-right {
+    max-width: 100%;
+  }
+
+  .cafe-left .section-tag {
+    text-align: center;
+  }
+
+  .cafe-menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-item {
+    align-items: center;
+    text-align: center;
+  }
 }
 
-@media (max-width: 480px) {
-  .hero-left { padding: 50px 24px 36px; }
-  .hero-left h1 { font-size: 32px; }
-  .hero-btns { flex-direction: column; }
-  .btn-acervo, .btn-cafeteria { width: 100%; text-align: center; }
-  .hero-cards-bar { gap: 8px; }
-  .hero-card { width: 85px; padding: 12px 8px; }
-  .hero-card-num { font-size: 18px; }
-  .features { padding: 60px 20px; }
-  .book { padding: 60px 20px; }
-  .cafeteria { padding: 60px 20px; }
-  .cafe-menu-grid { grid-template-columns: 1fr; }
-  .cafe-btn-wrapper { margin-top: 16px; display: flex; justify-content: flex-start; }
+/* Cafeteria centralizada no mobile — adicionado */
+@media (max-width: 768px) {
+  .cafe-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .cafe-menu-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .cafe-btn-wrapper {
+    width: 100%;
+    max-width: 320px;
+  }
 }

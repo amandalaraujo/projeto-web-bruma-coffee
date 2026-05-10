@@ -1,11 +1,13 @@
-<<<<<<< Updated upstream
 {% extends 'base.html' %} {% load static %} {% block title %}Início — Biblioteca
 & Café{% endblock %} {% block content %}
 
-=======
 {% extends 'base.html' %} {% load static %} {% block title %} Início — Bruma &
 Coffe {% endblock %} {% block content %}
->>>>>>> Stashed changes
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %} Início — Bruma & Coffe {% endblock %} 
+
+{% block content %}
 <!-- TELA PRINCIPAL 'HERO' -->
 <section class="home" id="inicio">
   <div class="hero-left">
@@ -27,7 +29,7 @@ Coffe {% endblock %} {% block content %}
   <div class="hero-right">
     <div class="hero-img">
       <img
-        src="{% static 'assets/img-hero.png' %}"
+        src="{% static 'assets/principal/img-hero.png' %}"
         alt="Imagem Café com Croissant"
       />
     </div>
@@ -95,13 +97,12 @@ Coffe {% endblock %} {% block content %}
           <img src="{{ book.cover_url }}" alt="{{ book.title }}" />
           {% else %}
           <img
-<<<<<<< Updated upstream
             src="{% static 'assets/livros/img-livro-peq-principe.png' %}"
             alt="O Pequeno Príncipe"
-=======
             src="{% static 'assets/livros/img-livro-placeholder.png' %}"
             alt="{{ book.title }}"
->>>>>>> Stashed changes
+            src="{% static 'assets/livros/img-jantar-secreto-raphael-montes.png' %}"
+            alt="Jantar Secreto"
           />
           {% endif %}
         </div>
@@ -110,9 +111,10 @@ Coffe {% endblock %} {% block content %}
           <span class="book-status indisponivel">● INDISPONÍVEL</span>
           {% else %}
           <span class="book-status disponivel">● DISPONÍVEL</span>
-<<<<<<< Updated upstream
           <p class="book-title">O Pequeno Príncipe</p>
           <p class="book-author">Antoine de Saint-Exupéry</p>
+          <p class="book-title">Jantar Secreto</p>
+          <p class="book-author">Raphael Montes</p>
           <a href="{% url 'livraria' %}" class="book-reserve">RESERVAR →</a>
         </div>
       </div>
@@ -120,13 +122,13 @@ Coffe {% endblock %} {% block content %}
       <div class="book-card">
         <div class="book-img">
           <img
-            src="{% static 'assets/livros/img-livro-sapiens.png' %}"
-            alt="Sapiens"
+            src="{% static 'assets/livros/img-o-principe-cruel.jpg' %}"
+            alt="O Principe Cruel"
           />
         </div>
         <div class="book-info">
           <span class="book-status disponivel">● DISPONÍVEL</span>
-          <p class="book-title">Sapiens</p>
+          <p class="book-title">O Principe Cruel</p>
           <p class="book-author">Yuval Noah Harari</p>
           <a href="{% url 'livraria' %}" class="book-reserve">RESERVAR →</a>
         </div>
@@ -135,22 +137,20 @@ Coffe {% endblock %} {% block content %}
       <div class="book-card">
         <div class="book-img">
           <img
-            src="{% static 'assets/livros/img-livro-senhor-aneis.png' %}"
-            alt="O Senhor dos Anéis"
+            src="{% static 'assets/livros/img-daisy-jones-and-the-six.png' %}"
+            alt="Daisy Jones and the Six"
           />
         </div>
         <div class="book-info">
           <span class="book-status indisponivel">● EMPRESTADO</span>
-          <p class="book-title">O Senhor dos Anéis</p>
+          <p class="book-title">Daisy Jones and the Six</p>
           <p class="book-author">J.R.R. Tolkien</p>
-=======
           {% endif %}
 
           <p class="book-title">{{ book.title }}</p>
           <p class="book-author">{{ book.author }}</p>
 
           {% if book.title in reservados %}
->>>>>>> Stashed changes
           <span class="book-reserve emprestado">INDISPONÍVEL</span>
           {% else %}
           <form method="POST" action="{% url 'reservar' %}">
@@ -171,6 +171,52 @@ Coffe {% endblock %} {% block content %}
     <a href="{% url 'livraria' %}">
       <button class="btn-acervo">VER ACERVO COMPLETO</button>
     </a>
+  </div>
+</section>
+
+<!-- TELA CAFETERIA -->
+<section class="cafeteria" id="cafeteria">
+  <div class="cafe-layout">
+    <div class="cafe-left">
+      <div class="section-tag">NOSSA CAFETERIA</div>
+      <h2 class="cafe-title">
+        O café perfeito para<br /><em>sua próxima página</em>
+      </h2>
+      <p class="cafe-desc">
+        Grãos selecionados, baristas apaixonados e um ambiente que convida você
+        a ficar mais um capítulo.
+      </p>
+    </div>
+
+    <div class="cafe-right">
+      <div class="cafe-menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-name">Espresso Duplo</div>
+          <div class="menu-item-desc">Grão arábica, torra média</div>
+          <div class="menu-item-price">R$ 8,00</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Cappuccino</div>
+          <div class="menu-item-desc">Leite vaporizado artesanal</div>
+          <div class="menu-item-price">R$ 14,00</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Suco de Laranja</div>
+          <div class="menu-item-desc">Natural, sem adição de açúcar</div>
+          <div class="menu-item-price">R$ 10,00</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Brownie Belga</div>
+          <div class="menu-item-desc">Chocolate 70% cacau</div>
+          <div class="menu-item-price">R$ 12,00</div>
+        </div>
+      </div>
+      <div class="cafe-btn-wrapper">
+        <a href="{% url 'cafeteria' %}"
+          ><button class="btn-cardapio">VER CARDÁPIO COMPLETO</button></a
+        >
+      </div>
+    </div>
   </div>
 </section>
 

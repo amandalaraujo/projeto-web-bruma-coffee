@@ -6,12 +6,10 @@ from app import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-<<<<<<< Updated upstream
-=======
     path('login/', views.login, name='login'),
     path('registro/', views.registro, name='registro'),
     path('logout/', views.logout, name='logout'),
->>>>>>> Stashed changes
+    path('login/', views.login, name='login'),
     path('livraria/', views.livraria, name='livraria'),
     path('cafeteria/', views.cafeteria, name='cafeteria'),
     path('sobre/', views.sobre, name='sobre'),
@@ -19,10 +17,6 @@ urlpatterns = [
     path('reservas/', views.reservas, name='reservas'),  # Adiciona reservas
     path('cancelar/<int:reserva_id>/', views.cancelar_reserva, name='cancelar_reserva'),  # ← adiciona
     path('admin/', admin.site.urls),
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
   + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

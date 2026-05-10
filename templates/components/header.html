@@ -1,10 +1,11 @@
 {% load static %}
 <header>
   <nav id="main-bar">
-    <div class="nav-logo">Bruma & Coffe</div>
+    <div class="nav-logo">
+      <span>Bruma & Coffee</span>
+    </div>
 
     <ul class="nav-links">
-<<<<<<< Updated upstream
       <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}nav-active{% endif %}">Início</a></li>
       <li><a href="{% url 'livraria' %}" class="{% if request.resolver_match.url_name == 'livraria' %}nav-active{% endif %}">Livraria</a></li>
       <li><a href="{% url 'cafeteria' %}" class="{% if request.resolver_match.url_name == 'cafeteria' %}nav-active{% endif %}">Cafeteria</a></li>
@@ -13,7 +14,6 @@
 
     <div class="btn-ajuda">
       <button>Ajuda</button>
-=======
       <li>
         <a
           href="{% url 'index' %}"
@@ -72,7 +72,42 @@
         <button>Login</button>
       </a>
       {% endif %}
->>>>>>> Stashed changes
+
+      <li>
+        <a
+          href="{% url 'index' %}"
+          class="{% if request.resolver_match.url_name == 'index' %}nav-active{% endif %}"
+          >Início</a
+        >
+      </li>
+      <li>
+        <a
+          href="{% url 'livraria' %}"
+          class="{% if request.resolver_match.url_name == 'livraria' %}nav-active{% endif %}"
+          >Livraria</a
+        >
+      </li>
+      <li>
+        <a
+          href="{% url 'cafeteria' %}"
+          class="{% if request.resolver_match.url_name == 'cafeteria' %}nav-active{% endif %}"
+          >Cafeteria</a
+        >
+      </li>
+      <li>
+        <a
+          href="{% url 'sobre' %}"
+          class="{% if request.resolver_match.url_name == 'sobre' %}nav-active{% endif %}"
+          >Sobre</a
+        >
+      </li>
+    </ul>
+
+    <div class="btn-ajuda">
+      <a href="{% url 'login' %}">
+        <button>Login</button>
+      </a>
+
     </div>
   </nav>
 </header>
