@@ -4,6 +4,7 @@
     <div class="nav-logo">Bruma & Coffe</div>
 
     <ul class="nav-links">
+<<<<<<< Updated upstream
       <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}nav-active{% endif %}">Início</a></li>
       <li><a href="{% url 'livraria' %}" class="{% if request.resolver_match.url_name == 'livraria' %}nav-active{% endif %}">Livraria</a></li>
       <li><a href="{% url 'cafeteria' %}" class="{% if request.resolver_match.url_name == 'cafeteria' %}nav-active{% endif %}">Cafeteria</a></li>
@@ -12,6 +13,66 @@
 
     <div class="btn-ajuda">
       <button>Ajuda</button>
+=======
+      <li>
+        <a
+          href="{% url 'index' %}"
+          class="{% if request.resolver_match.url_name == 'index' %}nav-active{% endif %}"
+        >
+          Início
+        </a>
+      </li>
+      <li>
+        <a
+          href="{% url 'livraria' %}"
+          class="{% if request.resolver_match.url_name == 'livraria' %}nav-active{% endif %}"
+        >
+          Livraria
+        </a>
+      </li>
+      <li>
+        <a
+          href="{% url 'cafeteria' %}"
+          class="{% if request.resolver_match.url_name == 'cafeteria' %}nav-active{% endif %}"
+        >
+          Cafeteria
+        </a>
+      </li>
+      <li>
+        <a
+          href="{% url 'sobre' %}"
+          class="{% if request.resolver_match.url_name == 'sobre' %}nav-active{% endif %}"
+        >
+          Sobre
+        </a>
+      </li>
+
+      {% if request.user.is_authenticated %}
+      <li>
+        <a
+          href="{% url 'reservas' %}"
+          class="{% if request.resolver_match.url_name == 'reservas' %}nav-active{% endif %}"
+        >
+          Minhas Reservas
+        </a>
+      </li>
+      {% endif %}
+    </ul>
+
+    <div class="btn-ajuda">
+      {% if request.user.is_authenticated %}
+      <span style="font-size: 13px; color: #666">
+        Olá, {{ request.user.first_name|default:request.user.username }}
+      </span>
+      <a href="{% url 'logout' %}">
+        <button>Sair</button>
+      </a>
+      {% else %}
+      <a href="{% url 'login' %}">
+        <button>Login</button>
+      </a>
+      {% endif %}
+>>>>>>> Stashed changes
     </div>
   </nav>
 </header>

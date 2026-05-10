@@ -187,8 +187,7 @@
 }
 
 .book-grid-wrapper {
-  display: flex;
-  justify-content: center;
+  overflow-x: auto;
 }
 
 .book-grid {
@@ -207,9 +206,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 30px;
+  padding: 0 24px; /* era 30px, reduzi um pouco para caber 5 */
   border-right: 1px solid rgba(0, 0, 0, 0.1);
-  width: 220px;
+  width: 180px; /* era 220px, reduzi para caber 5 */
 }
 
 .book-card:last-child {

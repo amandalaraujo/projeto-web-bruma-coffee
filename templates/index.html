@@ -1,6 +1,11 @@
+<<<<<<< Updated upstream
 {% extends 'base.html' %} {% load static %} {% block title %}Início — Biblioteca
 & Café{% endblock %} {% block content %}
 
+=======
+{% extends 'base.html' %} {% load static %} {% block title %} Início — Bruma &
+Coffe {% endblock %} {% block content %}
+>>>>>>> Stashed changes
 <!-- TELA PRINCIPAL 'HERO' -->
 <section class="home" id="inicio">
   <div class="hero-left">
@@ -83,15 +88,29 @@
 
   <div class="book-grid-wrapper">
     <div class="book-grid">
+      {% for book in books %}
       <div class="book-card">
         <div class="book-img">
+          {% if book.cover_url %}
+          <img src="{{ book.cover_url }}" alt="{{ book.title }}" />
+          {% else %}
           <img
+<<<<<<< Updated upstream
             src="{% static 'assets/livros/img-livro-peq-principe.png' %}"
             alt="O Pequeno Príncipe"
+=======
+            src="{% static 'assets/livros/img-livro-placeholder.png' %}"
+            alt="{{ book.title }}"
+>>>>>>> Stashed changes
           />
+          {% endif %}
         </div>
         <div class="book-info">
+          {% if book.title in reservados %}
+          <span class="book-status indisponivel">● INDISPONÍVEL</span>
+          {% else %}
           <span class="book-status disponivel">● DISPONÍVEL</span>
+<<<<<<< Updated upstream
           <p class="book-title">O Pequeno Príncipe</p>
           <p class="book-author">Antoine de Saint-Exupéry</p>
           <a href="{% url 'livraria' %}" class="book-reserve">RESERVAR →</a>
@@ -124,16 +143,34 @@
           <span class="book-status indisponivel">● EMPRESTADO</span>
           <p class="book-title">O Senhor dos Anéis</p>
           <p class="book-author">J.R.R. Tolkien</p>
+=======
+          {% endif %}
+
+          <p class="book-title">{{ book.title }}</p>
+          <p class="book-author">{{ book.author }}</p>
+
+          {% if book.title in reservados %}
+>>>>>>> Stashed changes
           <span class="book-reserve emprestado">INDISPONÍVEL</span>
+          {% else %}
+          <form method="POST" action="{% url 'reservar' %}">
+            {% csrf_token %}
+            <input type="hidden" name="titulo" value="{{ book.title }}" />
+            <input type="hidden" name="autor" value="{{ book.author }}" />
+            <input type="hidden" name="capa_url" value="{{ book.cover_url }}" />
+            <button type="submit" class="book-reserve">RESERVAR →</button>
+          </form>
+          {% endif %}
         </div>
       </div>
+      {% endfor %}
     </div>
   </div>
 
   <div class="section-btn">
-    <a href="{% url 'livraria' %}"
-      ><button class="btn-acervo">VER ACERVO COMPLETO</button></a
-    >
+    <a href="{% url 'livraria' %}">
+      <button class="btn-acervo">VER ACERVO COMPLETO</button>
+    </a>
   </div>
 </section>
 

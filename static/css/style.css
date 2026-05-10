@@ -7,6 +7,11 @@
 @import url("modules/home.css");
 @import url("modules/livraria.css");
 @import url("modules/sobre.css");
+<<<<<<< Updated upstream
+=======
+@import url("modules/cafeteria.css");
+@import url("modules/reservas.css");
+>>>>>>> Stashed changes
 
 /* 
   Este arquivo centraliza todos os estilos do projeto.
