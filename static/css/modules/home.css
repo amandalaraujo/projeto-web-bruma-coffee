@@ -194,14 +194,15 @@
 }
 
 .book-grid-wrapper {
+  display: flex;
+  justify-content: center; /* centraliza o container */
   overflow-x: auto;
 }
 
 .book-grid {
   display: flex;
   gap: 0;
-  justify-content: center;
-  align-items: flex-start;
+  align-items: stretch;
   background-color: #f4f3ee;
   border-radius: 10px;
   padding: 30px 40px;
@@ -213,9 +214,9 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 24px; /* era 30px, reduzi um pouco para caber 5 */
+  padding: 0 24px;
   border-right: 1px solid rgba(0, 0, 0, 0.1);
-  width: 180px; /* era 220px, reduzi para caber 5 */
+  width: 180px;
 }
 
 .book-card:last-child {
@@ -243,6 +244,10 @@
   text-align: center;
   color: #070d0d;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
 }
 
 .book-status {
@@ -250,10 +255,11 @@
   font-weight: 700;
   letter-spacing: 1px;
   margin-bottom: 6px;
+  display: block;
 }
 
 .book-status.disponivel {
-  color: #c8a1b1;
+  color: #2c7a4e;
 }
 
 .book-status.indisponivel {
@@ -265,12 +271,22 @@
   font-size: 14px;
   margin-bottom: 4px;
   line-height: 1.4;
+  height: 40px; /* altura fixa para 2 linhas */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* máximo 2 linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .book-author {
   font-size: 13px;
   color: #666;
   margin-bottom: 12px;
+  height: 20px; /* altura fixa para 1 linha */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
 }
 
 .book-reserve {
@@ -282,11 +298,21 @@
   cursor: pointer;
   color: #070d0d;
   text-decoration: none;
+  margin-top: auto;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
 .book-reserve.emprestado {
   color: #999;
   cursor: default;
+}
+
+.section-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
 }
 
 /* ================= CAFETERIA ================= */

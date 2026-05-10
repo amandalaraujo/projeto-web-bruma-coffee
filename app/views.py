@@ -24,19 +24,14 @@ def buscar_livros():
 
 def index(request):
     livros_home = buscar_livros()[:5]
-
-    # pega os títulos que o usuário logado já reservou
     reservados = []
     if request.user.is_authenticated:
         reservados = list(Reserva.objects.filter(
             usuario=request.user,
             status='reservado'
         ).values_list('titulo', flat=True))
+    return render(request, 'index.html', {'books': livros_home, 'reservados': reservados})
 
-    return render(request, 'index.html', {
-        'books': livros_home,
-        'reservados': reservados
-    })
 
 def livraria(request):
     return render(request, 'livraria.html')
@@ -93,28 +88,18 @@ def logout(request):
     return redirect('login')
 
 
-#Verifica se o usuário está logado — se não estiver, manda para o login
-#Recebe os dados do livro via POST (título, autor, capa)
-#Verifica se o usuário já reservou esse livro para não duplicar
-#Salva a reserva no banco
-#Redireciona de volta para a home
 def reservar(request):
-    # só usuário logado pode reservar
     if not request.user.is_authenticated:
         return redirect('login')
-
     if request.method == 'POST':
         titulo = request.POST.get('titulo')
         autor = request.POST.get('autor')
         capa_url = request.POST.get('capa_url')
-
-        # verifica se o usuário já reservou esse livro
         ja_reservou = Reserva.objects.filter(
             usuario=request.user,
             titulo=titulo,
             status='reservado'
         ).exists()
-
         if not ja_reservou:
             Reserva.objects.create(
                 usuario=request.user,
@@ -123,7 +108,6 @@ def reservar(request):
                 capa_url=capa_url,
                 status='reservado'
             )
-
     return redirect('index')
 
 
@@ -131,32 +115,27 @@ def reservas(request):
     if not request.user.is_authenticated:
         return redirect('login')
 
-    # Adicione o filtro status='reservado'
-    reservas = Reserva.objects.filter(
-        usuario=request.user,
-        status='reservado' 
+    todas = Reserva.objects.filter(
+        usuario=request.user
     ).order_by('-data_reserva')
 
-    return render(request, 'reservas.html', {'reservas': reservas})
+    ativas = todas.filter(status='reservado')
+    canceladas = todas.filter(status='cancelado')
+
+    return render(request, 'reservas.html', {
+        'ativas': ativas,
+        'canceladas': canceladas,
+    })
 
 
 def cancelar_reserva(request, reserva_id):
     if not request.user.is_authenticated:
         return redirect('login')
-
     if request.method == 'POST':
-        # busca a reserva — garante que é do usuário logado
         try:
             reserva = Reserva.objects.get(id=reserva_id, usuario=request.user)
             reserva.status = 'cancelado'
             reserva.save()
         except Reserva.DoesNotExist:
             pass
-
     return redirect('reservas')
-
-def livraria(request):
-    return render(request, 'livraria.html')
-
-def login(request):
-    return render(request, 'login.html')

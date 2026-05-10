@@ -1,14 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Início — Biblioteca
-& Café{% endblock %} {% block content %}
-
 {% extends 'base.html' %} {% load static %} {% block title %} Início — Bruma &
 Coffe {% endblock %} {% block content %}
-{% extends 'base.html' %} 
-{% load static %}
-{% block title %} Início — Bruma & Coffe {% endblock %} 
-
-{% block content %}
-<!-- TELA PRINCIPAL 'HERO' -->
 <section class="home" id="inicio">
   <div class="hero-left">
     <h1>Um lugar para explorar, ler<br /><em>e se conectar.</em></h1>
@@ -50,7 +41,6 @@ Coffe {% endblock %} {% block content %}
   </div>
 </section>
 
-<!-- TELA FEATURES 'SOBRE NÓS' | Amanda Araújo -->
 <section class="features" id="features">
   <div class="section-header">
     <span class="section-tag">POR QUE ESCOLHER A GENTE</span>
@@ -61,27 +51,26 @@ Coffe {% endblock %} {% block content %}
       <h3>Acervo Digital e Físico</h3>
       <p>
         Mais de 1.000 livros disponíveis para empréstimo, com renovação online e
-        notificação por e-mail quando seu livro preferido estiver disponível.
+        notificação por e-mail.
       </p>
     </div>
     <div class="features-card" data-num="02">
       <h3>Cafeteria Artesanal</h3>
       <p>
         Cafés especiais, sucos naturais e uma seleção de lanches preparados
-        diariamente para acompanhar suas horas de leitura e estudo.
+        diariamente.
       </p>
     </div>
     <div class="features-card" data-num="03">
       <h3>Comunidade Ativa</h3>
       <p>
-        Clube do livro mensal, eventos literários, workshops e um espaço de
-        estudo colaborativo para você fazer conexões que importam.
+        Clube do livro mensal, eventos literários e um espaço de estudo
+        colaborativo.
       </p>
     </div>
   </div>
 </section>
 
-<!-- SEÇÃO LIVROS EM DESTAQUE -->
 <section class="book">
   <div class="section-header">
     <span class="section-tag">DESTAQUES DO ACERVO</span>
@@ -97,61 +86,24 @@ Coffe {% endblock %} {% block content %}
           <img src="{{ book.cover_url }}" alt="{{ book.title }}" />
           {% else %}
           <img
-            src="{% static 'assets/livros/img-livro-peq-principe.png' %}"
-            alt="O Pequeno Príncipe"
             src="{% static 'assets/livros/img-livro-placeholder.png' %}"
             alt="{{ book.title }}"
-            src="{% static 'assets/livros/img-jantar-secreto-raphael-montes.png' %}"
-            alt="Jantar Secreto"
           />
           {% endif %}
         </div>
+
         <div class="book-info">
           {% if book.title in reservados %}
           <span class="book-status indisponivel">● INDISPONÍVEL</span>
           {% else %}
           <span class="book-status disponivel">● DISPONÍVEL</span>
-          <p class="book-title">O Pequeno Príncipe</p>
-          <p class="book-author">Antoine de Saint-Exupéry</p>
-          <p class="book-title">Jantar Secreto</p>
-          <p class="book-author">Raphael Montes</p>
-          <a href="{% url 'livraria' %}" class="book-reserve">RESERVAR →</a>
-        </div>
-      </div>
-
-      <div class="book-card">
-        <div class="book-img">
-          <img
-            src="{% static 'assets/livros/img-o-principe-cruel.jpg' %}"
-            alt="O Principe Cruel"
-          />
-        </div>
-        <div class="book-info">
-          <span class="book-status disponivel">● DISPONÍVEL</span>
-          <p class="book-title">O Principe Cruel</p>
-          <p class="book-author">Yuval Noah Harari</p>
-          <a href="{% url 'livraria' %}" class="book-reserve">RESERVAR →</a>
-        </div>
-      </div>
-
-      <div class="book-card">
-        <div class="book-img">
-          <img
-            src="{% static 'assets/livros/img-daisy-jones-and-the-six.png' %}"
-            alt="Daisy Jones and the Six"
-          />
-        </div>
-        <div class="book-info">
-          <span class="book-status indisponivel">● EMPRESTADO</span>
-          <p class="book-title">Daisy Jones and the Six</p>
-          <p class="book-author">J.R.R. Tolkien</p>
           {% endif %}
 
           <p class="book-title">{{ book.title }}</p>
           <p class="book-author">{{ book.author }}</p>
 
           {% if book.title in reservados %}
-          <span class="book-reserve emprestado">INDISPONÍVEL</span>
+          <span class="book-reserve emprestado">RESERVADO</span>
           {% else %}
           <form method="POST" action="{% url 'reservar' %}">
             {% csrf_token %}
@@ -168,13 +120,12 @@ Coffe {% endblock %} {% block content %}
   </div>
 
   <div class="section-btn">
-    <a href="{% url 'livraria' %}">
-      <button class="btn-acervo">VER ACERVO COMPLETO</button>
-    </a>
+    <a href="{% url 'livraria' %}"
+      ><button class="btn-acervo">VER ACERVO COMPLETO</button></a
+    >
   </div>
 </section>
 
-<!-- TELA CAFETERIA -->
 <section class="cafeteria" id="cafeteria">
   <div class="cafe-layout">
     <div class="cafe-left">
@@ -183,8 +134,8 @@ Coffe {% endblock %} {% block content %}
         O café perfeito para<br /><em>sua próxima página</em>
       </h2>
       <p class="cafe-desc">
-        Grãos selecionados, baristas apaixonados e um ambiente que convida você
-        a ficar mais um capítulo.
+        Grãos selecionados e um ambiente que convida você a ficar mais um
+        capítulo.
       </p>
     </div>
 
@@ -219,5 +170,4 @@ Coffe {% endblock %} {% block content %}
     </div>
   </div>
 </section>
-
 {% endblock %}
