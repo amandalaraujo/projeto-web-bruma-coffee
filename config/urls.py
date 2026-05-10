@@ -9,13 +9,12 @@ urlpatterns = [
     path('login/', views.login, name='login'),
     path('registro/', views.registro, name='registro'),
     path('logout/', views.logout, name='logout'),
-    path('login/', views.login, name='login'),
     path('livraria/', views.livraria, name='livraria'),
     path('cafeteria/', views.cafeteria, name='cafeteria'),
     path('sobre/', views.sobre, name='sobre'),
-    path('reservar/', views.reservar, name='reservar'), # Aponta para a função de salvar
-    path('reservas/', views.reservas, name='reservas'),  # Adiciona reservas
-    path('cancelar/<int:reserva_id>/', views.cancelar_reserva, name='cancelar_reserva'),  # ← adiciona
+    path('reservar/', views.reservar, name='reservar'),
+    path('reservas/', views.reservas, name='reservas'),
+    path('cancelar/<int:reserva_id>/', views.cancelar_reserva, name='cancelar_reserva'),
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
   + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
