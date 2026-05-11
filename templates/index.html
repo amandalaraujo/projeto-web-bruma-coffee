@@ -1,7 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Início — Biblioteca
-& Café{% endblock %} {% block content %}
-
-<!-- TELA PRINCIPAL 'HERO' -->
+{% extends 'base.html' %} {% load static %} {% block title %} Início — Bruma &
+Coffe {% endblock %} {% block content %}
 <section class="home" id="inicio">
   <div class="hero-left">
     <h1>Um lugar para explorar, ler<br /><em>e se conectar.</em></h1>
@@ -22,7 +20,7 @@
   <div class="hero-right">
     <div class="hero-img">
       <img
-        src="{% static 'assets/img-hero.png' %}"
+        src="{% static 'assets/principal/img-hero.png' %}"
         alt="Imagem Café com Croissant"
       />
     </div>
@@ -43,7 +41,6 @@
   </div>
 </section>
 
-<!-- TELA FEATURES 'SOBRE NÓS' | Amanda Araújo -->
 <section class="features" id="features">
   <div class="section-header">
     <span class="section-tag">POR QUE ESCOLHER A GENTE</span>
@@ -54,27 +51,26 @@
       <h3>Acervo Digital e Físico</h3>
       <p>
         Mais de 1.000 livros disponíveis para empréstimo, com renovação online e
-        notificação por e-mail quando seu livro preferido estiver disponível.
+        notificação por e-mail.
       </p>
     </div>
     <div class="features-card" data-num="02">
       <h3>Cafeteria Artesanal</h3>
       <p>
         Cafés especiais, sucos naturais e uma seleção de lanches preparados
-        diariamente para acompanhar suas horas de leitura e estudo.
+        diariamente.
       </p>
     </div>
     <div class="features-card" data-num="03">
       <h3>Comunidade Ativa</h3>
       <p>
-        Clube do livro mensal, eventos literários, workshops e um espaço de
-        estudo colaborativo para você fazer conexões que importam.
+        Clube do livro mensal, eventos literários e um espaço de estudo
+        colaborativo.
       </p>
     </div>
   </div>
 </section>
 
-<!-- SEÇÃO LIVROS EM DESTAQUE -->
 <section class="book">
   <div class="section-header">
     <span class="section-tag">DESTAQUES DO ACERVO</span>
@@ -83,50 +79,43 @@
 
   <div class="book-grid-wrapper">
     <div class="book-grid">
+      {% for book in books %}
       <div class="book-card">
         <div class="book-img">
+          {% if book.cover_url %}
+          <img src="{{ book.cover_url }}" alt="{{ book.title }}" />
+          {% else %}
           <img
-            src="{% static 'assets/livros/img-livro-peq-principe.png' %}"
-            alt="O Pequeno Príncipe"
+            src="{% static 'assets/livros/img-livro-placeholder.png' %}"
+            alt="{{ book.title }}"
           />
+          {% endif %}
         </div>
-        <div class="book-info">
-          <span class="book-status disponivel">● DISPONÍVEL</span>
-          <p class="book-title">O Pequeno Príncipe</p>
-          <p class="book-author">Antoine de Saint-Exupéry</p>
-          <a href="{% url 'livraria' %}" class="book-reserve">RESERVAR →</a>
-        </div>
-      </div>
 
-      <div class="book-card">
-        <div class="book-img">
-          <img
-            src="{% static 'assets/livros/img-livro-sapiens.png' %}"
-            alt="Sapiens"
-          />
-        </div>
         <div class="book-info">
+          {% if book.title in reservados %}
+          <span class="book-status indisponivel">● INDISPONÍVEL</span>
+          {% else %}
           <span class="book-status disponivel">● DISPONÍVEL</span>
-          <p class="book-title">Sapiens</p>
-          <p class="book-author">Yuval Noah Harari</p>
-          <a href="{% url 'livraria' %}" class="book-reserve">RESERVAR →</a>
-        </div>
-      </div>
+          {% endif %}
 
-      <div class="book-card">
-        <div class="book-img">
-          <img
-            src="{% static 'assets/livros/img-livro-senhor-aneis.png' %}"
-            alt="O Senhor dos Anéis"
-          />
-        </div>
-        <div class="book-info">
-          <span class="book-status indisponivel">● EMPRESTADO</span>
-          <p class="book-title">O Senhor dos Anéis</p>
-          <p class="book-author">J.R.R. Tolkien</p>
-          <span class="book-reserve emprestado">INDISPONÍVEL</span>
+          <p class="book-title">{{ book.title }}</p>
+          <p class="book-author">{{ book.author }}</p>
+
+          {% if book.title in reservados %}
+          <span class="book-reserve emprestado">RESERVADO</span>
+          {% else %}
+          <form method="POST" action="{% url 'reservar' %}">
+            {% csrf_token %}
+            <input type="hidden" name="titulo" value="{{ book.title }}" />
+            <input type="hidden" name="autor" value="{{ book.author }}" />
+            <input type="hidden" name="capa_url" value="{{ book.cover_url }}" />
+            <button type="submit" class="book-reserve">RESERVAR →</button>
+          </form>
+          {% endif %}
         </div>
       </div>
+      {% endfor %}
     </div>
   </div>
 
@@ -137,4 +126,48 @@
   </div>
 </section>
 
+<section class="cafeteria" id="cafeteria">
+  <div class="cafe-layout">
+    <div class="cafe-left">
+      <div class="section-tag">NOSSA CAFETERIA</div>
+      <h2 class="cafe-title">
+        O café perfeito para<br /><em>sua próxima página</em>
+      </h2>
+      <p class="cafe-desc">
+        Grãos selecionados e um ambiente que convida você a ficar mais um
+        capítulo.
+      </p>
+    </div>
+
+    <div class="cafe-right">
+      <div class="cafe-menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-name">Espresso Duplo</div>
+          <div class="menu-item-desc">Grão arábica, torra média</div>
+          <div class="menu-item-price">R$ 8,00</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Cappuccino</div>
+          <div class="menu-item-desc">Leite vaporizado artesanal</div>
+          <div class="menu-item-price">R$ 14,00</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Suco de Laranja</div>
+          <div class="menu-item-desc">Natural, sem adição de açúcar</div>
+          <div class="menu-item-price">R$ 10,00</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-name">Brownie Belga</div>
+          <div class="menu-item-desc">Chocolate 70% cacau</div>
+          <div class="menu-item-price">R$ 12,00</div>
+        </div>
+      </div>
+      <div class="cafe-btn-wrapper">
+        <a href="{% url 'cafeteria' %}"
+          ><button class="btn-cardapio">VER CARDÁPIO COMPLETO</button></a
+        >
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock %}

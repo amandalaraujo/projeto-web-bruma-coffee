@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Minhas Reservas —
+Bruma & Coffee{% endblock %} {% block content %}
+<section class="reservas-section">
+  <div class="section-header">
+    <span class="section-tag">MINHA CONTA</span>
+    <h2>Minhas <em>Reservas</em></h2>
+  </div>
+
+  <h3 class="reservas-subtitulo">Reservas Ativas</h3>
+  {% if ativas %}
+  <div class="reservas-grid">
+    {% for reserva in ativas %}
+    <div class="reserva-card ativa">
+      <div class="reserva-capa">
+        {% if reserva.capa_url %}
+        <img src="{{ reserva.capa_url }}" alt="{{ reserva.titulo }}" />
+        {% else %}
+        <img
+          src="{% static 'assets/livros/img-livro-placeholder.png' %}"
+          alt="{{ reserva.titulo }}"
+        />
+        {% endif %}
+      </div>
+      <div class="reserva-info">
+        <h3>{{ reserva.titulo }}</h3>
+        <p class="reserva-autor">{{ reserva.autor }}</p>
+        <p class="reserva-data">
+          Reservado em {{ reserva.data_reserva|date:"d/m/Y" }}
+        </p>
+        <span class="badge reservado">● Ativo</span>
+        <form method="POST" action="{% url 'cancelar_reserva' reserva.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn-cancelar">Cancelar reserva</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="sem-reservas-wrap">
+    <p class="sem-reservas-ativas">Você não tem reservas ativas no momento.</p>
+    <a href="{% url 'index' %}" class="btn-explorar">Explorar Acervo</a>
+  </div>
+  {% endif %} {% if canceladas %}
+  <h3 class="reservas-subtitulo canceladas-titulo">
+    Histórico de Cancelamentos
+  </h3>
+  <div class="reservas-grid canceladas">
+    {% for reserva in canceladas %}
+    <div class="reserva-card cancelada">
+      <div class="reserva-capa">
+        {% if reserva.capa_url %}
+        <img src="{{ reserva.capa_url }}" alt="{{ reserva.titulo }}" />
+        {% else %}
+        <img
+          src="{% static 'assets/livros/img-livro-placeholder.png' %}"
+          alt="{{ reserva.titulo }}"
+        />
+        {% endif %}
+      </div>
+      <div class="reserva-info">
+        <h3>{{ reserva.titulo }}</h3>
+        <p class="reserva-autor">{{ reserva.autor }}</p>
+        <p class="reserva-data">
+          Cancelado em {{ reserva.data_reserva|date:"d/m/Y" }}
+        </p>
+        <span class="badge cancelado">● Cancelado</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

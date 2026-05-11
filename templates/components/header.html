@@ -1,17 +1,77 @@
 {% load static %}
 <header>
   <nav id="main-bar">
-    <div class="nav-logo">Bruma & Coffe</div>
+    <div class="nav-logo">
+      <span>Bruma & Coffee</span>
+    </div>
 
     <ul class="nav-links">
-      <li><a href="{% url 'index' %}" class="{% if request.resolver_match.url_name == 'index' %}nav-active{% endif %}">Início</a></li>
-      <li><a href="{% url 'livraria' %}" class="{% if request.resolver_match.url_name == 'livraria' %}nav-active{% endif %}">Livraria</a></li>
-      <li><a href="{% url 'cafeteria' %}" class="{% if request.resolver_match.url_name == 'cafeteria' %}nav-active{% endif %}">Cafeteria</a></li>
-      <li><a href="{% url 'sobre' %}" class="{% if request.resolver_match.url_name == 'sobre' %}nav-active{% endif %}">Sobre</a></li>
+      <li>
+        <a
+          href="{% url 'index' %}"
+          class="{% if request.resolver_match.url_name == 'index' %}nav-active{% endif %}"
+        >
+          Início
+        </a>
+      </li>
+      <li>
+        <a
+          href="{% url 'livraria' %}"
+          class="{% if request.resolver_match.url_name == 'livraria' %}nav-active{% endif %}"
+        >
+          Livraria
+        </a>
+      </li>
+      <li>
+        <a
+          href="{% url 'cafeteria' %}"
+          class="{% if request.resolver_match.url_name == 'cafeteria' %}nav-active{% endif %}"
+        >
+          Cafeteria
+        </a>
+      </li>
+      <li>
+        <a
+          href="{% url 'sobre' %}"
+          class="{% if request.resolver_match.url_name == 'sobre' %}nav-active{% endif %}"
+        >
+          Sobre
+        </a>
+      </li>
     </ul>
 
     <div class="btn-ajuda">
-      <button>Ajuda</button>
+      {% if request.user.is_authenticated %}
+      <div class="user-menu">
+        <div class="user-avatar">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="22"
+            height="22"
+            viewBox="0 0 24 24"
+            fill="#2c1a0e"
+          >
+            <path
+              d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
+            />
+          </svg>
+        </div>
+        <div class="user-dropdown">
+          <span class="user-nome"
+            >{{ request.user.first_name|default:request.user.username }}</span
+          >
+          <hr class="dropdown-divider" />
+          <a href="{% url 'reservas' %}" class="dropdown-item"
+            >Minhas Reservas</a
+          >
+          <a href="{% url 'logout' %}" class="dropdown-item sair">→ Sair</a>
+        </div>
+      </div>
+      {% else %}
+      <a href="{% url 'login' %}">
+        <button>Login</button>
+      </a>
+      {% endif %}
     </div>
   </nav>
 </header>

@@ -1,18 +1,21 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}Livraria — Biblioteca & Café{% endblock %}
-
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block title %}Livraria — Bruma &
+Coffee{% endblock %} {% block content %}
 
 <!-- HERO DA LIVRARIA -->
 <section class="livraria-hero">
   <div class="livraria-hero-content">
     <span class="section-tag">NOSSO ACERVO</span>
     <h1>Descubra sua próxima<br /><em>grande leitura</em></h1>
-    <p>Mais de 1.200 títulos disponíveis para empréstimo. Explore por categoria, autor ou título.</p>
+    <p>
+      Mais de 1.200 títulos disponíveis para empréstimo. Explore por categoria,
+      autor ou título.
+    </p>
     <div class="livraria-search">
-      <input type="text" placeholder="Buscar livro ou autor..." class="search-input" />
+      <input
+        type="text"
+        placeholder="Buscar livro ou autor..."
+        class="search-input"
+      />
       <button class="btn-buscar">BUSCAR</button>
     </div>
   </div>
@@ -40,19 +43,23 @@
   </div>
 
   <div class="book-grid-full">
-
     <!-- ── FICÇÃO CONTEMPORÂNEA ─────────────────────── -->
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-livro-tudo-e-rio.png' %}" alt="Tudo é Rio" />
+        <img
+          src="{% static 'assets/livros/img-livro-tudo-e-rio.png' %}"
+          alt="Tudo é Rio"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Ficção · Literatura Brasileira</p>
         <h3 class="book-title-full">Tudo é Rio</h3>
         <p class="book-author-full">Carla Madeira</p>
-        <p class="book-desc">Uma narrativa arrebatadora sobre o amor, a dor e a redenção.</p>
+        <p class="book-desc">
+          Uma narrativa arrebatadora sobre o amor, a dor e a redenção.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">4 cópias</span>
@@ -62,14 +69,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-daisy-jones-and-the-six.png' %}" alt="Daisy Jones & The Six" />
+        <img
+          src="{% static 'assets/livros/img-daisy-jones-and-the-six.png' %}"
+          alt="Daisy Jones & The Six"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Ficção · Drama Musical</p>
         <h3 class="book-title-full">Daisy Jones & The Six</h3>
         <p class="book-author-full">Taylor Jenkins Reid</p>
-        <p class="book-desc">Nos anos 70, Daisy Jones e a banda The Six dominaram o rock — até se separarem abruptamente. Ninguém soube o porquê, até agora.</p>
+        <p class="book-desc">
+          Nos anos 70, Daisy Jones e a banda The Six dominaram o rock — até se
+          separarem abruptamente. Ninguém soube o porquê, até agora.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">3 cópias</span>
@@ -81,14 +94,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-livro-sapiens.png' %}" alt="Sapiens" />
+        <img
+          src="{% static 'assets/livros/img-livro-sapiens.png' %}"
+          alt="Sapiens"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Não-ficção · História</p>
         <h3 class="book-title-full">Sapiens</h3>
         <p class="book-author-full">Yuval Noah Harari</p>
-        <p class="book-desc">Uma breve história da humanidade — dos primeiros humanos à era moderna.</p>
+        <p class="book-desc">
+          Uma breve história da humanidade — dos primeiros humanos à era
+          moderna.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">2 cópias</span>
@@ -100,14 +119,19 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-suicidas-raphael-montes' %}" alt="Suicidas" />
+        <img
+          src="{% static 'assets/livros/img-suicidas-raphael-montes' %}"
+          alt="Suicidas"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Suspense · Thriller</p>
         <h3 class="book-title-full">Suicidas</h3>
         <p class="book-author-full">Raphael Montes</p>
-        <p class="book-desc">Nove jovens decidem participar de uma roleta-russa em um porão.</p>
+        <p class="book-desc">
+          Nove jovens decidem participar de uma roleta-russa em um porão.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">2 cópias</span>
@@ -117,14 +141,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-jantar-secreto-raphael-montes.png' %}" alt="Jantar Secreto" />
+        <img
+          src="{% static 'assets/livros/img-jantar-secreto-raphael-montes.png' %}"
+          alt="Jantar Secreto"
+        />
         <span class="book-badge emprestado">EMPRESTADO</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Suspense · Terror</p>
         <h3 class="book-title-full">Jantar Secreto</h3>
         <p class="book-author-full">Raphael Montes</p>
-        <p class="book-desc">Um grupo de amigos organiza jantares clandestinos com carnes proibidas.</p>
+        <p class="book-desc">
+          Um grupo de amigos organiza jantares clandestinos com carnes
+          proibidas.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar emprestado" disabled>INDISPONÍVEL</button>
           <span class="book-copies">Lista de espera: 3</span>
@@ -134,14 +164,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-uma-mulher-no-escuro-raphael-montes.jpg' %}" alt="Uma Mulher no Escuro" />
+        <img
+          src="{% static 'assets/livros/img-uma-mulher-no-escuro-raphael-montes.jpg' %}"
+          alt="Uma Mulher no Escuro"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Suspense · Policial</p>
         <h3 class="book-title-full">Uma Mulher no Escuro</h3>
         <p class="book-author-full">Raphael Montes</p>
-        <p class="book-desc">Victoria Bravo sobreviveu a um massacre na infância, mas o passado volta.</p>
+        <p class="book-desc">
+          Victoria Bravo sobreviveu a um massacre na infância, mas o passado
+          volta.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">5 cópias</span>
@@ -151,14 +187,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-ex-mulher.jpg' %}" alt="Ex/Mulher" />
+        <img
+          src="{% static 'assets/livros/img-ex-mulher.jpg' %}"
+          alt="Ex/Mulher"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Thriller Psicológico</p>
         <h3 class="book-title-full">Ex/Mulher</h3>
         <p class="book-author-full">Tess Stimson</p>
-        <p class="book-desc">A ex e a atual esposa de um homem são encontradas ao lado do seu corpo. Uma delas o matou — mas qual?</p>
+        <p class="book-desc">
+          A ex e a atual esposa de um homem são encontradas ao lado do seu
+          corpo. Uma delas o matou — mas qual?
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">3 cópias</span>
@@ -168,14 +210,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-manual-de-assassinatos.jpg' %}" alt="Manual de Assassinato Para Boas Garotas" />
+        <img
+          src="{% static 'assets/livros/img-manual-de-assassinatos.jpg' %}"
+          alt="Manual de Assassinato Para Boas Garotas"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Suspense · Young Adult</p>
         <h3 class="book-title-full">Manual de Assassinato Para Boas Garotas</h3>
         <p class="book-author-full">Holly Jackson</p>
-        <p class="book-desc">Pip decide investigar o assassinato de uma garota na sua cidade como projeto escolar — e descobre que ninguém é inocente.</p>
+        <p class="book-desc">
+          Pip decide investigar o assassinato de uma garota na sua cidade como
+          projeto escolar — e descobre que ninguém é inocente.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">3 cópias</span>
@@ -185,14 +233,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-o-assassinato-da-familia-hope.png' %}" alt="O Assassinato da Família Hope" />
+        <img
+          src="{% static 'assets/livros/img-o-assassinato-da-familia-hope.png' %}"
+          alt="O Assassinato da Família Hope"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Suspense · Policial</p>
         <h3 class="book-title-full">O Assassinato da Família Hope</h3>
         <p class="book-author-full">Stuart Turton</p>
-        <p class="book-desc">Em uma ilha isolada, um detetive precisa desvendar o massacre de uma família antes que o assassino ataque de novo.</p>
+        <p class="book-desc">
+          Em uma ilha isolada, um detetive precisa desvendar o massacre de uma
+          família antes que o assassino ataque de novo.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">3 cópias</span>
@@ -202,14 +256,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-verity-collen-hoover.png' %}" alt="Verity" />
+        <img
+          src="{% static 'assets/livros/img-verity-collen-hoover.png' %}"
+          alt="Verity"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Thriller Psicológico · Romance</p>
         <h3 class="book-title-full">Verity</h3>
         <p class="book-author-full">Colleen Hoover</p>
-        <p class="book-desc">Lowen encontra o manuscrito inacabado de uma escritora famosa — e os segredos revelados podem destruir vidas.</p>
+        <p class="book-desc">
+          Lowen encontra o manuscrito inacabado de uma escritora famosa — e os
+          segredos revelados podem destruir vidas.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">3 cópias</span>
@@ -219,14 +279,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-teto-para-dois.jpg' %}" alt="Teto para Dois" />
+        <img
+          src="{% static 'assets/livros/img-teto-para-dois.jpg' %}"
+          alt="Teto para Dois"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Romance · Suspense</p>
         <h3 class="book-title-full">Teto para Dois</h3>
         <p class="book-author-full">Colleen Hoover</p>
-        <p class="book-desc">Dois estranhos dividem um apartamento e descobrem que seus passados estão mais entrelaçados do que imaginam.</p>
+        <p class="book-desc">
+          Dois estranhos dividem um apartamento e descobrem que seus passados
+          estão mais entrelaçados do que imaginam.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">3 cópias</span>
@@ -238,14 +304,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-btk-a-mascara-da-maldade.png' %}" alt="BTK - A Máscara da Maldade" />
+        <img
+          src="{% static 'assets/livros/img-btk-a-mascara-da-maldade.png' %}"
+          alt="BTK - A Máscara da Maldade"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Dark Side · True Crime</p>
         <h3 class="book-title-full">BTK: A Máscara da Maldade</h3>
         <p class="book-author-full">Roy Wenzl</p>
-        <p class="book-desc">A história real do serial killer que aterrorizou Wichita por décadas, mantendo uma dupla vida de cidadão exemplar.</p>
+        <p class="book-desc">
+          A história real do serial killer que aterrorizou Wichita por décadas,
+          mantendo uma dupla vida de cidadão exemplar.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">2 cópias</span>
@@ -257,14 +329,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-jogos-vorazes.png' %}" alt="Jogos Vorazes" />
+        <img
+          src="{% static 'assets/livros/img-jogos-vorazes.png' %}"
+          alt="Jogos Vorazes"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Distopia · Ação</p>
         <h3 class="book-title-full">Jogos Vorazes</h3>
         <p class="book-author-full">Suzanne Collins</p>
-        <p class="book-desc">Em um país distópico, jovens são forçados a lutar até a morte em um reality show transmitido ao vivo.</p>
+        <p class="book-desc">
+          Em um país distópico, jovens são forçados a lutar até a morte em um
+          reality show transmitido ao vivo.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">3 cópias</span>
@@ -274,14 +352,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-battle-royale.jpg' %}" alt="Battle Royale" />
+        <img
+          src="{% static 'assets/livros/img-battle-royale.jpg' %}"
+          alt="Battle Royale"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Distopia · Ação</p>
         <h3 class="book-title-full">Battle Royale</h3>
         <p class="book-author-full">Koushun Takami</p>
-        <p class="book-desc">Um governo totalitário obriga uma turma de alunos a se eliminar em uma ilha isolada até restar apenas um sobrevivente.</p>
+        <p class="book-desc">
+          Um governo totalitário obriga uma turma de alunos a se eliminar em uma
+          ilha isolada até restar apenas um sobrevivente.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">3 cópias</span>
@@ -293,14 +377,19 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-acotar-corte-de-Espinhos-e-Rosas' %}" alt="Corte de Espinhos e Rosas" />
+        <img
+          src="{% static 'assets/livros/img-acotar-corte-de-Espinhos-e-Rosas' %}"
+          alt="Corte de Espinhos e Rosas"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Fantasia · Romance</p>
         <h3 class="book-title-full">Corte de Espinhos e Rosas</h3>
         <p class="book-author-full">Sarah J. Maas</p>
-        <p class="book-desc">Feyre é levada para o reino das fadas após matar um lobo na floresta.</p>
+        <p class="book-desc">
+          Feyre é levada para o reino das fadas após matar um lobo na floresta.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">6 cópias</span>
@@ -310,14 +399,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-a-vida-invisivel-addie-larue.png' %}" alt="A Vida Invisível de Addie LaRue" />
+        <img
+          src="{% static 'assets/livros/img-a-vida-invisivel-addie-larue.png' %}"
+          alt="A Vida Invisível de Addie LaRue"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Fantasia · Romance</p>
         <h3 class="book-title-full">A Vida Invisível de Addie LaRue</h3>
         <p class="book-author-full">V. E. Schwab</p>
-        <p class="book-desc">Em 1714, Addie faz um pacto pela imortalidade — e é condenada a ser esquecida por todos que encontra.</p>
+        <p class="book-desc">
+          Em 1714, Addie faz um pacto pela imortalidade — e é condenada a ser
+          esquecida por todos que encontra.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">3 cópias</span>
@@ -327,14 +422,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-o-principe-cruel.jpg' %}" alt="O Príncipe Cruel" />
+        <img
+          src="{% static 'assets/livros/img-o-principe-cruel.jpg' %}"
+          alt="O Príncipe Cruel"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Fantasia · Young Adult</p>
         <h3 class="book-title-full">O Príncipe Cruel</h3>
         <p class="book-author-full">Holly Black</p>
-        <p class="book-desc">Jude, uma humana criada no reino das fadas, luta por poder e sobrevivência entre criaturas implacáveis.</p>
+        <p class="book-desc">
+          Jude, uma humana criada no reino das fadas, luta por poder e
+          sobrevivência entre criaturas implacáveis.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">3 cópias</span>
@@ -346,14 +447,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-livro-peq-principe.png' %}" alt="O Pequeno Príncipe" />
+        <img
+          src="{% static 'assets/livros/img-livro-peq-principe.png' %}"
+          alt="O Pequeno Príncipe"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Clássico · Ficção</p>
         <h3 class="book-title-full">O Pequeno Príncipe</h3>
         <p class="book-author-full">Antoine de Saint-Exupéry</p>
-        <p class="book-desc">Uma história atemporal sobre amizade, amor e o que realmente importa na vida.</p>
+        <p class="book-desc">
+          Uma história atemporal sobre amizade, amor e o que realmente importa
+          na vida.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">3 cópias</span>
@@ -363,14 +470,20 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-crime-e-castigo.png' %}" alt="Crime e Castigo" />
+        <img
+          src="{% static 'assets/livros/img-crime-e-castigo.png' %}"
+          alt="Crime e Castigo"
+        />
         <span class="book-badge disponivel">DISPONÍVEL</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Clássico · Filosofia</p>
         <h3 class="book-title-full">Crime e Castigo</h3>
         <p class="book-author-full">Fiódor Dostoiévski</p>
-        <p class="book-desc">O dilema moral de Raskólnikov após cometer um assassinato em São Petersburgo.</p>
+        <p class="book-desc">
+          O dilema moral de Raskólnikov após cometer um assassinato em São
+          Petersburgo.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar">RESERVAR</button>
           <span class="book-copies">3 cópias</span>
@@ -380,21 +493,26 @@
 
     <div class="book-card-full">
       <div class="book-cover">
-        <img src="{% static 'assets/livros/img-livro-senhor-aneis.png' %}" alt="O Senhor dos Anéis" />
+        <img
+          src="{% static 'assets/livros/img-livro-senhor-aneis.png' %}"
+          alt="O Senhor dos Anéis"
+        />
         <span class="book-badge emprestado">EMPRESTADO</span>
       </div>
       <div class="book-details">
         <p class="book-genre">Clássico · Fantasia</p>
         <h3 class="book-title-full">O Senhor dos Anéis</h3>
         <p class="book-author-full">J.R.R. Tolkien</p>
-        <p class="book-desc">A épica jornada pelo mundo de Terra-Média em busca de destruir o Um Anel.</p>
+        <p class="book-desc">
+          A épica jornada pelo mundo de Terra-Média em busca de destruir o Um
+          Anel.
+        </p>
         <div class="book-actions">
           <button class="btn-reservar emprestado" disabled>INDISPONÍVEL</button>
           <span class="book-copies">Lista de espera: 4</span>
         </div>
       </div>
     </div>
-
   </div>
 
   <div class="livraria-load-more">

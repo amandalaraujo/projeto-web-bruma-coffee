@@ -1,0 +1,74 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Criar conta — Bruma
+& Coffee{% endblock %} {% block content %}
+<section class="login-section">
+  <div class="login-brand">
+    <span class="section-tag">Crie sua conta</span>
+    <h1 class="login-title">Bem-vinda à <em>Bruma & Coffee</em></h1>
+    <p class="login-subtitle">
+      Crie sua conta gratuita e comece a reservar livros hoje mesmo.
+    </p>
+    <div class="login-features">
+      <div class="login-feature-item">
+        <span class="login-feature-icon">✦</span>
+        <span>Acesse seu histórico de empréstimos</span>
+      </div>
+      <div class="login-feature-item">
+        <span class="login-feature-icon">✦</span>
+        <span>Reserve livros com um clique</span>
+      </div>
+      <div class="login-feature-item">
+        <span class="login-feature-icon">✦</span>
+        <span>Acompanhe novidades do acervo</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-divider"></div>
+
+  <div class="login-form-wrap">
+    <div class="login-card">
+      <div class="login-card-header">
+        <h2>Criar conta</h2>
+        <p>Preencha os dados abaixo</p>
+      </div>
+
+      <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-field">
+          <label for="nome">Nome</label>
+          <input type="text" id="nome" name="nome" placeholder="Seu nome" />
+        </div>
+        <div class="form-field">
+          <label for="email">E-mail</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="seu@email.com"
+          />
+        </div>
+        <div class="form-field">
+          <label for="senha">Senha</label>
+          <input
+            type="password"
+            id="senha"
+            name="senha"
+            placeholder="••••••••"
+          />
+        </div>
+
+        {% if erro %}
+        <p style="color: red; font-size: 13px">{{ erro }}</p>
+        {% endif %}
+
+        <button type="submit" class="btn-login-submit">Criar conta</button>
+      </form>
+
+      <p class="login-register">
+        Já tem conta? <a href="{% url 'login' %}">Entrar</a>
+      </p>
+    </div>
+  </div>
+</section>
+{% endblock %}
