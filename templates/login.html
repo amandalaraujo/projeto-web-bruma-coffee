@@ -35,6 +35,7 @@ Coffee{% endblock %} {% block content %}
 
       <form method="POST">
         {% csrf_token %}
+        <input type="hidden" name="next" value="{{ next }}" />
         <div class="form-field">
           <label for="email">E-mail</label>
           <input

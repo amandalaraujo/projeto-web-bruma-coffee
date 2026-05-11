@@ -1,0 +1,53 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Carrinho — Bruma &
+Coffee{% endblock %} {% block content %}
+<section class="carrinho-section">
+  <div class="livraria-section-header">
+    <span class="section-tag">MINHA CONTA</span>
+    <h2>Meu <em>Carrinho</em></h2>
+  </div>
+
+  {% if itens %}
+  <div class="carrinho-lista">
+    {% for item in itens %}
+    <div class="carrinho-item">
+      <div class="carrinho-item-info">
+        <h3>{{ item.nome }}</h3>
+        <p>R$ {{ item.preco }} × {{ item.quantidade }}</p>
+      </div>
+      <div class="carrinho-item-acoes">
+        <span class="carrinho-subtotal">R$ {{ item.subtotal }}</span>
+        <form
+          method="POST"
+          action="{% url 'remover_carrinho' item.produto_id %}"
+        >
+          {% csrf_token %}
+          <button type="submit" class="btn-remover">− Remover</button>
+        </form>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="carrinho-total">
+    <span>Total</span>
+    <strong>R$ {{ total }}</strong>
+  </div>
+
+  <div class="carrinho-acoes">
+    <a href="{% url 'cafeteria' %}" class="btn-continuar"
+      >← Continuar comprando</a
+    >
+    <form method="POST" action="{% url 'finalizar_pedido' %}">
+      {% csrf_token %}
+      <button type="submit" class="btn-finalizar">Finalizar pedido</button>
+    </form>
+  </div>
+
+  {% else %}
+  <div class="sem-reservas-wrap">
+    <p class="sem-reservas">Seu carrinho está vazio.</p>
+    <a href="{% url 'cafeteria' %}" class="btn-explorar">Ver cardápio →</a>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

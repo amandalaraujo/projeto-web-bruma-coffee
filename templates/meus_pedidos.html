@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Meus Pedidos —
+Bruma & Coffee{% endblock %} {% block content %}
+<section class="reservas-section">
+  <div class="livraria-section-header">
+    <span class="section-tag">MINHA CONTA</span>
+    <h2>Meus <em>Pedidos</em></h2>
+  </div>
+
+  {% if pedidos %} {% for pedido in pedidos %}
+  <div class="pedido-card">
+    <div class="pedido-header">
+      <span class="pedido-id">Pedido #{{ pedido.id }}</span>
+      <span class="pedido-data">{{ pedido.data_pedido|date:"d/m/Y H:i" }}</span>
+      <span
+        class="badge {% if pedido.status == 'confirmado' %}reservado{% else %}cancelado{% endif %}"
+      >
+        ● {{ pedido.get_status_display }}
+      </span>
+    </div>
+    <div class="pedido-itens">
+      {% for item in pedido.itens.all %}
+      <div class="pedido-item">
+        <span>{{ item.quantidade }}× {{ item.produto.nome }}</span>
+        <span>R$ {{ item.subtotal }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="pedido-total">
+      <strong>Total: R$ {{ pedido.total }}</strong>
+    </div>
+  </div>
+  {% endfor %} {% else %}
+  <div class="sem-reservas-wrap">
+    <p class="sem-reservas">Você ainda não fez nenhum pedido.</p>
+    <a href="{% url 'cafeteria' %}" class="btn-explorar">Ver cardápio →</a>
+  </div>
+  {% endif %}
+</section>
+{% endblock %}

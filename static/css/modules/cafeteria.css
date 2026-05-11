@@ -1,21 +1,26 @@
-/* ===== PAGINA CAFETERIA ===== */
+/* ========================================================= */
+/* ====================== CAFETERIA ========================= */
+/* ========================================================= */
 
-.pagina-interna-cafeteria {
+.cardapio-section {
   background-color: #f9f8f6;
   font-family: "Poppins", sans-serif;
-  margin: 0;
-  padding: 0;
+  padding: 80px 8%;
 }
 
-/* ===== HERO SECTION (TOPO DIVIDIDO) ===== */
-.pagina-interna-cafeteria .cafe-hero {
+/* ========================================================= */
+/* ======================= HERO ============================= */
+/* ========================================================= */
+
+.cafeteria-hero {
   display: flex;
-  min-height: 80vh; 
+  min-height: 80vh;
   background-color: #48372f;
   overflow: hidden;
+  align-items: stretch;
 }
 
-.pagina-interna-cafeteria .hero-content {
+.cafeteria-hero-content {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -24,152 +29,345 @@
   color: #fff;
 }
 
-.pagina-interna-cafeteria .hero-image {
+.cafeteria-hero-img {
   flex: 1;
 }
 
-.pagina-interna-cafeteria .hero-image img {
+.cafeteria-hero-img img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Faz a foto preencher o espaço sem distorcer */
+  object-fit: cover;
 }
 
-.pagina-interna-cafeteria .section-tag {
+.section-tag {
   font-family: "DM Sans", sans-serif;
-  font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 2.5px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 2px;
   color: #c8a1b1;
   text-transform: uppercase;
-  margin-bottom: 16px;
+  margin-bottom: 14px;
+  display: block;
 }
 
-.pagina-interna-cafeteria .cafe-title {
+.cafeteria-hero-content h1 {
   font-family: "Playfair Display", serif;
-  font-size: clamp(45px, 5vw, 50px);
+  font-size: clamp(42px, 5vw, 60px);
   color: #f4f3ee;
-  line-height: 1.25;
+  line-height: 1.2;
   margin-bottom: 20px;
 }
 
-.pagina-interna-cafeteria .cafe-title em {
+.cafeteria-hero-content h1 em {
   color: #c8a1b1;
   font-style: italic;
 }
 
-.pagina-interna-cafeteria .cafe-desc {
-  font-size: 20px;
-  color: rgba(244, 243, 238, 0.75);
-  line-height: 1.65;
-  max-width: 420px;
+.cafeteria-hero-content p {
+  font-size: 18px;
+  color: rgba(244, 243, 238, 0.8);
+  line-height: 1.7;
+  max-width: 480px;
 }
 
-/* ===== SEÇÃO DE PRODUTOS (ABAIXO) ===== */
-.pagina-interna-cafeteria .cafe-products-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 80px 20px;
+/* ========================================================= */
+/* ================= CARRINHO FLUTUANTE ==================== */
+/* ========================================================= */
+
+.carrinho-flutuante {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #c8a1b1;
+  color: #2c1a0e;
+  padding: 12px 24px;
+  border-radius: 30px;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  z-index: 999;
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
 }
 
-.pagina-interna-cafeteria .menu-category {
-  margin-bottom: 60px;
+.carrinho-flutuante:hover {
+  transform: translateY(-2px);
+  background: #b8889f;
 }
 
-.pagina-interna-cafeteria .menu-category-title {
-  font-family: "DM Sans", sans-serif;
-  font-size: 28px;
+/* ========================================================= */
+/* ====================== CATEGORIAS ======================= */
+/* ========================================================= */
+
+.cardapio-categoria {
+  margin-bottom: 70px;
+}
+
+.categoria-titulo {
+  font-family: "Playfair Display", serif;
+  font-size: 32px;
   color: #48372f;
-  border-bottom: 2px solid #c7a1b2;
-  display: inline-block;
   margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #c8a1b1;
+  display: inline-block;
 }
 
-.pagina-interna-cafeteria .menu-items {
+/* ========================================================= */
+/* ======================== GRID ============================ */
+/* ========================================================= */
+
+.cardapio-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
 }
 
-/* Cards de Itens */
-.pagina-interna-cafeteria .menu-item {
-  font-family: "DM Sans", sans-serif;
-  background: #fff;
-  padding: 25px;
-  border-radius: 15px;
-  border: 1px solid #eee;
+/* ========================================================= */
+/* ======================== CARDS =========================== */
+/* ========================================================= */
+
+.produto-card {
+  background: white;
+  border-radius: 14px;
+  padding: 24px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  cursor: pointer;
+  gap: 18px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
   transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.pagina-interna-cafeteria .menu-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+.produto-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
 }
 
-.pagina-interna-cafeteria .menu-item-name {
+.produto-info {
+  flex: 1;
+}
+
+.produto-info h3 {
+  font-size: 18px;
   font-weight: 700;
-  color: #333;
-  display: block;
+  color: #2c1a0e;
+  margin-bottom: 8px;
 }
 
-.pagina-interna-cafeteria .menu-item-desc {
+.produto-info p {
   font-size: 14px;
   color: #777;
-  margin-top: 5px;
+  margin-bottom: 14px;
+  line-height: 1.5;
 }
 
-.pagina-interna-cafeteria .menu-item-price {
-  font-weight: bold;
-  color: #a67c8d;
-  white-space: nowrap;
-  margin-left: 15px;
+.produto-preco {
+  font-weight: 700;
+  color: #c8a1b1;
+  font-size: 17px;
 }
 
-.pagina-interna-cafeteria .cafe-btn-wrapper {
-  text-align: center;
-  margin-top: 20px;
-}
+/* ========================================================= */
+/* ======================== BOTÕES ========================== */
+/* ========================================================= */
 
-.pagina-interna-cafeteria .btn-cardapio {
-  background: #a67c8d;
-  color: white;
+.btn-adicionar {
+  background: #c8a1b1;
+  color: #2c1a0e;
   border: none;
-  padding: 15px 40px;
-  border-radius: 50px;
-  font-weight: bold;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 13px;
   cursor: pointer;
-  transition: 0.3s;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.pagina-interna-cafeteria .btn-cardapio:hover {
+.btn-adicionar:hover {
   background: #48372f;
+  color: #fff;
 }
 
-/* ================= MEDIA QUERIES (RESPONSIVIDADE) ================= */
+/* ========================================================= */
+/* ======================= CARRINHO ========================= */
+/* ========================================================= */
+
+.carrinho-section {
+  padding: 80px 8%;
+  background: #f9f8f6;
+  min-height: 70vh;
+}
+
+.carrinho-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.carrinho-item {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+
+.carrinho-item-info h3 {
+  margin-bottom: 5px;
+  color: #2c1a0e;
+}
+
+.carrinho-item-info p {
+  color: #777;
+  font-size: 14px;
+}
+
+.carrinho-item-acoes {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.carrinho-subtotal {
+  font-weight: 700;
+  color: #48372f;
+}
+
+.btn-remover {
+  background: transparent;
+  border: 1px solid #c8a1b1;
+  color: #c8a1b1;
+  padding: 7px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-remover:hover {
+  background: #c8a1b1;
+  color: white;
+}
+
+.carrinho-total {
+  margin-top: 30px;
+  background: #48372f;
+  color: white;
+  padding: 22px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.carrinho-acoes {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-continuar {
+  color: #c8a1b1;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-finalizar {
+  background: #c8a1b1;
+  color: #2c1a0e;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-finalizar:hover {
+  background: #b8889f;
+}
+
+/* ========================================================= */
+/* ==================== RESPONSIVIDADE ===================== */
+/* ========================================================= */
 
 @media (max-width: 992px) {
-  .pagina-interna-cafeteria .cafe-hero {
-    flex-direction: column; /* Empilha imagem e texto no mobile/tablet */
+  .cafeteria-hero {
+    flex-direction: column;
   }
 
-  .pagina-interna-cafeteria .hero-image {
-    height: 400px; /* Define uma altura fixa para a imagem no mobile */
-    order: -1; /* Coloca a imagem no topo, antes do texto */
+  .cafeteria-hero-img {
+    height: 350px;
+    order: -1;
   }
 
-  .pagina-interna-cafeteria .hero-content {
-    padding: 40px 5%;
+  .cafeteria-hero-content {
+    padding: 50px 5%;
     text-align: center;
+  }
+
+  .cafeteria-hero-content p {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .cardapio-section,
+  .carrinho-section {
+    padding: 50px 24px;
+  }
+
+  .carrinho-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .carrinho-item-acoes {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .carrinho-total {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .carrinho-acoes {
+    flex-direction: column;
+    gap: 18px;
+    align-items: stretch;
+  }
+
+  .btn-finalizar {
+    width: 100%;
   }
 }
 
 @media (max-width: 480px) {
-  .pagina-interna-cafeteria .menu-items {
-    grid-template-columns: 1fr; /* Um card por linha no celular */
+  .cardapio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .carrinho-flutuante {
+    right: 20px;
+    bottom: 20px;
+    padding: 10px 18px;
+    font-size: 13px;
   }
 }

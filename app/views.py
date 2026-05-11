@@ -4,6 +4,8 @@ from django.conf import settings
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
 from .models import Reserva
+from .models import Reserva, Produto, Pedido, ItemPedido
+from decimal import Decimal
 
 
 def buscar_livros():
@@ -50,17 +52,20 @@ def login(request):
     if request.method == 'POST':
         email = request.POST.get('email')
         senha = request.POST.get('senha')
+        next_url = request.POST.get('next', 'index')  # pega o next do form
         try:
             usuario = User.objects.get(email=email)
             user = authenticate(request, username=usuario.username, password=senha)
             if user is not None:
                 auth_login(request, user)
-                return redirect('index')
+                return redirect(next_url)  # redireciona para onde estava
             else:
                 erro = 'Senha incorreta.'
         except User.DoesNotExist:
             erro = 'E-mail não encontrado.'
-    return render(request, 'login.html', {'erro': erro})
+
+    next_url = request.GET.get('next', '')  # pega o next da URL
+    return render(request, 'login.html', {'erro': erro, 'next': next_url})
 
 
 def registro(request):
@@ -139,3 +144,140 @@ def cancelar_reserva(request, reserva_id):
         except Reserva.DoesNotExist:
             pass
     return redirect('reservas')
+
+def cafeteria(request):
+    produtos = Produto.objects.filter(disponivel=True)
+
+    # organiza por categoria
+    cardapio = {
+        'cafe': produtos.filter(categoria='cafe'),
+        'gelada': produtos.filter(categoria='gelada'),
+        'comida': produtos.filter(categoria='comida'),
+        'sobremesa': produtos.filter(categoria='sobremesa'),
+    }
+
+    # pega o carrinho da sessão
+    carrinho = request.session.get('carrinho', {})
+    total_itens = sum(item['quantidade'] for item in carrinho.values())
+
+    return render(request, 'cafeteria.html', {
+        'cardapio': cardapio,
+        'total_itens': total_itens,
+    })
+
+
+def adicionar_carrinho(request, produto_id):
+    if request.method == 'POST':
+        produto = Produto.objects.get(id=produto_id)
+        carrinho = request.session.get('carrinho', {})
+        chave = str(produto_id)
+
+        if chave in carrinho:
+            carrinho[chave]['quantidade'] += 1
+        else:
+            carrinho[chave] = {
+                'nome': produto.nome,
+                'preco': str(produto.preco),
+                'quantidade': 1,
+            }
+
+        request.session['carrinho'] = carrinho
+        request.session.modified = True
+
+    return redirect('cafeteria')
+
+
+def remover_carrinho(request, produto_id):
+    if request.method == 'POST':
+        carrinho = request.session.get('carrinho', {})
+        chave = str(produto_id)
+
+        if chave in carrinho:
+            if carrinho[chave]['quantidade'] > 1:
+                carrinho[chave]['quantidade'] -= 1
+            else:
+                del carrinho[chave]
+
+        request.session['carrinho'] = carrinho
+        request.session.modified = True
+
+    return redirect('carrinho')
+
+
+def carrinho(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    carrinho = request.session.get('carrinho', {})
+    itens = []
+    total = Decimal('0')
+
+    for produto_id, item in carrinho.items():
+        preco = Decimal(item['preco'])
+        quantidade = item['quantidade']
+        subtotal = preco * quantidade
+        total += subtotal
+        itens.append({
+            'produto_id': produto_id,
+            'nome': item['nome'],
+            'preco': preco,
+            'quantidade': quantidade,
+            'subtotal': subtotal,
+        })
+
+    return render(request, 'carrinho.html', {
+        'itens': itens,
+        'total': total,
+    })
+
+
+def finalizar_pedido(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    if request.method == 'POST':
+        carrinho = request.session.get('carrinho', {})
+
+        if not carrinho:
+            return redirect('cafeteria')
+
+        # calcula total
+        total = Decimal('0')
+        for item in carrinho.values():
+            total += Decimal(item['preco']) * item['quantidade']
+
+        # cria o pedido no banco
+        pedido = Pedido.objects.create(
+            usuario=request.user,
+            total=total,
+            status='confirmado'
+        )
+
+        # cria os itens do pedido
+        for produto_id, item in carrinho.items():
+            produto = Produto.objects.get(id=int(produto_id))
+            ItemPedido.objects.create(
+                pedido=pedido,
+                produto=produto,
+                quantidade=item['quantidade'],
+                preco_unitario=Decimal(item['preco'])
+            )
+
+        # limpa o carrinho
+        request.session['carrinho'] = {}
+        request.session.modified = True
+
+        return redirect('meus_pedidos')
+
+    return redirect('carrinho')
+
+
+def meus_pedidos(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+
+    pedidos = Pedido.objects.filter(
+        usuario=request.user
+    ).order_by('-data_pedido').prefetch_related('itens__produto')
+
+    return render(request, 'meus_pedidos.html', {'pedidos': pedidos})

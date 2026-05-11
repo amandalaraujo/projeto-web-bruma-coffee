@@ -1,140 +1,127 @@
-{% extends 'base.html' %}
-{% load static %} 
-{% block title %} Cafeteria — Bruma & Coffe {% endblock %} 
-{% block content %}
-<section class="pagina-interna-cafeteria">
-  <div class="cafe-hero">
-    <div class="hero-content">
-      <div class="section-tag">NOSSA CAFETERIA</div>
-      <h2 class="cafe-title">
-        O café perfeito para<br /><em>sua próxima página</em>
-      </h2>
-      <p class="cafe-desc">
-        Grãos selecionados, baristas apaixonados e um ambiente que convida você
-        a ficar mais um capítulo.
-      </p>
-    </div>
-    <div class="hero-image">
-      <img
-        src="https://images.pexels.com/photos/1002657/pexels-photo-1002657.jpeg"
-        alt="Cafeteria Bruma & Coffe"
-      />
-    </div>
+{% extends 'base.html' %} {% load static %} {% block title %}Cafeteria — Bruma &
+Coffee{% endblock %} {% block content %}
+
+<!-- HERO -->
+<section class="cafeteria-hero">
+  <div class="cafeteria-hero-content">
+    <span class="section-tag">NOSSA CAFETERIA</span>
+    <h1>O café perfeito para<br /><em>sua próxima página</em></h1>
+    <p>
+      Grãos selecionados, baristas apaixonados e um ambiente que convida você a
+      ficar mais um capítulo.
+    </p>
   </div>
-
-  <div class="cafe-products-container">
-    <div class="cafe-menu">
-      <div class="menu-category">
-        <h3 class="menu-category-title">Cafés</h3>
-        <div class="menu-items">
-          <div class="menu-item">
-            <div class="menu-item-name">Espresso</div>
-            <div class="menu-item-desc">Café intenso e encorpado</div>
-            <div class="menu-item-price">R$ 6,00</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Espresso Duplo</div>
-            <div class="menu-item-desc">Dose dupla de café arábica</div>
-            <div class="menu-item-price">R$ 8,00</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Cappuccino</div>
-            <div class="menu-item-desc">Leite vaporizado com café e espuma</div>
-            <div class="menu-item-price">R$ 14,00</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Latte</div>
-            <div class="menu-item-desc">Café suave com bastante leite</div>
-            <div class="menu-item-price">R$ 15,00</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-category">
-        <h3 class="menu-category-title">Bebidas Geladas</h3>
-        <div class="menu-items">
-          <div class="menu-item">
-            <div class="menu-item-name">Café Gelado</div>
-            <div class="menu-item-desc">
-              Café com gelo e toque de açúcar mascavo
-            </div>
-            <div class="menu-item-price">R$ 12,00</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Frappuccino</div>
-            <div class="menu-item-desc">Bebida cremosa com café e gelo</div>
-            <div class="menu-item-price">R$ 18,00</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Suco Natural</div>
-            <div class="menu-item-desc">Laranja, limão ou maracujá</div>
-            <div class="menu-item-price">R$ 10,00</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Mocha Gelado</div>
-            <div class="menu-item-desc">Café com chocolate e gelo</div>
-            <div class="menu-item-price">R$ 16,00</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-category">
-        <h3 class="menu-category-title">Comidas</h3>
-        <div class="menu-items">
-          <div class="menu-item">
-            <div class="menu-item-name">Pão de Queijo</div>
-            <div class="menu-item-desc">Quentinho e crocante</div>
-            <div class="menu-item-price">R$ 7,00</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Croissant</div>
-            <div class="menu-item-desc">Massa folhada amanteigada</div>
-            <div class="menu-item-price">R$ 12,00</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Sanduíche Natural</div>
-            <div class="menu-item-desc">Frango ou vegetariano</div>
-            <div class="menu-item-price">R$ 16,00</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Tostex de Presunto e Queijo</div>
-            <div class="menu-item-desc">Quente e crocante na chapa</div>
-            <div class="menu-item-price">R$ 14,00</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="menu-category">
-        <h3 class="menu-category-title">Sobremesas</h3>
-        <div class="menu-items">
-          <div class="menu-item">
-            <div class="menu-item-name">Brownie</div>
-            <div class="menu-item-desc">Chocolate meio amargo</div>
-            <div class="menu-item-price">R$ 12,00</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Cheesecake</div>
-            <div class="menu-item-desc">Com calda de frutas vermelhas</div>
-            <div class="menu-item-price">R$ 18,00</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Bolo do Dia</div>
-            <div class="menu-item-desc">Consulte sabores disponíveis</div>
-            <div class="menu-item-price">R$ 10,00</div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-name">Torta de Limão</div>
-            <div class="menu-item-desc">Refrescante com toque cítrico</div>
-            <div class="menu-item-price">R$ 13,00</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cafe-btn-wrapper">
-      <button class="btn-cardapio">VER CARDÁPIO COMPLETO</button>
-    </div>
+  <div class="cafeteria-hero-img">
+    <img
+      src="{% static 'assets/cafeteria/img-cafeteria-hero.png' %}"
+      alt="Cafeteria"
+    />
   </div>
 </section>
 
+<!-- CARRINHO FLUTUANTE -->
+{% if request.user.is_authenticated and total_itens > 0 %}
+<a href="{% url 'carrinho' %}" class="carrinho-flutuante">
+  Ver carrinho ({{ total_itens }} {{ total_itens|pluralize:"item,itens" }})
+</a>
+{% endif %}
+
+<!-- CARDÁPIO -->
+<section class="cardapio-section">
+  {% if cardapio.cafe %}
+  <div class="cardapio-categoria">
+    <h2 class="categoria-titulo">Cafés</h2>
+    <div class="cardapio-grid">
+      {% for produto in cardapio.cafe %}
+      <div class="produto-card">
+        <div class="produto-info">
+          <h3>{{ produto.nome }}</h3>
+          <p>{{ produto.descricao }}</p>
+          <span class="produto-preco">R$ {{ produto.preco }}</span>
+        </div>
+        {% if request.user.is_authenticated %}
+        <form method="POST" action="{% url 'adicionar_carrinho' produto.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn-adicionar">+ Adicionar</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}?next=/cafeteria/" class="btn-adicionar"
+          >Pedir</a
+        >
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %} {% if cardapio.gelada %}
+  <div class="cardapio-categoria">
+    <h2 class="categoria-titulo">Bebidas Geladas</h2>
+    <div class="cardapio-grid">
+      {% for produto in cardapio.gelada %}
+      <div class="produto-card">
+        <div class="produto-info">
+          <h3>{{ produto.nome }}</h3>
+          <p>{{ produto.descricao }}</p>
+          <span class="produto-preco">R$ {{ produto.preco }}</span>
+        </div>
+        {% if request.user.is_authenticated %}
+        <form method="POST" action="{% url 'adicionar_carrinho' produto.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn-adicionar">+ Adicionar</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}" class="btn-adicionar">Entrar para pedir</a>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %} {% if cardapio.comida %}
+  <div class="cardapio-categoria">
+    <h2 class="categoria-titulo">Comidas</h2>
+    <div class="cardapio-grid">
+      {% for produto in cardapio.comida %}
+      <div class="produto-card">
+        <div class="produto-info">
+          <h3>{{ produto.nome }}</h3>
+          <p>{{ produto.descricao }}</p>
+          <span class="produto-preco">R$ {{ produto.preco }}</span>
+        </div>
+        {% if request.user.is_authenticated %}
+        <form method="POST" action="{% url 'adicionar_carrinho' produto.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn-adicionar">+ Adicionar</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}" class="btn-adicionar">Entrar para pedir</a>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %} {% if cardapio.sobremesa %}
+  <div class="cardapio-categoria">
+    <h2 class="categoria-titulo">Sobremesas</h2>
+    <div class="cardapio-grid">
+      {% for produto in cardapio.sobremesa %}
+      <div class="produto-card">
+        <div class="produto-info">
+          <h3>{{ produto.nome }}</h3>
+          <p>{{ produto.descricao }}</p>
+          <span class="produto-preco">R$ {{ produto.preco }}</span>
+        </div>
+        {% if request.user.is_authenticated %}
+        <form method="POST" action="{% url 'adicionar_carrinho' produto.id %}">
+          {% csrf_token %}
+          <button type="submit" class="btn-adicionar">+ Adicionar</button>
+        </form>
+        {% else %}
+        <a href="{% url 'login' %}" class="btn-adicionar">Entrar para pedir</a>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %}
+</section>
 {% endblock %}

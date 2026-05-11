@@ -1,0 +1,178 @@
+[
+  {
+    "model": "app.produto",
+    "pk": 1,
+    "fields": {
+      "nome": "Espresso",
+      "descricao": "Café intenso e encorpado",
+      "preco": "6.00",
+      "categoria": "cafe",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 2,
+    "fields": {
+      "nome": "Espresso Duplo",
+      "descricao": "Dose dupla de café arábica",
+      "preco": "8.00",
+      "categoria": "cafe",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 3,
+    "fields": {
+      "nome": "Cappuccino",
+      "descricao": "Leite vaporizado com café e espuma",
+      "preco": "14.00",
+      "categoria": "cafe",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 4,
+    "fields": {
+      "nome": "Latte",
+      "descricao": "Café suave com bastante leite",
+      "preco": "15.00",
+      "categoria": "cafe",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 5,
+    "fields": {
+      "nome": "Café Gelado",
+      "descricao": "Café com gelo e toque de açúcar mascavo",
+      "preco": "12.00",
+      "categoria": "gelada",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 6,
+    "fields": {
+      "nome": "Frappuccino",
+      "descricao": "Bebida cremosa com café e gelo",
+      "preco": "18.00",
+      "categoria": "gelada",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 7,
+    "fields": {
+      "nome": "Suco Natural",
+      "descricao": "Laranja, limão ou maracujá",
+      "preco": "10.00",
+      "categoria": "gelada",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 8,
+    "fields": {
+      "nome": "Mocha Gelado",
+      "descricao": "Café com chocolate e gelo",
+      "preco": "16.00",
+      "categoria": "gelada",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 9,
+    "fields": {
+      "nome": "Pão de Queijo",
+      "descricao": "Quentinho e crocante",
+      "preco": "7.00",
+      "categoria": "comida",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 10,
+    "fields": {
+      "nome": "Croissant",
+      "descricao": "Massa folhada amanteigada",
+      "preco": "12.00",
+      "categoria": "comida",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 11,
+    "fields": {
+      "nome": "Sanduíche Natural",
+      "descricao": "Frango ou vegetariano",
+      "preco": "16.00",
+      "categoria": "comida",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 12,
+    "fields": {
+      "nome": "Tostex de Presunto e Queijo",
+      "descricao": "Quente e crocante na chapa",
+      "preco": "14.00",
+      "categoria": "comida",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 13,
+    "fields": {
+      "nome": "Brownie",
+      "descricao": "Chocolate meio amargo",
+      "preco": "12.00",
+      "categoria": "sobremesa",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 14,
+    "fields": {
+      "nome": "Cheesecake",
+      "descricao": "Com calda de frutas vermelhas",
+      "preco": "18.00",
+      "categoria": "sobremesa",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 15,
+    "fields": {
+      "nome": "Bolo do Dia",
+      "descricao": "Consulte sabores disponíveis",
+      "preco": "10.00",
+      "categoria": "sobremesa",
+      "disponivel": true
+    }
+  },
+  {
+    "model": "app.produto",
+    "pk": 16,
+    "fields": {
+      "nome": "Torta de Limão",
+      "descricao": "Refrescante com toque cítrico",
+      "preco": "13.00",
+      "categoria": "sobremesa",
+      "disponivel": true
+    }
+  }
+]

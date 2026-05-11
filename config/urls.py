@@ -11,6 +11,11 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('livraria/', views.livraria, name='livraria'),
     path('cafeteria/', views.cafeteria, name='cafeteria'),
+    path('carrinho/', views.carrinho, name='carrinho'),
+    path('carrinho/adicionar/<int:produto_id>/', views.adicionar_carrinho, name='adicionar_carrinho'),
+    path('carrinho/remover/<int:produto_id>/', views.remover_carrinho, name='remover_carrinho'),
+    path('carrinho/finalizar/', views.finalizar_pedido, name='finalizar_pedido'),
+    path('meus-pedidos/', views.meus_pedidos, name='meus_pedidos'),
     path('sobre/', views.sobre, name='sobre'),
     path('reservar/', views.reservar, name='reservar'),
     path('reservas/', views.reservas, name='reservas'),
@@ -18,7 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) \
   + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-
 
 def login(request):
     erro = None
