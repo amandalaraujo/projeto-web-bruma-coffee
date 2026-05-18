@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% block title %} Início — Bruma &
-Coffe {% endblock %} {% block content %}
+Coffee {% endblock %} {% block content %}
 <section class="home" id="inicio">
   <div class="hero-left">
     <h1>Um lugar para explorar, ler<br /><em>e se conectar.</em></h1>
@@ -82,37 +82,27 @@ Coffe {% endblock %} {% block content %}
       {% for book in books %}
       <div class="book-card">
         <div class="book-img">
-          {% if book.cover_url %}
-          <img src="{{ book.cover_url }}" alt="{{ book.title }}" />
+          {% if book.capa_url %}
+          <img src="{{ book.capa_url }}" alt="{{ book.titulo }}" />
           {% else %}
           <img
-            src="{% static 'assets/livros/img-livro-placeholder.png' %}"
-            alt="{{ book.title }}"
+            src="{% static 'assets/livros/default.png' %}"
+            alt="{{ book.titulo }}"
           />
           {% endif %}
         </div>
 
         <div class="book-info">
-          {% if book.title in reservados %}
+          {% if book.reservado %}
           <span class="book-status indisponivel">● INDISPONÍVEL</span>
           {% else %}
           <span class="book-status disponivel">● DISPONÍVEL</span>
           {% endif %}
 
-          <p class="book-title">{{ book.title }}</p>
-          <p class="book-author">{{ book.author }}</p>
+          <p class="book-title">{{ book.titulo }}</p>
+          <p class="book-author">{{ book.autor }}</p>
 
-          {% if book.title in reservados %}
-          <span class="book-reserve emprestado">RESERVADO</span>
-          {% else %}
-          <form method="POST" action="{% url 'reservar' %}">
-            {% csrf_token %}
-            <input type="hidden" name="titulo" value="{{ book.title }}" />
-            <input type="hidden" name="autor" value="{{ book.author }}" />
-            <input type="hidden" name="capa_url" value="{{ book.cover_url }}" />
-            <button type="submit" class="book-reserve">RESERVAR →</button>
-          </form>
-          {% endif %}
+          <a href="{% url 'livro_detalhes' book.codigo %}" class="book-reserve" style="text-decoration: none; display: block; text-align: center;">VER DETALHES →</a>
         </div>
       </div>
       {% endfor %}
