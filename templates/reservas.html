@@ -7,30 +7,31 @@ Bruma & Coffee{% endblock %} {% block content %}
   </div>
 
   <h3 class="reservas-subtitulo">Reservas Ativas</h3>
-  {% if ativas %}
+  {% if reservas %}
   <div class="reservas-grid">
-    {% for reserva in ativas %}
+    {% for reserva in reservas %}
     <div class="reserva-card ativa">
       <div class="reserva-capa">
-        {% if reserva.capa_url %}
-        <img src="{{ reserva.capa_url }}" alt="{{ reserva.titulo }}" />
+        {% if reserva.livro.capa_url %}
+        <img src="{{ reserva.livro.capa_url }}" alt="{{ reserva.livro.titulo }}" />
         {% else %}
         <img
-          src="{% static 'assets/livros/img-livro-placeholder.png' %}"
-          alt="{{ reserva.titulo }}"
+          src="{% static 'assets/livros/default.png' %}"
+          alt="{{ reserva.livro.titulo }}"
         />
         {% endif %}
       </div>
       <div class="reserva-info">
-        <h3>{{ reserva.titulo }}</h3>
-        <p class="reserva-autor">{{ reserva.autor }}</p>
+        <h3>{{ reserva.livro.titulo }}</h3>
+        <p class="reserva-autor">{{ reserva.livro.autor }}</p>
         <p class="reserva-data">
-          Reservado em {{ reserva.data_reserva|date:"d/m/Y" }}
+          <strong>Empréstimo:</strong> {{ reserva.data_emprestimo|date:"d/m/Y" }}<br>
+          <strong>Devolver até:</strong> {{ reserva.data_limite|date:"d/m/Y" }}
         </p>
         <span class="badge reservado">● Ativo</span>
         <form method="POST" action="{% url 'cancelar_reserva' reserva.id %}">
           {% csrf_token %}
-          <button type="submit" class="btn-cancelar">Cancelar reserva</button>
+          <button type="submit" class="btn-cancelar">Devolver / Cancelar</button>
         </form>
       </div>
     </div>
@@ -39,35 +40,7 @@ Bruma & Coffee{% endblock %} {% block content %}
   {% else %}
   <div class="sem-reservas-wrap">
     <p class="sem-reservas-ativas">Você não tem reservas ativas no momento.</p>
-    <a href="{% url 'index' %}" class="btn-explorar">Explorar Acervo</a>
-  </div>
-  {% endif %} {% if canceladas %}
-  <h3 class="reservas-subtitulo canceladas-titulo">
-    Histórico de Cancelamentos
-  </h3>
-  <div class="reservas-grid canceladas">
-    {% for reserva in canceladas %}
-    <div class="reserva-card cancelada">
-      <div class="reserva-capa">
-        {% if reserva.capa_url %}
-        <img src="{{ reserva.capa_url }}" alt="{{ reserva.titulo }}" />
-        {% else %}
-        <img
-          src="{% static 'assets/livros/img-livro-placeholder.png' %}"
-          alt="{{ reserva.titulo }}"
-        />
-        {% endif %}
-      </div>
-      <div class="reserva-info">
-        <h3>{{ reserva.titulo }}</h3>
-        <p class="reserva-autor">{{ reserva.autor }}</p>
-        <p class="reserva-data">
-          Cancelado em {{ reserva.data_reserva|date:"d/m/Y" }}
-        </p>
-        <span class="badge cancelado">● Cancelado</span>
-      </div>
-    </div>
-    {% endfor %}
+    <a href="{% url 'livraria' %}" class="btn-explorar">Explorar Acervo</a>
   </div>
   {% endif %}
 </section>

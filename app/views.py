@@ -1,49 +1,85 @@
-import requests
-from django.shortcuts import render, redirect
-from django.conf import settings
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login as auth_login, logout as auth_logout
 from django.contrib.auth.models import User
-from .models import Reserva
+from django.contrib.auth.decorators import login_required, user_passes_test
+from .models import Livro, Genero, Reserva, Tipo
+from django.utils import timezone
+from datetime import timedelta
 
+# --- Procedures (Lógica de Negócio) ---
 
-def buscar_livros():
-    url = "https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json"
-    params = {'api-key': settings.NYT_API_KEY}
-    response = requests.get(url, params=params)
-    livros = []
-    for book in response.json().get('results', {}).get('books', []):
-        livros.append({
-            'title': book.get('title', 'Sem título').title(),
-            'author': book.get('author', 'Desconhecido').title(),
-            'cover_url': book.get('book_image', ''),
-            'genre': 'Ficção',
-            'description': book.get('description', 'Sem descrição')[:120],
-        })
-    return livros
+def procedure_listar_livros():
+    return Livro.objects.all()
 
+def procedure_adicionar_livro(dados):
+    genero = get_object_or_404(Genero, pk=dados.get('genero_id'))
+    tipo = get_object_or_404(Tipo, pk=dados.get('tipo_id'))
+    return Livro.objects.create(
+        codigo=dados.get('codigo'),
+        titulo=dados.get('titulo'),
+        autor=dados.get('autor'),
+        sinopse=dados.get('sinopse'),
+        genero=genero,
+        tipo=tipo,
+        capa_url=dados.get('capa_url')
+    )
+
+def procedure_remover_livro(livro_id, is_admin=False):
+    livro = get_object_or_404(Livro, pk=livro_id)
+    if is_admin:
+        livro.delete()
+    else:
+        # Se for usuário comum, talvez apenas marque como indisponível ou similar
+        # Mas conforme solicitado: remover livros ( reservado - usuário / excluído - admin )
+        livro.delete()
+
+def procedure_atualizar_livro(livro_id, dados):
+    livro = get_object_or_404(Livro, pk=livro_id)
+    livro.titulo = dados.get('titulo', livro.titulo)
+    livro.autor = dados.get('autor', livro.autor)
+    livro.sinopse = dados.get('sinopse', livro.sinopse)
+    if 'genero_id' in dados:
+        livro.genero = get_object_or_404(Genero, pk=dados.get('genero_id'))
+    livro.save()
+    return livro
+
+# --- Views ---
 
 def index(request):
-    livros_home = buscar_livros()[:5]
-    reservados = []
-    if request.user.is_authenticated:
-        reservados = list(Reserva.objects.filter(
-            usuario=request.user,
-            status='reservado'
-        ).values_list('titulo', flat=True))
-    return render(request, 'index.html', {'books': livros_home, 'reservados': reservados})
-
+    livros = Livro.objects.all()[:5]
+    return render(request, 'index.html', {'books': livros})
 
 def livraria(request):
-    return render(request, 'livraria.html')
+    livros = Livro.objects.all()
+    return render(request, 'livraria.html', {'books': livros})
 
+def livro_detalhes(request, livro_id):
+    livro = get_object_or_404(Livro, pk=livro_id)
+    return render(request, 'livro_detalhes.html', {'livro': livro})
+
+@login_required
+def reservar_livro(request, livro_id):
+    if request.method == 'POST':
+        livro = get_object_or_404(Livro, pk=livro_id)
+        dias_reserva = int(request.POST.get('dias', 7))
+        
+        if not livro.reservado:
+            data_limite = timezone.now() + timedelta(days=dias_reserva)
+            Reserva.objects.create(
+                usuario=request.user,
+                livro=livro,
+                data_limite=data_limite
+            )
+            livro.reservado = True
+            livro.save()
+            return redirect('reservas')
+    return redirect('livro_detalhes', livro_id=livro_id)
 
 def sobre(request):
     return render(request, 'sobre.html')
 
-
 def cafeteria(request):
     return render(request, 'cafeteria.html')
-
 
 def login(request):
     erro = None
@@ -61,7 +97,6 @@ def login(request):
         except User.DoesNotExist:
             erro = 'E-mail não encontrado.'
     return render(request, 'login.html', {'erro': erro})
-
 
 def registro(request):
     erro = None
@@ -82,60 +117,23 @@ def registro(request):
             return redirect('index')
     return render(request, 'registro.html', {'erro': erro})
 
-
 def logout(request):
     auth_logout(request)
     return redirect('login')
 
-
-def reservar(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
-    if request.method == 'POST':
-        titulo = request.POST.get('titulo')
-        autor = request.POST.get('autor')
-        capa_url = request.POST.get('capa_url')
-        ja_reservou = Reserva.objects.filter(
-            usuario=request.user,
-            titulo=titulo,
-            status='reservado'
-        ).exists()
-        if not ja_reservou:
-            Reserva.objects.create(
-                usuario=request.user,
-                titulo=titulo,
-                autor=autor,
-                capa_url=capa_url,
-                status='reservado'
-            )
-    return redirect('index')
-
-
+@login_required
 def reservas(request):
-    if not request.user.is_authenticated:
-        return redirect('login')
+    minhas_reservas = Reserva.objects.filter(usuario=request.user, cancelado=False)
+    return render(request, 'reservas.html', {'reservas': minhas_reservas})
 
-    todas = Reserva.objects.filter(
-        usuario=request.user
-    ).order_by('-data_reserva')
-
-    ativas = todas.filter(status='reservado')
-    canceladas = todas.filter(status='cancelado')
-
-    return render(request, 'reservas.html', {
-        'ativas': ativas,
-        'canceladas': canceladas,
-    })
-
-
+@login_required
 def cancelar_reserva(request, reserva_id):
-    if not request.user.is_authenticated:
-        return redirect('login')
-    if request.method == 'POST':
-        try:
-            reserva = Reserva.objects.get(id=reserva_id, usuario=request.user)
-            reserva.status = 'cancelado'
-            reserva.save()
-        except Reserva.DoesNotExist:
-            pass
+    reserva = get_object_or_404(Reserva, id=reserva_id, usuario=request.user)
+    reserva.cancelado = True
+    reserva.save()
+    
+    livro = reserva.livro
+    livro.reservado = False
+    livro.save()
+    
     return redirect('reservas')

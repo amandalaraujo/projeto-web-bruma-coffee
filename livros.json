@@ -1,0 +1,244 @@
+[
+  { "model": "app.genero", "pk": 1, "fields": { "nome": "Ficção" } },
+  { "model": "app.genero", "pk": 2, "fields": { "nome": "Não-ficção" } },
+  { "model": "app.genero", "pk": 3, "fields": { "nome": "Suspense" } },
+  { "model": "app.genero", "pk": 4, "fields": { "nome": "Dark Side" } },
+  { "model": "app.genero", "pk": 5, "fields": { "nome": "Distopia" } },
+  { "model": "app.genero", "pk": 6, "fields": { "nome": "Fantasia" } },
+  { "model": "app.tipo", "pk": 1, "fields": { "nome": "Físico" } },
+  { "model": "app.tipo", "pk": 2, "fields": { "nome": "Digital" } },
+  {
+    "model": "app.livro",
+    "pk": 1,
+    "fields": {
+      "titulo": "O Pequeno Príncipe",
+      "autor": "Antoine de Saint-Exupéry",
+      "sinopse": "O Pequeno Príncipe vive sozinho no asteroide B-612, onde cuida de três vulcões e de uma rosa orgulhosa. Um dia, ele decide viajar pelo universo para conhecer outros mundos e aprender sobre a vida. Em sua jornada, ele encontra personagens curiosos que representam as fraquezas humanas, até chegar à Terra, onde conhece um aviador perdido no deserto do Saara. Uma história poética sobre amizade, amor e a importância de olhar com o coração.",
+      "genero": 1,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-livro-peq-principe.png"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 3,
+    "fields": {
+      "titulo": "Tudo é Rio",
+      "autor": "Carla Madeira",
+      "sinopse": "Com uma linguagem poética e arrebatadora, Tudo é Rio narra a história de um triângulo amoroso marcado pelo desejo, pela dor e pela busca por redenção. Dalva e Venâncio têm suas vidas transformadas por uma tragédia causada pelo ciúme doentio, enquanto a prostituta Lucy entra em cena para desafiar os limites do afeto. Uma obra intensa sobre a força das emoções e como elas moldam o destino, comparando a vida ao curso de um rio que tudo leva.",
+      "genero": 1,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-livro-tudo-e-rio.png"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 4,
+    "fields": {
+      "titulo": "Daisy Jones & The Six",
+      "autor": "Taylor Jenkins Reid",
+      "sinopse": "Narrado em formato de entrevista, o livro reconstrói a ascensão meteórica e a queda misteriosa de uma das maiores bandas de rock dos anos 70. Daisy Jones é uma jovem talentosa e rebelde que cruza o caminho da banda The Six, liderada pelo focado Billy Dunne. Entre o brilho dos palcos, os excessos dos bastidores e as tensões criativas, a obra explora a complexidade das relações humanas e o preço da fama, revelando finalmente o que causou o fim abrupto do grupo.",
+      "genero": 1,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-daisy-jones-and-the-six.png"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 5,
+    "fields": {
+      "titulo": "Sapiens",
+      "autor": "Yuval Noah Harari",
+      "sinopse": "Yuval Noah Harari traça uma jornada fascinante pela história da humanidade, desde o surgimento do Homo sapiens na África até os dias atuais. O livro analisa como as revoluções cognitiva, agrícola e científica transformaram nossa espécie e o planeta. Harari discute como mitos compartilhados, como dinheiro, religião e nações, permitiram a cooperação em larga escala, ao mesmo tempo em que questiona para onde estamos indo na era da inteligência artificial e da biotecnologia.",
+      "genero": 2,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-livro-sapiens.png"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 6,
+    "fields": {
+      "titulo": "Suicidas",
+      "autor": "Raphael Montes",
+      "sinopse": "Um thriller psicológico sombrio que narra o destino de nove jovens da elite carioca encontrados mortos em um porão. Eles decidiram participar de uma roleta-russa, e o livro alterna entre os diários de um dos participantes e o interrogatório das mães dos jovens. Raphael Montes constrói uma trama claustrofóbica que explora o niilismo, a amizade distorcida e os segredos obscuros de cada personagem, mantendo o suspense até a última página sobre as verdadeiras motivações do grupo.",
+      "genero": 3,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-suicidas-raphael-montes"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 7,
+    "fields": {
+      "titulo": "Jantar Secreto",
+      "autor": "Raphael Montes",
+      "sinopse": "Quatro amigos se mudam do interior para o Rio de Janeiro para estudar, mas logo se veem atolados em dívidas. Para conseguir dinheiro rápido, eles decidem organizar jantares clandestinos exclusivos para a elite da cidade. O que começa como uma solução desesperada se transforma em um pesadelo moral quando o cardápio passa a envolver carnes proibidas. Uma sátira social visceral que questiona os limites da ética humana e o consumo desenfreado em nossa sociedade.",
+      "genero": 3,
+      "tipo": 1,
+      "reservado": true,
+      "capa_url": "/static/assets/livros/img-jantar-secreto-raphael-montes.png"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 8,
+    "fields": {
+      "titulo": "Uma Mulher no Escuro",
+      "autor": "Raphael Montes",
+      "sinopse": "Victoria Bravo sobreviveu a um crime bárbaro na infância: sua família foi massacrada por um invasor, e ela foi a única sobrevivente. Anos depois, vivendo de forma isolada e traumatizada, ela começa a suspeitar que o assassino está de volta. Entre sessões de terapia e um novo relacionamento, Victoria precisa enfrentar seus maiores medos para descobrir a verdade. Um thriller policial ágil que explora traumas do passado e a busca por justiça em meio ao terror psicológico.",
+      "genero": 3,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-uma-mulher-no-escuro-raphael-montes.jpg"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 9,
+    "fields": {
+      "titulo": "Ex/Mulher",
+      "autor": "Tess Stimson",
+      "sinopse": "Um crime, duas suspeitas e uma teia de mentiras. Quando um homem é encontrado morto, sua ex-esposa e sua atual esposa são encontradas ao lado do corpo, ambas cobertas de sangue. O livro alterna entre as perspectivas das duas mulheres, revelando um histórico de obsessão, traição e rivalidade. À medida que a investigação avança, o leitor é levado a questionar quem realmente tinha o motivo mais forte para matar e até onde alguém iria para proteger sua família ou se vingar.",
+      "genero": 3,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-ex-mulher.jpg"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 10,
+    "fields": {
+      "titulo": "Manual de Assassinato Para Boas Garotas",
+      "autor": "Holly Jackson",
+      "sinopse": "Cinco anos atrás, a estudante Andie Bell foi assassinada, e todos na cidade acreditam que o culpado foi seu namorado, Sal Singh, que se suicidou logo depois. Pippa Fitz-Amobi não está tão convencida e decide investigar o caso para seu projeto final de escola. À medida que Pip cava mais fundo, ela descobre segredos que muitos gostariam de manter enterrados. Um mistério viciante que mostra que, em uma cidade pequena, a verdade pode ser muito mais perigosa do que parece.",
+      "genero": 3,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-manual-de-assassinatos.jpg"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 11,
+    "fields": {
+      "titulo": "O Assassinato da Família Hope",
+      "autor": "Stuart Turton",
+      "sinopse": "Em uma mansão isolada em uma ilha, um detetive é contratado para resolver um assassinato impossível. A família Hope foi massacrada décadas atrás, e agora o crime parece estar se repetindo. Com uma atmosfera gótica e cheia de reviravoltas, Stuart Turton entrega um quebra-cabeça literário onde ninguém é quem diz ser e o tempo é o maior inimigo. Um thriller policial que desafia a lógica do leitor e mergulha em segredos familiares profundos e sombrios.",
+      "genero": 3,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-o-assassinato-da-familia-hope.png"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 12,
+    "fields": {
+      "titulo": "Verity",
+      "autor": "Colleen Hoover",
+      "sinopse": "Lowen Ashleigh é uma escritora à beira da falência que recebe uma proposta irrecusável: terminar os livros de Verity Crawford, uma autora famosa que ficou incapacitada após um acidente. Ao se mudar para a mansão dos Crawford para pesquisar as notas de Verity, Lowen encontra uma autobiografia oculta que revela relatos perturbadores sobre a vida da autora. Dividida entre o medo e a atração pelo marido de Verity, Lowen mergulha em um suspense psicológico perturbador sobre verdade e manipulação.",
+      "genero": 3,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-verity-collen-hoover.png"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 13,
+    "fields": {
+      "titulo": "Teto para Dois",
+      "autor": "Colleen Hoover",
+      "sinopse": "Tiffy e Leon dividem o mesmo apartamento e a mesma cama, mas nunca se encontraram. Tiffy trabalha de dia e Leon trabalha à noite como enfermeiro. Eles se comunicam apenas por post-its espalhados pela casa, compartilhando detalhes de suas rotinas e problemas pessoais. O que começa como um arranjo financeiro desesperado se transforma em uma amizade profunda e, eventualmente, em algo mais. Uma história doce e emocionante sobre cura, novos começos e como o amor pode surgir nos lugares mais inesperados.",
+      "genero": 3,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-teto-para-dois.jpg"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 14,
+    "fields": {
+      "titulo": "BTK: A Máscara da Maldade",
+      "autor": "Roy Wenzl",
+      "sinopse": "A história real e aterrorizante de Dennis Rader, o serial killer conhecido como BTK (Bind, Torture, Kill), que aterrorizou a cidade de Wichita por mais de 30 anos. O livro detalha como Rader conseguia manter uma fachada de cidadão exemplar, sendo líder de escoteiros e presidente de sua igreja, enquanto cometia crimes brutais. Através de uma investigação minuciosa, os autores exploram a mente do assassino e o trabalho policial que finalmente o levou à justiça décadas depois.",
+      "genero": 4,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-btk-a-mascara-da-maldade.png"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 15,
+    "fields": {
+      "titulo": "Jogos Vorazes",
+      "autor": "Suzanne Collins",
+      "sinopse": "Em um futuro distópico, as ruínas da América do Norte deram lugar a Panem, uma nação dividida em 12 distritos controlados pela Capital. Como punição por uma rebelião passada, cada distrito deve enviar dois jovens para participar dos Jogos Vorazes, um reality show mortal onde apenas um sobrevive. Katniss Everdeen se voluntaria para salvar sua irmã e precisa usar todas as suas habilidades de caça para sobreviver em uma arena cheia de perigos e manipulações políticas.",
+      "genero": 5,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-jogos-vorazes.png"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 16,
+    "fields": {
+      "titulo": "Battle Royale",
+      "autor": "Koushun Takami",
+      "sinopse": "Em uma versão autoritária do Japão, uma turma de estudantes do nono ano é levada para uma ilha isolada para participar do Programa. Eles recebem suprimentos e uma arma aleatória, sendo forçados a se matar até que reste apenas um sobrevivente. Se mais de um estudante estiver vivo após três dias, as coleiras explosivas em seus pescoços serão detonadas. Um thriller visceral e brutal que examina a natureza humana sob pressão extrema e a perda da inocência.",
+      "genero": 5,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-battle-royale.jpg"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 17,
+    "fields": {
+      "titulo": "Corte de Espinhos e Rosas",
+      "autor": "Sarah J. Maas",
+      "sinopse": "Feyre Archeron é uma caçadora que mata um lobo na floresta para alimentar sua família. No entanto, o lobo era na verdade uma criatura feérica, e Feyre é levada como prisioneira para o reino mágico de Prythian por Tamlin, um dos Grão-Feéricos. À medida que ela se adapta à sua nova vida, Feyre descobre que uma maldição antiga ameaça destruir todo o reino e precisa lutar para salvar aqueles que aprendeu a amar. Uma releitura sombria e sensual de A Bela e a Fera.",
+      "genero": 6,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-acotar-corte-de-Espinhos-e-Rosas"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 18,
+    "fields": {
+      "titulo": "A Vida Invisível de Addie LaRue",
+      "autor": "V. E. Schwab",
+      "sinopse": "França, 1714. Em um momento de desespero, Addie LaRue faz um pacto com um deus das trevas para viver para sempre e ser livre. No entanto, o preço é alto: ela é condenada a ser esquecida por todos que conhece. Addie atravessa séculos e continentes, deixando marcas sutis na história, até que, 300 anos depois, em uma livraria em Nova York, ela encontra um rapaz que se lembra de seu nome. Uma meditação emocionante sobre memória, arte e o desejo humano de deixar um legado.",
+      "genero": 6,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-a-vida-invisivel-addie-larue.png"
+    }
+  },
+  {
+    "model": "app.livro",
+    "pk": 19,
+    "fields": {
+      "titulo": "O Príncipe Cruel",
+      "autor": "Holly Black",
+      "sinopse": "Jude tinha apenas sete anos quando seus pais foram assassinados e ela e suas irmãs foram levadas para viver no Reino das Fadas. Apesar de ser uma mortal desprezada, Jude deseja pertencer à corte e provar seu valor. Para isso, ela desafia o príncipe Cardan, o filho mais jovem e cruel do Grande Rei. Envolvida em intrigas políticas e traições perigosas, Jude descobre que sua própria capacidade de ser cruel pode ser sua única chance de sobrevivência e poder.",
+      "genero": 6,
+      "tipo": 1,
+      "reservado": false,
+      "capa_url": "/static/assets/livros/img-o-principe-cruel.jpg"
+    }
+  }
+]
