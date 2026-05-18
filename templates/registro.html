@@ -1,0 +1,150 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block title %}Criar conta — Bruma & Coffee{% endblock %} 
+
+{% block content %}
+<section class="login-section">
+  <div class="login-brand">
+    <span class="section-tag">Crie sua conta</span>
+    <h1 class="login-title">Bem-vinda à <em>Bruma & Coffee</em></h1>
+    <p class="login-subtitle">
+      Crie sua conta gratuita e comece a reservar livros hoje mesmo.
+    </p>
+    <div class="login-features">
+      <div class="login-feature-item">
+        <span class="login-feature-icon">✦</span>
+        <span>Acesse seu histórico de empréstimos</span>
+      </div>
+      <div class="login-feature-item">
+        <span class="login-feature-icon">✦</span>
+        <span>Reserve livros com um clique</span>
+      </div>
+      <div class="login-feature-item">
+        <span class="login-feature-icon">✦</span>
+        <span>Acompanhe novidades do acervo</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="login-divider"></div>
+
+  <div class="login-form-wrap">
+    <div class="login-card" style="max-width: 500px; width: 100%;">
+      <div class="login-card-header">
+        <h2>Criar conta</h2>
+        <p>Preencha os dados detalhados abaixo</p>
+      </div>
+
+      <form method="POST" id="registroForm">
+        {% csrf_token %}
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-field">
+              <label for="nome">Primeiro Nome*</label>
+              <input type="text" id="nome" name="nome" placeholder="Ex: Maria" required />
+            </div>
+            <div class="form-field">
+              <label for="sobrenome">Sobrenome*</label>
+              <input type="text" id="sobrenome" name="sobrenome" placeholder="Ex: Silva" required />
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-field">
+              <label for="data_nascimento">Data de Nascimento</label>
+              <input type="date" id="data_nascimento" name="data_nascimento" />
+            </div>
+            <div class="form-field">
+              <label for="telefone">Telefone</label>
+              <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" />
+            </div>
+        </div>
+
+        <div class="form-field">
+          <label for="email">E-mail*</label>
+          <input type="email" id="email" name="email" placeholder="seu@email.com" required />
+        </div>
+
+        <div class="form-field">
+            <label for="endereco">Endereço Completo</label>
+            <input type="text" id="endereco" name="endereco" placeholder="Rua, número, bairro, cidade..." />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+            <div class="form-field" style="position: relative;">
+              <label for="senha">Senha*</label>
+              <input type="password" id="senha" name="senha" placeholder="••••••••" required />
+              <span class="toggle-password" onclick="togglePassword('senha')" style="position: absolute; right: 10px; top: 38px; cursor: pointer; opacity: 0.6;">👁️</span>
+            </div>
+            <div class="form-field" style="position: relative;">
+              <label for="confirmar_senha">Confirmar Senha*</label>
+              <input type="password" id="confirmar_senha" name="confirmar_senha" placeholder="••••••••" required />
+              <span class="toggle-password" onclick="togglePassword('confirmar_senha')" style="position: absolute; right: 10px; top: 38px; cursor: pointer; opacity: 0.6;">👁️</span>
+            </div>
+        </div>
+
+        {% if erro %}
+        <p id="errorMessage" style="color: #e74c3c; font-size: 13px; margin-top: 10px; font-weight: 500;">{{ erro }}</p>
+        {% endif %}
+
+        <button type="submit" class="btn-login-submit" style="margin-top: 20px;">Criar conta</button>
+      </form>
+
+      <p class="login-register">
+        Já tem conta? <a href="{% url 'login' %}">Entrar</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+function togglePassword(fieldId) {
+    const field = document.getElementById(fieldId);
+    const icon = field.nextElementSibling;
+    
+    if (field.type === "password") {
+        field.type = "text";
+        icon.textContent = "🔒"; 
+    } else {
+        field.type = "password";
+        icon.textContent = "👁️";
+    }
+}
+
+// Máscara de telefone
+document.getElementById('telefone').addEventListener('input', function (e) {
+    let x = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+    e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+});
+
+document.getElementById('registroForm').addEventListener('submit', function(e) {
+    const senha = document.getElementById('senha').value;
+    const confirma = document.getElementById('confirmar_senha').value;
+    
+    if (senha !== confirma) {
+        e.preventDefault();
+        alert('As senhas não coincidem!');
+    }
+});
+</script>
+
+<style>
+    .form-field input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 14px;
+    }
+    .form-field label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: 600;
+        font-size: 13px;
+    }
+    .form-field {
+        margin-bottom: 15px;
+    }
+</style>
+{% endblock %}

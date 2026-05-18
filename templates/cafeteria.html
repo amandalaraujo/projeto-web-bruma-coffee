@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% load static %} 
+{% block title %} Cafeteria — Bruma & Coffe {% endblock %} 
+{% block content %}
+<section class="pagina-interna-cafeteria">
+  <div class="cafe-hero">
+    <div class="hero-content">
+      <div class="section-tag">NOSSA CAFETERIA</div>
+      <h2 class="cafe-title">
+        O café perfeito para<br /><em>sua próxima página</em>
+      </h2>
+      <p class="cafe-desc">
+        Grãos selecionados, baristas apaixonados e um ambiente que convida você
+        a ficar mais um capítulo.
+      </p>
+    </div>
+    <div class="hero-image">
+      <img
+        src="https://images.pexels.com/photos/1002657/pexels-photo-1002657.jpeg"
+        alt="Cafeteria Bruma & Coffe"
+      />
+    </div>
+  </div>
+
+  <div class="cafe-products-container">
+    <div class="cafe-menu">
+      <div class="menu-category">
+        <h3 class="menu-category-title">Cafés</h3>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-name">Espresso</div>
+            <div class="menu-item-desc">Café intenso e encorpado</div>
+            <div class="menu-item-price">R$ 6,00</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Espresso Duplo</div>
+            <div class="menu-item-desc">Dose dupla de café arábica</div>
+            <div class="menu-item-price">R$ 8,00</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Cappuccino</div>
+            <div class="menu-item-desc">Leite vaporizado com café e espuma</div>
+            <div class="menu-item-price">R$ 14,00</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Latte</div>
+            <div class="menu-item-desc">Café suave com bastante leite</div>
+            <div class="menu-item-price">R$ 15,00</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3 class="menu-category-title">Bebidas Geladas</h3>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-name">Café Gelado</div>
+            <div class="menu-item-desc">
+              Café com gelo e toque de açúcar mascavo
+            </div>
+            <div class="menu-item-price">R$ 12,00</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Frappuccino</div>
+            <div class="menu-item-desc">Bebida cremosa com café e gelo</div>
+            <div class="menu-item-price">R$ 18,00</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Suco Natural</div>
+            <div class="menu-item-desc">Laranja, limão ou maracujá</div>
+            <div class="menu-item-price">R$ 10,00</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Mocha Gelado</div>
+            <div class="menu-item-desc">Café com chocolate e gelo</div>
+            <div class="menu-item-price">R$ 16,00</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3 class="menu-category-title">Comidas</h3>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-name">Pão de Queijo</div>
+            <div class="menu-item-desc">Quentinho e crocante</div>
+            <div class="menu-item-price">R$ 7,00</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Croissant</div>
+            <div class="menu-item-desc">Massa folhada amanteigada</div>
+            <div class="menu-item-price">R$ 12,00</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Sanduíche Natural</div>
+            <div class="menu-item-desc">Frango ou vegetariano</div>
+            <div class="menu-item-price">R$ 16,00</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Tostex de Presunto e Queijo</div>
+            <div class="menu-item-desc">Quente e crocante na chapa</div>
+            <div class="menu-item-price">R$ 14,00</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-category">
+        <h3 class="menu-category-title">Sobremesas</h3>
+        <div class="menu-items">
+          <div class="menu-item">
+            <div class="menu-item-name">Brownie</div>
+            <div class="menu-item-desc">Chocolate meio amargo</div>
+            <div class="menu-item-price">R$ 12,00</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Cheesecake</div>
+            <div class="menu-item-desc">Com calda de frutas vermelhas</div>
+            <div class="menu-item-price">R$ 18,00</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Bolo do Dia</div>
+            <div class="menu-item-desc">Consulte sabores disponíveis</div>
+            <div class="menu-item-price">R$ 10,00</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-name">Torta de Limão</div>
+            <div class="menu-item-desc">Refrescante com toque cítrico</div>
+            <div class="menu-item-price">R$ 13,00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cafe-btn-wrapper">
+      <button class="btn-cardapio">VER CARDÁPIO COMPLETO</button>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,165 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Sobre — Bruma 
+& Coffe{% endblock %} {% block content %}
+
+<section class="page-sobre">
+  <div class="container-sobre">
+    <div class="header-left">
+      <h3>SOBRE NÓS</h3>
+      <h2>Mais que uma biblioteca - <em>um lugar que acolhe.</em></h2>
+      <p>
+        Desde 2023, unimos o amor pelos livros e o calor de um bom café num
+        espaço único para a comunidade.
+      </p>
+    </div>
+
+    <div class="header-right">
+      <img
+        src="{% static 'assets/sobre/img-sobre.png' %}"
+        alt="Interior biblioteca"
+      />
+    </div>
+
+    <div class="cards-sobre">
+      <div class="card-sobre">
+        <h4>2023</h4>
+        <p>Fundação</p>
+      </div>
+
+      <div class="card-sobre">
+        <h4>1.2K</h4>
+        <p>Títulos</p>
+      </div>
+
+      <div class="card-sobre">
+        <h4>2K+</h4>
+        <p>Visitantes</p>
+      </div>
+
+      <div class="card-sobre">
+        <h4>30+</h4>
+        <p>Eventos</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-historia">
+    <div class="historia-wrapper">
+      <div class="historia-left">
+        <h3>NOSSA HISTÓRIA</h3>
+        <h2>Uma história construída <em>página por página</em></h2>
+        <p>
+          Nascemos da paixão por literatura e gastronomia, que acreditavam que
+          leitura é melhor acompanhada de um bom café. Hoje somos ponto de
+          encontro para estudantes, escritores, curiosos e amantes da boa mesa.
+        </p>
+      </div>
+      <div class="historia-right">
+        <ul class="timeline">
+          <li class="timeline-item">
+            <h5>2023</h5>
+            <p>Inauguração com 100 títulos e 4 mesas</p>
+          </li>
+          <li class="timeline-item">
+            <h5>2024</h5>
+            <p>Expansão da cafeteria e acervo digital</p>
+          </li>
+          <li class="timeline-item">
+            <h5>2025</h5>
+            <p>Sistema de empréstimos online e clube do livro</p>
+          </li>
+          <li class="timeline-item">
+            <h5>2026</h5>
+            <p>1.200 títulos e 2.000 visitas por ano</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cards-missao">
+      <div class="card-missao">
+        <h3>Missão</h3>
+        <p>
+          Democratizar o acesso à cultura e ao conhecimento, criando um ambiente
+          acolhedor para todos.
+        </p>
+      </div>
+      <div class="card-missao">
+        <h3>Visão</h3>
+        <p>
+          Ser o principal espaço cultural da cidade, referência em leitura,
+          gastronomia e comunidade.
+        </p>
+      </div>
+      <div class="card-missao">
+        <h3>Valores</h3>
+        <ul>
+          <li>Acolhimento</li>
+          <li>Cultura</li>
+          <li>Sustentabilidade</li>
+          <li>Comunidade</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGINA NOSSA EQUIPE-->
+  <section class="container-equipe">
+    <h3>Equipe de Desenvolvimento do Projeto</h3>
+    <div class="equipe-grid">
+      <div class="card-integrante">
+        <img
+          src="https://avatars.githubusercontent.com/u/141675647?s=400&u=8d8b1abac4c556936958e282a744c1917e5c1f43&v=4"
+        />
+        <h5>Amanda Araújo</h5>
+        <p>Estudante de Ciência da Computação</p>
+      </div>
+
+      <div class="card-integrante">
+        <img src="https://avatars.githubusercontent.com/u/167646665?v=4" />
+        <h5>Guilherme Esteves</h5>
+        <p>Estudante de Ciência da Computação</p>
+      </div>
+
+      <div class="card-integrante">
+        <img src="https://avatars.githubusercontent.com/u/126613089?v=4" />
+        <h5>Tauane Carolina Miranda</h5>
+        <p>Estudante de Ciência da Computação</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAGINA LOCALIZAÇÃO -->
+  <section class="container-location">
+    <h3>ONDE ESTAMOS</h3>
+    <p class="endereco">
+      R. José Curvelo da Silveira Júnior, 110 - Jardim California, Ribeirão
+      Preto - SP
+    </p>
+    <div class="horarios">
+      <span>Seg-Sex: 9h–21h</span>
+      <span>Sáb: 10h–18h</span>
+      <span>Dom: 11h–16h</span>
+    </div>
+    <img
+      src="https://www.baraodemaua.br/img/institucional/timeline/2022-2.jpg"
+    />
+  </section>
+
+  <!-- PAGINA FINAL -->
+  <section class="sobre-footer">
+    <h3>VENHA NOS VISITAR</h3>
+    <h2>Sua próxima história começa <em>aqui dentro.</em></h2>
+    <p>Explore o acervo, tome um café e faça parte da nossa comunidade.</p>
+
+    <div class="sobre-footer-btns">
+      <div>
+        <a href="{% url 'livraria' %}"><button>EXPLORAR ACERVO</button></a>
+      </div>
+      <div>
+        <a href="{% url 'cafeteria' %}"><button>VER CARDÁPIO</button></a>
+      </div>
+    </div>
+  </section>
+</section>
+
+{% endblock %}

@@ -1,0 +1,606 @@
+/* ================= HERO ================= */
+.home {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: #48372f;
+  min-height: 520px;
+  /* SEM overflow: hidden aqui — aplicado só no desktop abaixo */
+}
+
+/* overflow: hidden só no desktop, onde os cards são position: absolute */
+@media (min-width: 769px) {
+  .home {
+    overflow: hidden;
+  }
+}
+
+.hero-left {
+  flex: 1;
+  padding: 80px 60px 80px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 50%;
+}
+
+.hero-left h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(32px, 3.5vw, 52px);
+  color: #f4f3ee;
+  line-height: 1.2;
+}
+
+.hero-left em {
+  color: #c8a1b1;
+  font-style: italic;
+}
+
+.hero-left p {
+  margin-top: 20px;
+  color: #f4f3ee;
+  font-size: 16px;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+.hero-btns {
+  margin-top: 36px;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-acervo {
+  font-family: "DM Sans", sans-serif;
+  background-color: #c8a1b1;
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  color: #2c1a0e;
+  text-decoration: none;
+}
+
+.btn-cafeteria {
+  font-family: "DM Sans", sans-serif;
+  background-color: transparent;
+  border: 2px solid #c8a1b1;
+  color: #c8a1b1;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+}
+
+/* ================= HERO IMAGE + CARDS ================= */
+.hero-right {
+  position: relative;
+  flex: 1;
+  max-width: 50%;
+  overflow: hidden;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+}
+
+.hero-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75);
+  display: block;
+}
+
+.hero-cards-bar {
+  position: absolute;
+  top: 50%;
+  left: 40px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.hero-card {
+  background-color: #c8a1b1;
+  padding: 20px 24px;
+  width: 130px;
+  border-radius: 8px;
+  text-align: center;
+  color: #2c1a0e;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-card-num {
+  font-size: 22px;
+  font-weight: bold;
+  font-family: "Playfair Display", serif;
+  display: block;
+}
+
+.hero-card-label {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: block;
+}
+
+/* ================= FEATURES ================= */
+.features {
+  padding: 100px 80px;
+  background-color: #f4f3ee;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.features-card {
+  background: #6d6943;
+  padding: 30px 28px;
+  border-radius: 8px;
+  color: #f4f3ee;
+  position: relative;
+}
+
+.features-card::before {
+  content: attr(data-num);
+  display: block;
+  font-weight: bold;
+  color: rgba(244, 243, 238, 0.35);
+  font-size: 48px;
+  font-family: "Playfair Display", serif;
+  text-align: right;
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.features-card h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #f4f3ee;
+}
+
+.features-card p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(244, 243, 238, 0.85);
+}
+
+/* ================= BOOKS (PREVIEW) ================= */
+.book {
+  padding: 100px 80px;
+  background-color: #48372f;
+  color: #f4f3ee;
+}
+
+.book .section-header h2 {
+  color: #f4f3ee;
+}
+
+.book-grid-wrapper {
+  display: flex;
+  justify-content: center; /* centraliza o container */
+  overflow-x: auto;
+}
+
+.book-grid {
+  display: flex;
+  gap: 0;
+  align-items: stretch;
+  background-color: #f4f3ee;
+  border-radius: 10px;
+  padding: 30px 40px;
+  width: fit-content;
+  max-width: 100%;
+}
+
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 24px;
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+  width: 180px;
+}
+
+.book-card:last-child {
+  border-right: none;
+}
+
+.book-img {
+  width: 120px;
+  height: 170px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.book-img img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  border-radius: 3px;
+  box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.book-info {
+  text-align: center;
+  color: #070d0d;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.book-status {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.book-status.disponivel {
+  color: #2c7a4e;
+}
+
+.book-status.indisponivel {
+  color: #c8a1b1;
+}
+
+.book-title {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px;
+  line-height: 1.4;
+  height: 40px; /* altura fixa para 2 linhas */
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* máximo 2 linhas */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.book-author {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 12px;
+  height: 20px; /* altura fixa para 1 linha */
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+.book-reserve {
+  display: block;
+  font-family: "DM Sans", sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  color: #070d0d;
+  text-decoration: none;
+  margin-top: auto;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.book-reserve.emprestado {
+  color: #999;
+  cursor: default;
+}
+
+.section-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/* ================= CAFETERIA ================= */
+.cafeteria {
+  padding: 100px 80px;
+  background-color: #f4f3ee;
+}
+
+.cafe-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 80px;
+}
+
+.cafe-left {
+  flex: 1;
+  max-width: 380px;
+}
+
+.cafe-left .section-tag {
+  text-align: left;
+  display: block;
+  margin-bottom: 16px;
+}
+
+.cafe-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 2.8vw, 40px);
+  line-height: 1.25;
+  color: #070d0d;
+  margin-bottom: 20px;
+}
+
+.cafe-title em {
+  color: #c8a1b1;
+  font-style: italic;
+}
+
+.cafe-desc {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #333;
+  margin-top: 16px;
+}
+
+.cafe-right {
+  flex: 1;
+  max-width: 480px;
+}
+
+.cafe-menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.menu-item {
+  background-color: #6d6943;
+  color: #f4f3ee;
+  padding: 24px 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.menu-item-name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.menu-item-desc {
+  font-size: 13px;
+  color: rgba(244, 243, 238, 0.75);
+}
+
+.menu-item-price {
+  margin-top: 8px;
+  color: #c8a1b1;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.cafe-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 16px;
+}
+
+.btn-cardapio {
+  font-family: "DM Sans", sans-serif;
+  font-weight: bold;
+  background-color: #c8a1b1;
+  padding: 12px 22px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  letter-spacing: 0.5px;
+}
+
+/* ================= MEDIA QUERIES ================= */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .home,
+  .features,
+  .book,
+  .cafeteria {
+    padding: 60px 40px;
+  }
+
+  .hero-left {
+    padding: 40px 20px 40px 0;
+  }
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-cards-bar {
+    left: 10px;
+    gap: 10px;
+  }
+
+  .hero-card {
+    width: 100px;
+    padding: 14px 10px;
+  }
+}
+
+/* Mobile — bloco único e consolidado */
+@media (max-width: 768px) {
+  /* --- HERO --- */
+  .home {
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+    padding: 40px 20px;
+  }
+
+  .hero-left {
+    max-width: 100%;
+    padding: 0 0 30px 0;
+    align-items: center;
+  }
+
+  .hero-left h1 {
+    font-size: 32px;
+  }
+
+  .hero-left p {
+    margin: 20px auto 0;
+    max-width: 100%;
+  }
+
+  .hero-btns {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* hero-right: remove position relative e overflow hidden */
+  .hero-right {
+    position: static;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  /* contém a imagem com overflow interno */
+  .hero-img {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+
+  .hero-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  /* cards: saem do absolute, ficam abaixo da imagem em linha */
+  .hero-cards-bar {
+    position: static;
+    transform: none;
+    left: auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 16px 0 0 0;
+    margin-top: 0;
+  }
+
+  .hero-card {
+    flex: 1;
+    min-width: 0;
+    max-width: 110px;
+    width: auto;
+    padding: 12px 8px;
+  }
+
+  .hero-card-num {
+    font-size: 18px;
+  }
+
+  .hero-card-label {
+    font-size: 10px;
+  }
+
+  /* --- FEATURES --- */
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- BOOKS --- */
+  .book-grid {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .book-card {
+    border-right: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 30px;
+    width: 100%;
+  }
+
+  .book-card:last-child {
+    border-bottom: none;
+  }
+
+  /* --- CAFETERIA --- */
+  .cafeteria {
+    padding: 60px 20px;
+  }
+
+  .cafe-layout {
+    flex-direction: column;
+    gap: 40px;
+    text-align: center;
+  }
+
+  .cafe-left,
+  .cafe-right {
+    max-width: 100%;
+  }
+
+  .cafe-left .section-tag {
+    text-align: center;
+  }
+
+  .cafe-menu-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .menu-item {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Cafeteria centralizada no mobile — adicionado */
+@media (max-width: 768px) {
+  .cafe-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .cafe-menu-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .cafe-btn-wrapper {
+    width: 100%;
+    max-width: 320px;
+  }
+}

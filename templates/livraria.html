@@ -1,0 +1,255 @@
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block title %}Livraria — Bruma & Coffee{% endblock %} 
+
+{% block content %}
+
+<!-- HERO DA LIVRARIA -->
+<section class="livraria-hero">
+  <div class="livraria-hero-content">
+    <span class="section-tag">NOSSO ACERVO</span>
+    <h1>Descubra sua próxima<br /><em>grande leitura</em></h1>
+    <p>
+      Mais de 1.200 títulos disponíveis para empréstimo. Explore por categoria,
+      autor ou título.
+    </p>
+    <div class="search-container-wrapper">
+        <form action="{% url 'livraria' %}" method="GET" class="livraria-search" id="searchForm">
+          <input
+            type="text"
+            name="q"
+            id="searchInput"
+            value="{{ query|default:'' }}"
+            placeholder="Buscar livro ou autor..."
+            class="search-input"
+            autocomplete="off"
+          />
+          {% if genero_selecionado %}
+          <input type="hidden" name="genero" value="{{ genero_selecionado }}">
+          {% endif %}
+          <button type="submit" class="btn-buscar">BUSCAR</button>
+        </form>
+        <div id="autocomplete-results" class="autocomplete-suggestions"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTROS DE CATEGORIA -->
+<section class="livraria-categorias">
+  <div class="categorias-wrapper">
+    <a href="{% url 'livraria' %}{% if query %}?q={{ query }}{% endif %}" 
+       class="categoria-btn {% if not genero_selecionado %}active{% endif %}" 
+       style="text-decoration: none;">Todos</a>
+    
+    {% for genero in generos %}
+    <a href="{% url 'livraria' %}?genero={{ genero.codigo }}{% if query %}&q={{ query }}{% endif %}" 
+       class="categoria-btn {% if genero_selecionado == genero.codigo %}active{% endif %}"
+       style="text-decoration: none;">
+       {{ genero.nome }}
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- DESTAQUES DA SEMANA -->
+<section class="livraria-destaques">
+  <div class="livraria-section-header">
+    <span class="section-tag">
+        {% if query or genero_selecionado %} RESULTADOS DA BUSCA {% else %} DESTAQUES DA SEMANA {% endif %}
+    </span>
+    <h2>
+        {% if query %} Buscando por: "<em>{{ query }}</em>" 
+        {% elif genero_selecionado %} Categoria selecionada
+        {% else %} Mais emprestados<br /><em>esta semana</em> {% endif %}
+    </h2>
+  </div>
+
+  <div class="book-grid-full">
+    {% for livro in books %}
+    <div class="book-card-full">
+      <div class="book-cover">
+        {% if livro.capa_url %}
+        <img src="{{ livro.capa_url }}" alt="{{ livro.titulo }}" />
+        {% else %}
+        <img src="{% static 'assets/livros/default.png' %}" alt="{{ livro.titulo }}" />
+        {% endif %}
+        
+        {% if livro.reservado %}
+        <span class="book-badge emprestado">RESERVADO</span>
+        {% else %}
+        <span class="book-badge disponivel">DISPONÍVEL</span>
+        {% endif %}
+
+        <!-- Botão de Favorito Integrado -->
+        <a href="{% url 'favoritar_livro' livro.codigo %}" class="btn-favorito-overlay" title="Favoritar">
+            {% if user.is_authenticated and user in livro.favoritado_por.all %}
+            ❤️
+            {% else %}
+            🤍
+            {% endif %}
+        </a>
+      </div>
+      <div class="book-details">
+        <p class="book-genre">{{ livro.genero.nome }} · {{ livro.tipo.nome }}</p>
+        <h3 class="book-title-full">{{ livro.titulo }}</h3>
+        <p class="book-author-full">{{ livro.autor }}</p>
+        <p class="book-desc">
+          {{ livro.sinopse|truncatechars:150 }}
+        </p>
+        <div class="book-actions">
+          <a href="{% url 'livro_detalhes' livro.codigo %}" class="btn-detalhes-modern" style="flex: 1;">VER DETALHES</a>
+          <span class="book-copies">Cód: {{ livro.codigo }}</span>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div style="grid-column: 1/-1; text-align: center; padding: 40px;">
+        <p style="font-size: 18px; color: #666;">Nenhum livro encontrado para os critérios selecionados.</p>
+        <a href="{% url 'livraria' %}" style="color: #b38b59; font-weight: 600;">Ver todo o acervo</a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<style>
+    .btn-detalhes-modern {
+        display: block;
+        text-align: center;
+        background: #b38b59;
+        color: #fff;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border: none;
+        box-shadow: 0 4px 15px rgba(179, 139, 89, 0.2);
+    }
+    .btn-detalhes-modern:hover {
+        background: #967349;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(179, 139, 89, 0.3);
+    }
+
+    .btn-favorito-overlay {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        width: 35px;
+        height: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        transition: transform 0.2s;
+        z-index: 10;
+    }
+    .btn-favorito-overlay:hover {
+        transform: scale(1.1);
+    }
+
+    /* Autocomplete Styles */
+    .search-container-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+    .autocomplete-suggestions {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: white;
+        border-radius: 0 0 12px 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        z-index: 1000;
+        max-height: 300px;
+        overflow-y: auto;
+        display: none;
+        text-align: left;
+    }
+    .suggestion-item {
+        padding: 12px 20px;
+        cursor: pointer;
+        border-bottom: 1px solid #f0f0f0;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+    .suggestion-item:last-child {
+        border-bottom: none;
+    }
+    .suggestion-item:hover {
+        background: #f9f7f2;
+    }
+    .suggestion-img {
+        width: 40px;
+        height: 55px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+    .suggestion-info h4 {
+        margin: 0;
+        font-size: 14px;
+        color: #2c1a0e;
+    }
+    .suggestion-info p {
+        margin: 0;
+        font-size: 12px;
+        color: #888;
+    }
+</style>
+
+<script>
+    // Implementação básica do Autocomplete (será refinado na fase 4)
+    const searchInput = document.getElementById('searchInput');
+    const resultsDiv = document.getElementById('autocomplete-results');
+
+    searchInput.addEventListener('input', function() {
+        const query = this.value;
+        if (query.length < 2) {
+            resultsDiv.style.display = 'none';
+            return;
+        }
+
+        fetch(`/api/busca-preditiva/?q=${query}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data.results.length > 0) {
+                    resultsDiv.innerHTML = '';
+                    data.results.forEach(item => {
+                        const div = document.createElement('div');
+                        div.className = 'suggestion-item';
+                        div.innerHTML = `
+                            <img src="${item.capa || '/static/assets/livros/default.png'}" class="suggestion-img">
+                            <div class="suggestion-info">
+                                <h4>${item.titulo}</h4>
+                                <p>${item.autor}</p>
+                            </div>
+                        `;
+                        div.onclick = () => {
+                            window.location.href = `/livro/${item.codigo}/`;
+                        };
+                        resultsDiv.appendChild(div);
+                    });
+                    resultsDiv.style.display = 'block';
+                } else {
+                    resultsDiv.style.display = 'none';
+                }
+            });
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!searchInput.contains(e.target) && !resultsDiv.contains(e.target)) {
+            resultsDiv.style.display = 'none';
+        }
+    });
+</script>
+{% endblock %}

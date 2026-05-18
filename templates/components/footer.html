@@ -1,0 +1,59 @@
+{% load static %}
+<footer class="main-footer">
+  <div class="footer-container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo">Bruma & Coffe</div>
+        <p class="footer-description">
+          Um refúgio para amantes de livros e café. Conectando histórias,
+          pessoas e sabores em um ambiente acolhedor.
+        </p>
+        <div class="footer-social">
+          <a href="#" class="social-icon">Instagram</a>
+          <a href="#" class="social-icon">Twitter</a>
+          <a href="#" class="social-icon">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="footer-links-group">
+        <h4 class="footer-title">Navegação</h4>
+        <ul class="footer-links">
+          <li><a href="{% url 'index' %}">Início</a></li>
+          <li><a href="{% url 'livraria' %}">Livraria</a></li>
+          <li><a href="{% url 'cafeteria' %}">Cafeteria</a></li>
+          <li><a href="{% url 'sobre' %}">Sobre Nós</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <h4 class="footer-title">Categorias</h4>
+        <ul class="footer-links">
+          <li><a href="#">Ficção</a></li>
+          <li><a href="#">Não-ficção</a></li>
+          <li><a href="#">Clássicos</a></li>
+          <li><a href="#">Suspense</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h4 class="footer-title">Contato</h4>
+        <p>
+          R. José Curvelo da Silveira Júnior, 110 - Jardim California, Ribeirão
+          Preto - SP
+        </p>
+        <p>contato@brucoffe.com.br</p>
+        <p>(11) 98765-4321</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="copyright">
+        © 2025 — Bruma & Coffe. Todos os direitos reservados.
+      </p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacidade</a>
+        <a href="#">Termos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
