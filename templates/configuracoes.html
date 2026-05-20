@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Configurações — Bruma & Coffee{% endblock %}
+
+{% block content %}
+<section style="padding: 100px 20px; text-align: center; min-height: 60vh;">
+    <span class="section-tag">CONTA</span>
+    <h1 style="color: #2c1a0e; margin-top: 15px;">Configurações</h1>
+    <p style="color: #666; max-width: 500px; margin: 20px auto;">
+        Aqui você poderá gerenciar suas preferências de notificação, privacidade e segurança da conta.
+    </p>
+    <a href="{% url 'perfil' %}" style="display: inline-block; margin-top: 30px; color: #b38b59; font-weight: 700; text-decoration: none;">EDITAR MEU PERFIL</a>
+</section>
+{% endblock %}

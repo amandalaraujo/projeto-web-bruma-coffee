@@ -2,7 +2,9 @@
 <header>
   <nav id="main-bar">
     <div class="nav-logo">
-      <span>Bruma & Coffee</span>
+      <a href="{% url 'index' %}" style="text-decoration: none; color: inherit;">
+        <span>Bruma & Coffee</span>
+      </a>
     </div>
 
     <ul class="nav-links">
@@ -43,27 +45,23 @@
     <div class="btn-ajuda">
       {% if request.user.is_authenticated %}
       <div class="user-menu">
-        <div class="user-avatar">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="22"
-            height="22"
-            viewBox="0 0 24 24"
-            fill="#2c1a0e"
-          >
-            <path
-              d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"
-            />
-          </svg>
+        <div class="user-avatar-wrapper">
+          {% if request.user.perfil.foto %}
+            <img src="{{ request.user.perfil.foto.url }}" alt="Avatar" class="user-avatar-img" />
+          {% else %}
+            <img src="{% static 'assets/livros/default.png' %}" alt="Avatar Padrão" class="user-avatar-img" />
+          {% endif %}
         </div>
         <div class="user-dropdown">
-          <span class="user-nome"
-            >{{ request.user.first_name|default:request.user.username }}</span
-          >
+          <span class="user-nome" style="font-weight: 700; color: #2c1a0e; display: block; padding: 5px 15px;">
+            {{ request.user.first_name|default:request.user.username }}
+          </span>
           <hr class="dropdown-divider" />
-          <a href="{% url 'reservas' %}" class="dropdown-item"
-            >Minhas Reservas</a
-          >
+          <a href="{% url 'perfil' %}" class="dropdown-item"> Minha Conta</a>
+          <a href="{% url 'reservas' %}" class="dropdown-item"> Reservas</a>
+          <a href="{% url 'meus_pedidos' %}" class="dropdown-item">Pedidos</a>
+          <a href="{% url 'configuracoes' %}" class="dropdown-item">Configurações</a>
+          <hr class="dropdown-divider" />
           <a href="{% url 'logout' %}" class="dropdown-item sair">→ Sair</a>
         </div>
       </div>
@@ -75,3 +73,67 @@
     </div>
   </nav>
 </header>
+
+<style>
+    /* Estilização do círculo do Avatar para aceitar imagens perfeitamente */
+    .user-avatar-wrapper {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 2px solid #b38b59;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #fdfaf6;
+    }
+    .user-avatar-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Melhoria no dropdown para suportar hover mais suave */
+    .user-menu {
+        position: relative;
+        cursor: pointer;
+        padding: 5px 0;
+    }
+    .user-dropdown {
+        display: none;
+        position: absolute;
+        right: 0;
+        top: 100%;
+        background: #fff;
+        min-width: 200px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        border-radius: 12px;
+        padding: 10px 0;
+        z-index: 1000;
+        border: 1px solid #f0ede4;
+        margin-top: 5px;
+    }
+    .user-menu:hover .user-dropdown {
+        display: block;
+    }
+    .dropdown-item {
+        padding: 10px 20px;
+        display: block;
+        color: #5c4033;
+        text-decoration: none;
+        font-size: 14px;
+        transition: background 0.2s;
+    }
+    .dropdown-item:hover {
+        background: #f9f7f2;
+        color: #b38b59;
+    }
+    .dropdown-divider {
+        border: 0;
+        border-top: 1px solid #f0ede4;
+        margin: 5px 0;
+    }
+    .sair {
+        color: #e74c3c;
+    }
+</style>

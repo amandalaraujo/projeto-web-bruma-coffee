@@ -1,5 +1,9 @@
-{% extends 'base.html' %} {% load static %} {% block title %} Início — Bruma &
-Coffee {% endblock %} {% block content %}
+
+{% extends 'base.html' %} 
+{% load static %} 
+{% block title %} Início — Bruma & Coffee {% endblock %} 
+{% block content %}
+
 <section class="home" id="inicio">
   <div class="hero-left">
     <h1>Um lugar para explorar, ler<br /><em>e se conectar.</em></h1>
@@ -101,8 +105,8 @@ Coffee {% endblock %} {% block content %}
 
           <p class="book-title">{{ book.titulo }}</p>
           <p class="book-author">{{ book.autor }}</p>
+          <a href="{% url 'livro_detalhes' book.codigo %}" class="btn-detalhes-modern">VER DETALHES</a>
 
-          <a href="{% url 'livro_detalhes' book.codigo %}" class="book-reserve" style="text-decoration: none; display: block; text-align: center;">VER DETALHES →</a>
         </div>
       </div>
       {% endfor %}
@@ -160,4 +164,28 @@ Coffee {% endblock %} {% block content %}
     </div>
   </div>
 </section>
+
+<style>
+    .btn-detalhes-modern {
+        display: block;
+        text-align: center;
+        background: #b38b59;
+        color: #fff;
+        text-decoration: none;
+        padding: 12px;
+        border-radius: 8px;
+        font-weight: 600;
+        font-size: 13px;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        margin-top: 15px;
+        border: none;
+        box-shadow: 0 4px 15px rgba(179, 139, 89, 0.2);
+    }
+    .btn-detalhes-modern:hover {
+        background: #967349;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(179, 139, 89, 0.3);
+    }
+</style>
 {% endblock %}

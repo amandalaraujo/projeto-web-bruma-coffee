@@ -1,5 +1,13 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Cafeteria — Bruma &
-Coffee{% endblock %} {% block content %}
+{% extends 'base.html' %} 
+{% load static %} 
+
+{% block title %}Cafeteria — Bruma & Coffee{% endblock %} 
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/modules/cafeteria.css' %}" />
+{% endblock %}
+
+{% block content %}
 
 <!-- HERO -->
 <section class="cafeteria-hero">

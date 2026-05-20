@@ -1,47 +1,73 @@
-{% extends 'base.html' %} {% load static %} {% block title %}Minhas Reservas —
-Bruma & Coffee{% endblock %} {% block content %}
-<section class="reservas-section">
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Minha Conta — Bruma & Coffee{% endblock %}
+
+{% block content %}
+<section class="reservas-section" style="padding: 120px 5%;">
   <div class="section-header">
     <span class="section-tag">MINHA CONTA</span>
-    <h2>Minhas <em>Reservas</em></h2>
+    <h2>Olá, <em>{{ user.first_name|default:user.username }}</em></h2>
   </div>
 
-  <h3 class="reservas-subtitulo">Reservas Ativas</h3>
-  {% if reservas %}
-  <div class="reservas-grid">
-    {% for reserva in reservas %}
-    <div class="reserva-card ativa">
-      <div class="reserva-capa">
-        {% if reserva.livro.capa_url %}
-        <img src="{{ reserva.livro.capa_url }}" alt="{{ reserva.livro.titulo }}" />
-        {% else %}
-        <img
-          src="{% static 'assets/livros/default.png' %}"
-          alt="{{ reserva.livro.titulo }}"
-        />
-        {% endif %}
+  <div style="margin-top: 50px;">
+    <h3 class="reservas-subtitulo" style="font-size: 1.8rem; color: #2d2d2d; margin-bottom: 30px; border-bottom: 2px solid #8b5e3c; display: inline-block;">Reservas Ativas</h3>
+    {% if reservas %}
+    <div class="reservas-grid">
+      {% for reserva in reservas %}
+      <div class="reserva-card ativa">
+        <div class="reserva-capa">
+          {% if reserva.livro.capa_url %}
+          <img src="{{ reserva.livro.capa_url }}" alt="{{ reserva.livro.titulo }}" />
+          {% else %}
+          <img src="{% static 'assets/livros/default.png' %}" alt="{{ reserva.livro.titulo }}" />
+          {% endif %}
+        </div>
+        <div class="reserva-info">
+          <h3>{{ reserva.livro.titulo }}</h3>
+          <p class="reserva-autor">{{ reserva.livro.autor }}</p>
+          <p class="reserva-data">
+            <strong>Empréstimo:</strong> {{ reserva.data_emprestimo|date:"d/m/Y" }}<br>
+            <strong>Devolver até:</strong> {{ reserva.data_limite|date:"d/m/Y" }}
+          </p>
+          <span class="badge reservado">● Ativo</span>
+          <form method="POST" action="{% url 'cancelar_reserva' reserva.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn-cancelar">Devolver / Cancelar</button>
+          </form>
+        </div>
       </div>
-      <div class="reserva-info">
-        <h3>{{ reserva.livro.titulo }}</h3>
-        <p class="reserva-autor">{{ reserva.livro.autor }}</p>
-        <p class="reserva-data">
-          <strong>Empréstimo:</strong> {{ reserva.data_emprestimo|date:"d/m/Y" }}<br>
-          <strong>Devolver até:</strong> {{ reserva.data_limite|date:"d/m/Y" }}
-        </p>
-        <span class="badge reservado">● Ativo</span>
-        <form method="POST" action="{% url 'cancelar_reserva' reserva.id %}">
-          {% csrf_token %}
-          <button type="submit" class="btn-cancelar">Devolver / Cancelar</button>
-        </form>
-      </div>
+      {% endfor %}
     </div>
-    {% endfor %}
+    {% else %}
+    <div class="sem-reservas-wrap">
+      <p class="sem-reservas-ativas">Você não tem reservas ativas no momento.</p>
+      <a href="{% url 'livraria' %}" class="btn-explorar">Explorar Acervo</a>
+    </div>
+    {% endif %}
   </div>
-  {% else %}
-  <div class="sem-reservas-wrap">
-    <p class="sem-reservas-ativas">Você não tem reservas ativas no momento.</p>
-    <a href="{% url 'livraria' %}" class="btn-explorar">Explorar Acervo</a>
+
+  <div style="margin-top: 80px;">
+    <h3 class="reservas-subtitulo" style="font-size: 1.8rem; color: #2d2d2d; margin-bottom: 30px; border-bottom: 2px solid #8b5e3c; display: inline-block;">Meus Favoritos</h3>
+    {% if favoritos %}
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 30px;">
+      {% for livro in favoritos %}
+      <div style="background: white; padding: 15px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center;">
+        <a href="{% url 'livro_detalhes' livro.codigo %}" style="text-decoration: none; color: inherit;">
+          {% if livro.capa_url %}
+          <img src="{{ livro.capa_url }}" alt="{{ livro.titulo }}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;" />
+          {% else %}
+          <img src="{% static 'assets/livros/default.png' %}" alt="{{ livro.titulo }}" style="width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px;" />
+          {% endif %}
+          <h4 style="font-size: 1rem; margin-bottom: 5px;">{{ livro.titulo }}</h4>
+          <p style="font-size: 0.8rem; color: #8b5e3c;">{{ livro.autor }}</p>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+    <p style="color: #666;">Você ainda não favoritou nenhum livro.</p>
+    {% endif %}
   </div>
-  {% endif %}
 </section>
 {% endblock %}
